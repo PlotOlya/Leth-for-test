@@ -1,6 +1,6 @@
 import React from 'react';
 import ReservationDate from './ReservationDate';
-import ReservationList from './ReservationList';
+// import ReservationList from './ReservationList';
 import ReservationTable from './ReservationTable';
 
 function Reservation(): JSX.Element {
@@ -8,7 +8,7 @@ function Reservation(): JSX.Element {
     <>
       <ReservationDate />
       <ReservationTable />
-      <ReservationList />
+      {/* <ReservationList /> */}
     </>
   );
 }
