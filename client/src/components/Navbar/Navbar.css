@@ -9,7 +9,7 @@
 
 .logo {
     margin-left: 5vh;
-    background: url('../../public/photos/sitePhotos/Logo.png') no-repeat center;
+    /* background: url('../../public/photos/sitePhotos/Logo.png') no-repeat center; */
     background-size: cover;
     height: 37px;
     width: 144px;
