@@ -1,0 +1,22 @@
+#footer,
+.menu-footer-menu-container {
+    background-color: #0a0a0a;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+svg {
+  fill: white;
+  padding-right: 10px;
+}

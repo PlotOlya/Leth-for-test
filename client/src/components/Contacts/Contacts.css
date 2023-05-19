@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("../../../public/Fonts/Montserrat/Montserrat-Regular.ttf");
+}
+
+.contacts-container {
+  background-color: #000;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  padding: 20px;
+  margin: 0 auto;
+  text-align: center;
+}
+.contacts-container a {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  margin-right: 60px;
+}
+svg {
+  fill: white;
+}
