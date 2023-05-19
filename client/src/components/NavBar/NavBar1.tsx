@@ -14,7 +14,7 @@ function NavBar1(): JSX.Element {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/ReservationTable">Брони</Nav.Link>
+              <Nav.Link href="/admin/reservation">Брони</Nav.Link>
               <Nav.Link href="#">Сертификаты</Nav.Link>
               <Nav.Link href="#">Отзывы</Nav.Link>
             </Nav>
