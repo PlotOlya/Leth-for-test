@@ -1,0 +1,43 @@
+.buttonStrings {
+    position: relative;
+    /* padding-left: .25em; */
+    margin-right: 30px;
+    }
+.buttonStrings:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+    width: 1em;
+    height: 0.15em;
+    background: white;
+    box-shadow: 
+        0 0.25em 0 0 white,
+        0 0.5em 0 0 white;
+}
+
+
+.sideMenuButton {
+    color: white;
+    background-color: black !important;
+    border: solid 0 black !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between !important;
+    margin-right: 20px;
+    width: 100px;
+
+}
+
+.sideMenuButtonText {
+    padding-left: 20px
+}
+
+.offcanvas-title {
+    background-color: rgb(26, 26, 26);
+    width: 100%;
+}
+
+.modal-open {
+    background-color: rgb(50, 50, 50) !important;
+}
