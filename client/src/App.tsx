@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
+import Footer from "./components/Footer/Footer";
 
-
-function App():JSX.Element {
+function App(): JSX.Element {
   return (
     <>
-    1
+      1
+      <Footer />
     </>
   );
 }
