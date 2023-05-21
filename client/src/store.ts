@@ -4,7 +4,7 @@ import timeTableSlice from './features/adminReservation/reservaionSlice';
 
 const store = configureStore({
   reducer: {
-    timeTables: timeTableSlice,
+    adminReservation: timeTableSlice,
   },
 });
 
