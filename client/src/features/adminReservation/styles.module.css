@@ -13,7 +13,14 @@
 
 td {
   border: 1px solid black !important;
-  width: 300px !important;
   height: 100px !important;
+  width: 300px !important;
+}
+
+.colorA {
   background-color: grey !important;
+}
+
+.colorB {
+  background-color: white !important;
 }
