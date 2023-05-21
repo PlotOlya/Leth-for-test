@@ -5,6 +5,7 @@ import { ReservationState } from './types/ReservationState';
 const initialState: ReservationState = {
   timeList: [],
   tablesList: [],
+  reservationList: [],
 };
 
 export const initTimeTable = createAsyncThunk(
@@ -24,9 +25,8 @@ const timeTableSlice = createSlice({
     return builder.addCase(initTimeTable.fulfilled, (state, action) => {
       state.timeList = action.payload.timeList;
       state.tablesList = action.payload.tablesList;
+      state.reservationList = action.payload.reservationList;
     });
-    // .addCase(initTimeTable.fulfilled, (state, action) => {
-    // });
   },
 });
 
