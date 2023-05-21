@@ -1,4 +1,6 @@
 import React from "react";
+import video from './video/video2.mp4'
+import video2 from './video/video2.webm'
 
 export default function VideoBlock(): JSX.Element {
   return (
@@ -9,11 +11,10 @@ export default function VideoBlock(): JSX.Element {
         autoPlay
         muted
         preload="auto"
-        poster="client/public/photos/sitePhotos/Logo.png"
+        poster="/photos/sitePhotos/Logo.png"
       >
-        <source type='video/webm' />
-            <source src='client/public/video/video.webm' type='video/webm' />
-            <source src='client/public/video/video.mp4' type='video/mp4' />
+            <source src={video2} type='video/webm' />
+            {/* <source src='/video/video.mp4' type='video/mp4' /> */}
       </video>
 
     </div>
