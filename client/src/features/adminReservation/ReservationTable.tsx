@@ -35,7 +35,7 @@ function ReservationTable(): JSX.Element {
             {Array.from({ length: 19 }).map((_1, index1) => (
               <td>-</td>
             ))}
-            <button type="submit">Закрытое время</button>
+            <button className='button' type="submit">Закрытое время</button>
           </tr>
         ))}
       </tbody>
