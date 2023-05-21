@@ -1,3 +1,4 @@
+
 import React from 'react'
 import './Layout.css'
 import Footer from '../Footer/Footer'
@@ -6,7 +7,8 @@ import Navbar from '../Navbar/Navbar'
 import SideMenu from '../SideMenu/SideMenu'
 import VideoBlock from '../VideoBlock/VideoBlock'
 
-export default function Layout():JSX.Element {
+
+export default function Layout(): JSX.Element {
   return (
     <body className='body'>
         <Navbar />
@@ -15,6 +17,5 @@ export default function Layout():JSX.Element {
         <Contacts/>
         <Footer/>
     </body>
-    
-  )
+  );
 }

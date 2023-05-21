@@ -24,12 +24,19 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
-      time: {
-        type: Sequelize.TEXT,
-        allowNull: false,
-      },
-      table: {
+      time_id: {
         type: Sequelize.INTEGER,
+        references: {
+          model: 'Times',
+          key: 'id',
+        },
+      },
+      table_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Tables',
+          key: 'id',
+        },
       },
       comment: {
         type: Sequelize.TEXT,
@@ -48,7 +55,7 @@ module.exports = {
       },
     });
   },
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.dropTable('Reservations');
   },
 };
