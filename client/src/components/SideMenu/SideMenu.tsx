@@ -1,20 +1,41 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/self-closing-comp */
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Offcanvas from 'react-bootstrap/Offcanvas';
-import { Link } from 'react-router-dom';
 import './SideMenu.css'
+import { Item } from '../Navbar/types/itemTypes';
 
-export default function Navbar():JSX.Element {
+
+type SideMenuProps = {
+  header:string;
+  items: Item[];
+  active: boolean;
+  setActive: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function SideMenu({ header, items, active, setActive }:SideMenuProps):JSX.Element {
   
-    const [show, setShow] = useState(false);
+    // const [show, setShow] = useState(false);
 
-    const handleClose = ():void => setShow(false);
-    const handleShow = ():void => setShow(true);
+
+    const closeMenuHandle = ():void => {
+      setActive(false);
+    }
 
     return (
-    <div className='sideMenu'>
-      <div className='h'>
+    <div onClick={closeMenuHandle} className={ active ? 'sideMenu active' : 'sideMenu'}>
+      <div className='blur' />
+      <div className='menu_content' onClick={e => e.stopPropagation()}>
+        <div className='menu_header' onClick={closeMenuHandle}>Закрыть меню</div>
+        <ul>
+          {items.map((item) => 
+            <li>
+              <a href={item.href}>{item.value}</a>
+            </li>
+            )}
+        </ul>
+      </div>
+      {/* <div className='h'>
         <Button className='sideMenuButton' variant="primary" onClick={handleShow} >
           <div className='buttonStrings'></div>
           <div className='sideMenuButtonText'>МЕНЮ</div>
@@ -34,7 +55,8 @@ export default function Navbar():JSX.Element {
                 <li><Link to='/' className='anchor-links'>КОНТАКТЫ</Link></li>
             </ul>
         </Offcanvas.Body>
-      </Offcanvas>
+      </Offcanvas> */}
+      
     </div>
   )
 }

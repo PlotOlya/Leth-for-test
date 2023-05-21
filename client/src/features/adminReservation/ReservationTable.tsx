@@ -88,7 +88,9 @@ function ReservationTable(): JSX.Element {
                 ))}
               </>
             ))}
-            <button type="submit">Закрыть время</button>
+
+            <button className='button' type="submit">Закрытое время</button>
+
           </tr>
         ))}
       </tbody>
