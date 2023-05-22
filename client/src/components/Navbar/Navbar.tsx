@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import SideMenu from '../SideMenu/SideMenu';
-import './Navbar.css';
+import React, { useState } from "react";
+import SideMenu from "../SideMenu/SideMenu";
+import "./Navbar.css";
 
-import { Item } from './types/itemTypes';
+import { Item } from "./types/itemTypes";
 
 const items: Item[] = [
-  { value: 'О РЕСТОРАНЕ', href: '/' },
-  { value: 'МЕНЮ', href: '/' },
-  { value: 'О ШЕФЕ', href: '/' },
-  { value: 'ЗАБРОНИРОВАТЬ', href: '/' },
-  { value: 'СЕРТИФИКАТ', href: '/' },
-  { value: 'КОНТАКТЫ', href: '/' },
+  { value: "О РЕСТОРАНЕ", href: "/" },
+  { value: "МЕНЮ", href: "/" },
+  { value: "О ШЕФЕ", href: "/" },
+  { value: "ЗАБРОНИРОВАТЬ", href: "/" },
+  { value: "СЕРТИФИКАТ", href: "/" },
+  { value: "КОНТАКТЫ", href: "/" },
 ];
 
 export default function Navbar(): JSX.Element {

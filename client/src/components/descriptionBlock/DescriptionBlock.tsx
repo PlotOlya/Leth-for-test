@@ -1,13 +1,11 @@
 import React, { memo } from "react";
-import "./DescriptionBlock.css"
+import "./DescriptionBlock.css";
 
 function DescriptionBlock(): JSX.Element {
   return (
     <div className="descriptionBlock-container ">
       <div className="descriptionBlock-title">
-      <h2 >
-        Ресторан Leth
-      </h2>
+        <h2>Ресторан Leth</h2>
       </div>
 
       <div className="descriptionBlock-text">
@@ -26,7 +24,6 @@ function DescriptionBlock(): JSX.Element {
 
       <div className="descriptionBlock-image">
         <img
-        
           src="photos/sitePhotos/111-76.jpg"
           className=""
           alt="foto restoran"
