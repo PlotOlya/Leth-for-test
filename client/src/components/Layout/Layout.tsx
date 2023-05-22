@@ -6,6 +6,7 @@ import Contacts from '../Contacts/Contacts'
 import Navbar from '../Navbar/Navbar'
 import VideoBlock from '../VideoBlock/VideoBlock'
 import Carusel from '../Carusel/Carusel'
+import DescriptionBlock from '../descriptionBlock/descriptionBlock'
 
 
 export default function Layout(): JSX.Element {
@@ -13,6 +14,7 @@ export default function Layout(): JSX.Element {
     <body className='body'>
         <Navbar />
         <VideoBlock />
+        <DescriptionBlock/>
         <Carusel/>
         <Contacts/>
         <Footer/>
