@@ -7,19 +7,19 @@
   align-items: center;
   position: fixed;
   height: 50px;
-  z-index:1;
+  z-index: 1;
 }
 
 .buttonStrings {
   position: relative;
-    width: 50px;
-    color: #cecece;
-    font-size: 12px;
-    padding-left: 20px;
+  width: 50px;
+  color: #cecece;
+  font-size: 12px;
+  padding-left: 20px;
 }
 
 .buttonStrings:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 30%;
   left: 20%;
@@ -35,7 +35,6 @@
   border: solid 0 black;
   margin-right: 20px;
   width: 70px;
-  
 }
 
 .sideMenuButtonText {
@@ -46,7 +45,7 @@
 
 .logo {
   margin-left: 5vh;
-  background: url("../../../public/photos/sitePhotos/Logo.png") no-repeat center;
+  background: url('../../../public/photos/sitePhotos/Logo.png') no-repeat center;
   background-size: cover;
   height: 38px;
   width: 147px;
