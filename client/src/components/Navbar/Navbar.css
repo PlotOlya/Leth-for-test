@@ -1,19 +1,19 @@
 .Navbar {
-    width: 100%;
-    background-color: black;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-    margin-left: 5vh;
-    /* background: url('../../public/photos/sitePhotos/Logo.png') no-repeat center; */
-    background-size: cover;
-    height: 37px;
-    width: 144px;
-    color: white;
-    padding: 0px 8px 0px;
-    font-size: 30px;
+  margin-left: 5vh;
+  /* background: url('../../public/photos/sitePhotos/Logo.png') no-repeat center; */
+  background-size: cover;
+  height: 37px;
+  width: 144px;
+  color: white;
+  padding: 0px 8px 0px;
+  font-size: 30px;
 }

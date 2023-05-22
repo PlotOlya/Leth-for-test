@@ -3,7 +3,7 @@ export type Reservation = {
   name: string;
   phoneNumber: string;
   email: string;
-  date: string;
+  date: Date;
   comment: string;
   status: string;
   time_id: number;

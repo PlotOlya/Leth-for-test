@@ -15,6 +15,7 @@
     "bootstrap": "^5.2.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
+    "react-calendar-timeline": "^0.28.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.2",
@@ -95,6 +96,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-calendar-timeline": "^0.28.2",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
     "eslint": "^8.35.0",
