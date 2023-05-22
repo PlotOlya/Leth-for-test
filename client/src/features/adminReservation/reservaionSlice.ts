@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { apiinitTimeTable } from './api';
+import ReservationList from './ReservationList';
 import { ReservationState } from './types/ReservationState';
 
 const initialState: ReservationState = {
@@ -29,5 +30,9 @@ const timeTableSlice = createSlice({
     });
   },
 });
+
+// export const selectReservationById = () => {
+//   ReservationList.filter(el => el.id === )
+// }
 
 export default timeTableSlice.reducer;

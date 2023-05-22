@@ -14,7 +14,6 @@ const items: Item[] = [
 ];
 
 export default function Navbar(): JSX.Element {
-  
   const [menuActive, setMenuActive] = useState(false);
 
   const MenuActiveHandler = (): void => {

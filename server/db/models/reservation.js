@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       date: {
-        type: DataTypes.TEXT,
+        type: DataTypes.DATE,
         allowNull: false,
       },
       table_id: {
@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'Reservation',
-    },
+    }
   );
   return Reservation;
 };
