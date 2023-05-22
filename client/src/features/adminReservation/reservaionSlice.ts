@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { apiinitTimeTable } from './api';
-import ReservationList from './ReservationList';
 import { ReservationState } from './types/ReservationState';
 
 const initialState: ReservationState = {
