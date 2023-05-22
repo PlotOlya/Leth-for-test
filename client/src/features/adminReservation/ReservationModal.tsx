@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { memo } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -22,16 +22,42 @@ function ReservationModal({
   activModalReserv,
   setActivModalReserv,
 }: Props): JSX.Element {
-  console.log(activModalReserv);
+  const [date, setDate] = useState('');
+  const [normDate, setNormDate] = useState('');
+  console.log('333', date);
+
+  // ???????????????
+  const handleDate = (event: any): void => {
+    setDate(event.target.value);
+    // console.log(event.target.value);
+  };
 
   const reserv = useSelector(
     (state: RootState) => state.adminReservation.reservationList
   );
 
   const item = reserv.filter((el) => el.id === activModalReserv);
-  const item2 = item[0];
+  const item2 = { ...item[0] };
 
-  console.log('222', item2);
+  function formatDate(date2: Date): string {
+    const year = date2.getFullYear();
+    const month = String(date2.getMonth() + 1).padStart(2, '0');
+    const day = String(date2.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+  }
+  const date2 = new Date(item2.date);
+  console.log('data2', date2);
+
+  // const normDate = formatDate(date2);
+  useEffect(() => {
+    setNormDate(formatDate(date2));
+  }, [date2]);
+  // const item3 = item2.date.toISOString();
+
+  // const item4 = item3?.match(/^\d{4}-\d{2}-\d{2}/)?.[0] || '';
+
+  console.log('222', normDate);
 
   return (
     <div
@@ -44,32 +70,45 @@ function ReservationModal({
             <Form.Group as={Col} controlId="formGridEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control
-                // defaultValue={item2.email}
-                type="email"
+                defaultValue={item2.email}
+                type="text"
                 placeholder="Enter email"
               />
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridPassword">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="Name" />
+              <Form.Control
+                defaultValue={item2.name}
+                type="text"
+                placeholder="Name"
+              />
             </Form.Group>
           </Row>
 
           <Form.Group className="mb-3" controlId="formGridAddress1">
             <Form.Label>Phone</Form.Label>
-            <Form.Control type="phone" placeholder="Phone" />
+            <Form.Control
+              defaultValue={item2.phoneNumber}
+              type="phone"
+              placeholder="Phone"
+            />
           </Form.Group>
 
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridCity">
               <Form.Label>Date</Form.Label>
-              <Form.Control type="date" />
+              <Form.Control
+                defaultValue={normDate}
+                onChange={(event) => handleDate(event)}
+                // value={date}
+                type="date"
+              />
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridState">
               <Form.Label>Time</Form.Label>
-              <Form.Select defaultValue="Choose...">
+              <Form.Select defaultValue="13:30">
                 <option>12:00</option>
                 <option>12:30</option>
                 <option>13:00</option>
@@ -79,13 +118,17 @@ function ReservationModal({
 
             <Form.Group as={Col} controlId="formGridZip">
               <Form.Label>Table</Form.Label>
-              <Form.Control />
+              <Form.Control
+                // value={date}
+                onChange={(event) => handleDate(event)}
+                type="text"
+              />
             </Form.Group>
           </Row>
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Example textarea</Form.Label>
-            <Form.Control as="textarea" rows={3} />
+            <Form.Control defaultValue={item2.comment} as="textarea" rows={3} />
           </Form.Group>
 
           <Button
