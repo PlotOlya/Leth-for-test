@@ -9,7 +9,7 @@ const items: Item[] = [
   { value: "МЕНЮ", href: "/" },
   { value: "О ШЕФЕ", href: "/" },
   { value: "ЗАБРОНИРОВАТЬ", href: "/" },
-  { value: "СЕРТИФИКАТ", href: "/" },
+  { value: "СЕРТИФИКАТ", href: "/sertif" },
   { value: "КОНТАКТЫ", href: "/" },
 ];
 

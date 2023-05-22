@@ -1,5 +1,6 @@
 
 
+
 import React from 'react'
 import './Layout.css'
 import Footer from '../Footer/Footer'
@@ -21,6 +22,7 @@ export default function Layout(): JSX.Element {
         <Carusel/>
         <Contacts/>
         <Footer/>
+
 
     </body>
   );
