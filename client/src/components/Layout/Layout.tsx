@@ -6,7 +6,7 @@ import Contacts from '../Contacts/Contacts'
 import Navbar from '../Navbar/Navbar'
 import VideoBlock from '../VideoBlock/VideoBlock'
 import Carusel from '../Carusel/Carusel'
-import DescriptionBlock from '../descriptionBlock/descriptionBlock'
+import DescriptionBlock from "../DescriptionBlock/DescriptionBlock"
 
 
 export default function Layout(): JSX.Element {

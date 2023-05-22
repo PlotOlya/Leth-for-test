@@ -1,11 +1,14 @@
 import React, { memo } from "react";
+import "./DescriptionBlock.css"
 
 function DescriptionBlock(): JSX.Element {
   return (
     <div className="descriptionBlock-container ">
-      <h2 className="elementor-heading-title elementor-size-xxl">
+      <div className="descriptionBlock-title">
+      <h2 >
         Ресторан Leth
       </h2>
+      </div>
 
       <div className="descriptionBlock-text">
         Мы взаимодействуем с этим миром посредством наших чувств. То, что мы
