@@ -27,23 +27,23 @@ function ReservationTable(): JSX.Element {
     dispatch(initTimeTable());
   }, [dispatch]);
 
-  const handleClick = (event: React.MouseEvent<HTMLTableCellElement>): void => {
-    const target = event.target as HTMLTableCellElement;
-    const { id } = target.dataset;
-    const parrent = target.closest('.parrent');
-    /* eslint-disable  */
-    const id1 = parrent.dataset.id;
-    console.log('время', id1, 'стол', id);
-    reservationList.map((reserv) => {
-      if (
-        Number(reserv.time_id) === Number(id1) &&
-        Number(reserv.table_id) === Number(id)
-      ) {
-        setStyle(true);
-      }
-    });
-  };
-  console.log({ style });
+  // const handleClick = (event: React.MouseEvent<HTMLTableCellElement>): void => {
+  //   const target = event.target as HTMLTableCellElement;
+  //   const { id } = target.dataset;
+  //   const parrent = target.closest('.parrent');
+  //   /* eslint-disable  */
+  //   // const id1 = parrent.dataset.id;
+  //   console.log('время', id1, 'стол', id);
+  //   reservationList.map((reserv) => {
+  //     if (
+  //       Number(reserv.time_id) === Number(id1) &&
+  //       Number(reserv.table_id) === Number(id)
+  //     ) {
+  //       setStyle(true);
+  //     }
+  //   });
+  // };
+  // console.log({ style });
 
   return (
     <Table responsive>
@@ -55,7 +55,7 @@ function ReservationTable(): JSX.Element {
           ))}
         </tr>
       </thead>
-      <tbody>
+      {/* <tbody>
         {timeList.map((time) => (
           // столбец со временем
           <tr data-id={time.id} className="parrent">
@@ -93,7 +93,7 @@ function ReservationTable(): JSX.Element {
 
           </tr>
         ))}
-      </tbody>
+      </tbody> */}
     </Table>
   );
 }
