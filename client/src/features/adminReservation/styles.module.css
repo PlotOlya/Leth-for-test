@@ -1,0 +1,26 @@
+.calendar {
+  display: flex;
+  justify-content: center;
+}
+
+.table {
+}
+
+.button {
+  width: 100px !important;
+  height: 50px !important;
+}
+
+td {
+  border: 1px solid black !important;
+  height: 100px !important;
+  width: 300px !important;
+}
+
+.colorA {
+  background-color: grey !important;
+}
+
+.colorB {
+  background-color: white !important;
+}
