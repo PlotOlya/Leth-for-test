@@ -1,0 +1,30 @@
+.videoBlock {
+    width: 100%;
+    opacity: 65%;
+    margin-top: 50px;
+    object-fit: cover;
+
+}
+
+.videoWrapper {
+    position: relative;
+
+}
+
+.buttonWrapper {
+    position: absolute;
+    width: 100%;
+    bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.videoButton {
+    border: 1px solid white;
+    font-family:'Times New Roman', Times, serif;
+    letter-spacing: 1px;
+    padding: 5px 20px 5px;
+    color: white;
+    font-size: 20px;   
+}

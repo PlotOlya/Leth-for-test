@@ -1,35 +1,5 @@
-.buttonStrings {
-    position: relative;
-    /* padding-left: .25em; */
-    margin-right: 30px;
-    }
-.buttonStrings:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.45em;
-    width: 1em;
-    height: 0.15em;
-    background: white;
-    box-shadow: 
-        0 0.25em 0 0 white,
-        0 0.5em 0 0 white;
-}
 
-
-.sideMenuButton {
-    color: white;
-    background-color: black !important;
-    border: solid 0 black !important;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between !important;
-    margin-right: 20px;
-    width: 100px;
-
-}
-
-.sideMenuButtonText {
+/* .sideMenuButtonText {
     padding-left: 20px
 }
 
@@ -40,4 +10,65 @@
 
 .modal-open {
     background-color: rgb(50, 50, 50) !important;
+} */
+
+.sideMenu {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 50px;
+    left: 0;
+    transform: translate(-150%);
+    transition: all 0.2s;
+    z-index:1;
+
+}
+
+.sideMenu.active {
+    transform: translate(0);
+
+}
+
+.blur {
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(2px);
+    position: absolute;
+    left: 50%
+}
+
+.menu_content {
+    width: 50%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.4s;
+
+}
+
+.menu_header {
+    font-size: 0.8rem;
+    color: white;
+    padding: 10px;
+    border-bottom: 1px solid white;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.7rem;
+    padding-right: 15px;
+    margin-top: 5px;
+
+}
+
+ul {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
