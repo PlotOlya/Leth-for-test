@@ -8,6 +8,7 @@ import Navbar from '../NavBar/Navbar'
 import VideoBlock from '../VideoBlock/VideoBlock'
 import Carusel from '../Carusel/Carusel'
 import DescriptionBlock from "../DescriptionBlock/DescriptionBlock"
+import ShefBlock from '../ShefBlock/ShefBlock'
 
 
 export default function Layout(): JSX.Element {
@@ -16,6 +17,7 @@ export default function Layout(): JSX.Element {
         <Navbar />
         <VideoBlock />
         <DescriptionBlock/>
+        <ShefBlock/>
         <Carusel/>
         <Contacts/>
         <Footer/>

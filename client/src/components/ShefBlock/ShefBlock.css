@@ -1,0 +1,8 @@
+.shefBlock-container {
+  margin: 25px auto;
+  text-align: center;
+}
+
+.ShefBlock-text, .ShefBlock-img {
+    padding: 10px 30px;
+}
