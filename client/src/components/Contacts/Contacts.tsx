@@ -6,7 +6,7 @@ import MapContakt from "../MapContact/MapContakt";
 
 function Contacts(): JSX.Element {
   return (
-    <section className="Contacts">
+    <section id="contacts" className="contacts">
       <div className="contacts-container">
         <h2 className="adress">Адрес</h2>
         <div className="adress-items">
