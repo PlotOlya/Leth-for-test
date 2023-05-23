@@ -1,21 +1,20 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/self-closing-comp */
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import './SideMenu.css'
-import { Item } from '../NavBar/types/itemTypes';
+import { Item } from '../Navbar/types/itemTypes';
 
 
 type SideMenuProps = {
-  header:string;
   items: Item[];
   active: boolean;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function SideMenu({ header, items, active, setActive }:SideMenuProps):JSX.Element {
+function SideMenu({ items, active, setActive }:SideMenuProps):JSX.Element {
   
-    // const [show, setShow] = useState(false);
+   
 
 
     const closeMenuHandle = ():void => {
@@ -29,7 +28,7 @@ export default function SideMenu({ header, items, active, setActive }:SideMenuPr
         <div className='menu_header' onClick={closeMenuHandle}>Закрыть меню</div>
         <ul>
           {items.map((item) => 
-            <li>
+            <li key={item.id}>
               <a href={item.href}>{item.value}</a>
             </li>
             )}
@@ -39,3 +38,5 @@ export default function SideMenu({ header, items, active, setActive }:SideMenuPr
     </div>
   );
 }
+
+export default memo(SideMenu)

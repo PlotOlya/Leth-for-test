@@ -24,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         allowNull: false,
       },
+      guests: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
       table_id: {
         type: DataTypes.INTEGER,
         references: {
