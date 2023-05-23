@@ -3,7 +3,7 @@ import "./ShefBlock.css";
 
 function ShefBlock(): JSX.Element {
   return (
-    <div className="shefBlock-container">
+    <div id="shefBlock" className="shefBlock-container">
       <h2 className="ShefBlock-title">О шефе</h2>
       <div className="ShefBlock-text">
         <p>

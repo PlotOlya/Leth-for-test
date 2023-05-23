@@ -5,6 +5,7 @@ import { apiCertificate } from "./api";
 
 const initialState: CertificateState = {
   certificateList: [],
+  currentCertificate: undefined,
 };
 
 export const addCertificate = createAsyncThunk(
@@ -21,7 +22,11 @@ const certificateSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     return builder.addCase(addCertificate.fulfilled, (state, action) => {
+       console.log("slise ->", action.payload);
+      
       state.certificateList.push(action.payload);
+      state.currentCertificate = action.payload.amount;
+      console.log('state', state.currentCertificate)
     });
   },
 });

@@ -1,0 +1,12 @@
+
+
+.show-menu-btn {
+  border: 1px solid white;
+  letter-spacing: 1px;
+  padding: 5px 20px 5px;
+  color: white;
+  font-size: 20px;
+  margin: 20px auto;
+  text-align: center;
+  width: 200px;
+}
