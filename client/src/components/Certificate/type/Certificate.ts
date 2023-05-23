@@ -4,5 +4,5 @@ export type Certificate = {
   email: string;
   amount: number;
   numberCertificates: string;
-  status: string;
+  status: boolean;
 };

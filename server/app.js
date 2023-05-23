@@ -8,6 +8,7 @@ const serverConfig = require("./config/serverConfig");
 const ReservationTable = require("./routes/api/apiReservationTableInit");
 const certificateTable = require("./routes/api/apiCertificateData");
 const findeCertificate = require("./routes/api/apiFindeCertificate");
+const mainReservation = require("./routes/api/apiMainReservation");
 
 // config
 serverConfig(app);
@@ -16,6 +17,7 @@ serverConfig(app);
 app.use("/api/admin/reservation", ReservationTable);
 app.use("/api/certificate", certificateTable);
 app.use("/api/findeCertificate", findeCertificate);
+app.use("/api/mainReservation", mainReservation);
 
 try {
   app.listen(PORT, () => {

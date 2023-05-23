@@ -9,10 +9,14 @@ import Timeline, {
   CursorMarker,
 } from 'react-calendar-timeline';
 import moment from 'moment';
-import { RootState, useAppDispatch } from '../../store';
-import { initTimeTable } from './reservaionSlice';
-import styles from './styles.module.css';
+import { useAppDispatch } from '../../store';
+import {
+  initTimeTable,
+  selectReservationList,
+  selectTablesList,
+} from './reservaionSlice';
 import 'react-calendar-timeline/lib/Timeline.css';
+import styles from './styles.module.css';
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -24,18 +28,13 @@ function ReservationTable({
   setActivModalReserv,
 }: Props): JSX.Element {
   const dispatch = useAppDispatch();
-  const timeList = useSelector(
-    (state: RootState) => state.adminReservation.timeList
-  );
-  const tablesList = useSelector(
-    (state: RootState) => state.adminReservation.tablesList
-  );
-  const reservationList = useSelector(
-    (state: RootState) => state.adminReservation.reservationList
-  );
-  console.log('время', timeList);
+
+  const tablesList = useSelector(selectTablesList);
+  const reservationList = useSelector(selectReservationList);
+
   console.log('столы', tablesList);
   console.log('резервы', reservationList);
+  console.log('111', reservationList[0].status);
 
   useEffect(() => {
     dispatch(initTimeTable());
@@ -55,7 +54,7 @@ function ReservationTable({
 
   const items = reservationList.map((reserv) => ({
     id: reserv.id,
-    group: reserv.table_id,
+    group: reserv.table,
     title: reserv.name,
     start_time: new Date(reserv.date),
     end_time: addHours(reserv.date),
