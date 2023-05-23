@@ -1,15 +1,22 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect, useMemo, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
-import { formatDate } from '../../utils/formatDate';
-import { formatTime } from '../../utils/formatTime';
+import { useForm } from 'react-hook-form';
+import { RootState, useAppDispatch } from '../../store';
+import {
+  formatDate,
+  formatTime,
+  transformReservationToFormData,
+} from '../../utils/date';
 import styles from './styles.module.css';
+import { ReservationData } from './types/ReservationData';
+import { selectReservationById } from './reservaionSlice';
 
 type Props = {
   showModal: boolean;
@@ -23,8 +30,7 @@ function ReservationModal({
   activModalReserv,
 }: Props): JSX.Element {
   const [date, setDate] = useState('');
-  const [normDate, setNormDate] = useState('');
-  const [normTime, setNormTime] = useState('');
+  const dispatch = useAppDispatch();
 
   // ???????????????
   const handleDate = (event: any): void => {
@@ -32,30 +38,38 @@ function ReservationModal({
     // console.log(event.target.value);
   };
 
-  const reserv = useSelector(
-    (state: RootState) => state.adminReservation.reservationList
+  const activeReserv = useSelector((state: RootState) =>
+    selectReservationById(state, activModalReserv)
   );
-  const item = reserv.filter((el) => el.id === activModalReserv);
-  const item2 = { ...item[0] };
-  const date2 = new Date(item2.date);
+  useEffect(
+    () => reset(activeReserv && transformReservationToFormData(activeReserv)),
+    [activModalReserv]
+  );
 
-  useEffect(() => {
-    setNormDate(formatDate(date2));
-    setNormTime(formatTime(date2));
-  }, [date2]);
+  const { register, handleSubmit, reset } = useForm<ReservationData>({
+    defaultValues: activeReserv && transformReservationToFormData(activeReserv),
+  });
+
+  const formSubmit = (value: ReservationData): void => {
+    console.log(value);
+  };
 
   return (
     <div
       onClick={() => setShowModal(false)}
       className={showModal ? styles.activ : styles.disable}
     >
-      {item && (
-        <Form className={styles.modalform} onClick={(e) => e.stopPropagation()}>
+      {activeReserv && (
+        <Form
+          // onSubmit={handleSubmit(formSubmit)}
+          className={styles.modalform}
+          onClick={(e) => e.stopPropagation()}
+        >
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control
-                defaultValue={item2.email}
+                {...register('email', { required: true })}
                 type="text"
                 placeholder="Enter email"
               />
@@ -64,7 +78,7 @@ function ReservationModal({
             <Form.Group as={Col} controlId="formGridPassword">
               <Form.Label>Name</Form.Label>
               <Form.Control
-                defaultValue={item2.name}
+                {...register('name', { required: true })}
                 type="text"
                 placeholder="Name"
               />
@@ -74,7 +88,7 @@ function ReservationModal({
           <Form.Group className="mb-3" controlId="formGridAddress1">
             <Form.Label>Phone</Form.Label>
             <Form.Control
-              defaultValue={item2.phoneNumber}
+              {...register('phoneNumber', { required: true })}
               type="phone"
               placeholder="Phone"
             />
@@ -84,7 +98,7 @@ function ReservationModal({
             <Form.Group as={Col} controlId="formGridCity">
               <Form.Label>Date</Form.Label>
               <Form.Control
-                defaultValue={normDate}
+                {...register('date', { required: true })}
                 onChange={(event) => handleDate(event)}
                 // value={date}
                 type="date"
@@ -93,7 +107,7 @@ function ReservationModal({
 
             <Form.Group as={Col} controlId="formGridState">
               <Form.Label>Time</Form.Label>
-              <Form.Select defaultValue={normTime}>
+              <Form.Select {...register('time', { required: true })}>
                 <option>12:00</option>
                 <option>12:30</option>
                 <option>13:00</option>
@@ -122,6 +136,7 @@ function ReservationModal({
               <Form.Label>Table</Form.Label>
               <Form.Control
                 // value={date}
+                {...register('table', { required: true })}
                 onChange={(event) => handleDate(event)}
                 type="text"
               />
@@ -130,7 +145,11 @@ function ReservationModal({
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Example textarea</Form.Label>
-            <Form.Control defaultValue={item2.comment} as="textarea" rows={3} />
+            <Form.Control
+              {...register('comment', { required: true })}
+              as="textarea"
+              rows={3}
+            />
           </Form.Group>
 
           <Button

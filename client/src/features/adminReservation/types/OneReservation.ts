@@ -1,4 +1,4 @@
-export type ReservationType = {
+export type OneReservation = {
   id: number;
   name: string;
   phoneNumber: string;
@@ -6,6 +6,5 @@ export type ReservationType = {
   date: Date;
   comment: string;
   status: string;
-  time_id: number;
-  table_id: number;
+  table: number;
 };
