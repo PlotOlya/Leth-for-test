@@ -27,74 +27,76 @@ function ReservationTable(): JSX.Element {
     dispatch(initTimeTable());
   }, [dispatch]);
 
-  const handleClick = (event: React.MouseEvent<HTMLTableCellElement>): void => {
-    const target = event.target as HTMLTableCellElement;
-    const { id } = target.dataset;
-    const parrent = target.closest('.parrent');
+  // const handleClick = (event: React.MouseEvent<HTMLTableCellElement>): void => {
+    // const target = event.target as HTMLTableCellElement;
+    // const { id } = target.dataset;
+    // const parrent = target.closest('.parrent');
+    // console.log(parrent)
     /* eslint-disable  */
-    const id1 = parrent.dataset.id;
-    console.log('время', id1, 'стол', id);
-    reservationList.map((reserv) => {
-      if (
-        Number(reserv.time_id) === Number(id1) &&
-        Number(reserv.table_id) === Number(id)
-      ) {
-        setStyle(true);
-      }
-    });
-  };
+    // const id1 = parrent.dataset.id;
+    // console.log('время', id1, 'стол', id);
+    // reservationList.map((reserv) => {
+    //   if (
+    //     Number(reserv.time_id) === Number(id1) &&
+    //     Number(reserv.table_id) === Number(id)
+    //   ) {
+    //     setStyle(true);
+    //   }
+    // });
+  // };
   console.log({ style });
 
   return (
-    <Table responsive>
-      <thead>
-        <tr>
-          <th>Время</th>
-          {tablesList.map((table) => (
-            <th data-id={table.id}>Стол {table.number}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {timeList.map((time) => (
-          // столбец со временем
-          <tr data-id={time.id} className="parrent">
-            <td>{time.time}</td>
-            {tablesList.map((table) => (
-              <>
-                {reservationList.map((reserv) => (
-                  // строка с номером ячейки
-                  <>
-                    {style ? (
-                      <td
-                        key={table.id}
-                        onClick={(event) => handleClick(event)}
-                        data-id={table.id}
-                        className={styles.colorA}
-                      >
-                        {table.id}
-                      </td>
-                    ) : (
-                      <td
-                        key={table.id}
-                        onClick={(event) => handleClick(event)}
-                        data-id={table.id}
-                        className={styles.colorB}
-                      >
-                        {table.id}
-                      </td>
-                    )}
-                  </>
-                ))}
-              </>
-            ))}
+    <div></div>
+    // <Table responsive>
+    //   <thead>
+    //     <tr>
+    //       <th>Время</th>
+    //       {tablesList.map((table) => (
+    //         <th data-id={table.id}>Стол {table.number}</th>
+    //       ))}
+    //     </tr>
+    //   </thead>
+    //   <tbody>
+    //     {timeList.map((time) => (
+    //       // столбец со временем
+    //       <tr data-id={time.id} className="parrent">
+    //         <td>{time.time}</td>
+    //         {tablesList.map((table) => (
+    //           <>
+    //             {reservationList.map((reserv) => (
+    //               // строка с номером ячейки
+    //               <>
+    //                 {style ? (
+    //                   <td
+    //                     key={table.id}
+    //                     onClick={(event) => handleClick(event)}
+    //                     data-id={table.id}
+    //                     className={styles.colorA}
+    //                   >
+    //                     {table.id}
+    //                   </td>
+    //                 ) : (
+    //                   <td
+    //                     key={table.id}
+    //                     onClick={(event) => handleClick(event)}
+    //                     data-id={table.id}
+    //                     className={styles.colorB}
+    //                   >
+    //                     {table.id}
+    //                   </td>
+    //                 )}
+    //               </>
+    //             ))}
+    //           </>
+    //         ))}
 
-            <button className='button' type="submit">Закрытое время</button>
+    //         <button className='button' type="submit">Закрытое время</button>
 
-          </tr>
-        ))}
-      </tbody>
-    </Table>
+    //       </tr>
+    //     ))}
+    //   </tbody>
+    // </Table>
   );
 }
 

@@ -1,19 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import SideMenu from "../SideMenu/SideMenu";
 import "./Navbar.css";
+
 
 import { Item } from "./types/itemTypes";
 
 const items: Item[] = [
-  { value: "О РЕСТОРАНЕ", href: "/" },
-  { value: "МЕНЮ", href: "/" },
-  { value: "О ШЕФЕ", href: "/" },
-  { value: "ЗАБРОНИРОВАТЬ", href: "/" },
-  { value: "СЕРТИФИКАТ", href: "/" },
-  { value: "КОНТАКТЫ", href: "/" },
+  { value: "О РЕСТОРАНЕ", href: "/", id: 1 },
+  { value: "МЕНЮ", href: "/", id: 2 },
+  { value: "О ШЕФЕ", href: "/" ,id: 3},
+  { value: "ЗАБРОНИРОВАТЬ", href: "/", id: 4 },
+  { value: "СЕРТИФИКАТ", href: "/", id: 5 },
+  { value: "КОНТАКТЫ", href: "/", id: 6 },
 ];
 
-export default function Navbar(): JSX.Element {
+ function Navbar(): JSX.Element {
   
   const [menuActive, setMenuActive] = useState(false);
 
@@ -35,9 +36,10 @@ export default function Navbar(): JSX.Element {
       <SideMenu
         active={menuActive}
         setActive={setMenuActive}
-        header="Закрыть"
         items={items}
       />
     </div>
   );
 }
+
+export default memo(Navbar)

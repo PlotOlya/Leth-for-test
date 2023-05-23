@@ -1,10 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import timeTableSlice from './features/adminReservation/reservaionSlice';
+import  MainReservationSlice  from './components/ReservationForm/mainReservationFormSlice'
+
 
 const store = configureStore({
   reducer: {
     adminReservation: timeTableSlice,
+    mainReservationForm: MainReservationSlice
   },
 });
 

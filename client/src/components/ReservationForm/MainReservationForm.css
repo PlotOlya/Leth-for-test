@@ -1,0 +1,22 @@
+.reservationFormer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.reservationFormLabel {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.reservationFormInput {
+    border: 1px solid grey;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    width: 250px;
+}
