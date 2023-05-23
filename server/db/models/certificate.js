@@ -1,6 +1,4 @@
-const {
-  Model,
-} = require('sequelize');
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Certificate extends Model {
@@ -13,30 +11,33 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Certificate.init({
-    name: {
-      type: DataTypes.TEXT,
-      allowNull: false,
+  Certificate.init(
+    {
+      name: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      email: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      numberCertificates: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      amount: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      status: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+      },
     },
-    email: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    numberCertificates: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    amount: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    status: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-  }, {
-    sequelize,
-    modelName: 'Certificate',
-  });
+    {
+      sequelize,
+      modelName: 'Certificate',
+    }
+  );
   return Certificate;
 };

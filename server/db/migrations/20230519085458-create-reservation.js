@@ -36,7 +36,7 @@ module.exports = {
         type: Sequelize.TEXT,
       },
       status: {
-        type: Sequelize.TEXT,
+        type: Sequelize.BOOLEAN,
         allowNull: false,
       },
       createdAt: {

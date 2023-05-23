@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { memo, useEffect, useMemo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -41,6 +41,7 @@ function ReservationModal({
   const activeReserv = useSelector((state: RootState) =>
     selectReservationById(state, activModalReserv)
   );
+  
   useEffect(
     () => reset(activeReserv && transformReservationToFormData(activeReserv)),
     [activModalReserv]

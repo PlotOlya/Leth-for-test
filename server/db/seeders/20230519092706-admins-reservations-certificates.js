@@ -20,7 +20,7 @@ module.exports = {
         guests: 2,
         table: 1,
         comment: 'гд',
-        status: 'netu',
+        status: true,
       },
       {
         name: 'Рыжков Иан Александрович',
@@ -30,7 +30,7 @@ module.exports = {
         table: 4,
         guests: 2,
         comment: 'гуууу',
-        status: 'netu',
+        status: false,
       },
       {
         name: 'Рыков Иван Александрович',
@@ -40,7 +40,7 @@ module.exports = {
         guests: 2,
         table: 9,
         comment: 'гууууд',
-        status: 'netu',
+        status: false,
       },
     ]);
     await Certificate.bulkCreate([
@@ -50,7 +50,7 @@ module.exports = {
         email: 'vanya@gamail.com',
         numberCertificates: 'dofvsnfepfk[amfpamsfipnepifm',
         amount: 10000,
-        status: 'netu',
+        status: true,
       },
     ]);
   },

@@ -5,6 +5,6 @@ export type OneReservation = {
   email: string;
   date: Date;
   comment: string;
-  status: string;
+  status: boolean;
   table: number;
 };

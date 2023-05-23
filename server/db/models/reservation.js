@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
       },
       status: {
-        type: DataTypes.TEXT,
+        type: DataTypes.BOOLEAN,
         allowNull: false,
       },
     },
