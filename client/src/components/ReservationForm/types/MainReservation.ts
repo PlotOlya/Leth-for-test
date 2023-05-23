@@ -7,6 +7,7 @@
     time: string;
     guests: string;
     comment: string;
+    status: boolean;
   };
 
   export default MainReservation

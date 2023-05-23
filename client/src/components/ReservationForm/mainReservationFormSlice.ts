@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import MainReservationState from "./types/MainReservationState";
-import MainReservation from './types/MainReservation';
 import { apiAddReservation } from './api'
+import MainReservationData from './types/MainReservationData';
 
 const initialState: MainReservationState = {
     MainReservationList: [],
@@ -9,10 +9,10 @@ const initialState: MainReservationState = {
 
   export const addReservation = createAsyncThunk(
     'reservations/addReservation',
-    async (mainReservation: MainReservation) => {
+    async (mainReservation: MainReservationData) => {
       const newReservation = await apiAddReservation(mainReservation);
-      
-      console.log('thunk', mainReservation);
+      console.log('thunkthunk', mainReservation);
+      console.log('thunk', newReservation);
       
       return newReservation;
     }
@@ -23,9 +23,6 @@ const mainReservationSlice = createSlice({
     initialState,
     // редьюсеры для синхронных операций
     reducers: {
-    //   clearAddMentorFormError(state) {
-    //     state.addMentorFormError = undefined;
-    //   },
     },
     // редьюсеры для санков (асинхронных операций)
   extraReducers(builder) {
