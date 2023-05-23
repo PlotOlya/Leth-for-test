@@ -9,6 +9,7 @@ import Layout from "../components/Layout/Layout";
 import Certificate from "../components/Certificate/CertificateForm";
 import MenuList from "../components/MenuList/MenuList";
 import CertificatePage from "../features/adminCertificatePage/CertificatePage";
+import "./App.css";
 
 function App(): JSX.Element {
   return (

@@ -28,6 +28,10 @@ function CertificatePage(): JSX.Element {
     [dispatch, inputVal]
   );
 
+  const handlerCklick = (): void => {
+    // oneCertificat?.status = "netu";
+  };
+
   useEffect(() => {
     dispatch(initCertificate());
   }, [dispatch]);
@@ -51,17 +55,19 @@ function CertificatePage(): JSX.Element {
         <div>Email: {oneCertificat?.email}</div>
         <div>Status: {oneCertificat?.status}</div>
 
-        <button type="submit">Использовать</button>
+        <button type="submit" onClick={handlerCklick}>
+          Использовать
+        </button>
       </div>
       <div className="found-certificate">
         List from server
         {currentCertificates.map((el) => (
-          <li key={el.id}>
+          <div key={el.id}>
             <div>Имя: {el.name}</div>
             <div>Номер сертификата: {el.numberCertificates}</div>
             <div>Сумма: {el.amount}</div>
             <button type="submit">Использовать</button>
-          </li>
+          </div>
         ))}
       </div>
     </div>
