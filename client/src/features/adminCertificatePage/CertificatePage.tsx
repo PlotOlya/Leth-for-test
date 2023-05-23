@@ -28,10 +28,12 @@ function CertificatePage(): JSX.Element {
     },
     [dispatch, inputVal]
   );
-  const [statusVal, setStatusVal] = useState(oneCertificat?.status);
+  const [statusVal, setStatusVal] = useState(!oneCertificat?.status);
 
   const handlerCklick = (): void => {
-    setStatusVal(statusVal);
+    if (statusVal) {
+      setStatusVal(!statusVal);
+    }
   };
 
   useEffect(() => {
