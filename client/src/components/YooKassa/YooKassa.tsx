@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 function YooKassa(): JSX.Element {
   return (
@@ -84,4 +84,4 @@ function YooKassa(): JSX.Element {
   );
 }
 
-export default YooKassa;
+export default memo (YooKassa);

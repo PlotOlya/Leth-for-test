@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import NavBar1 from '../components/NavBar1/NavBar1';
@@ -19,4 +19,4 @@ function App(): JSX.Element {
   );
 }
 
-export default App;
+export default memo (App);
