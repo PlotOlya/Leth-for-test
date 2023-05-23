@@ -3,7 +3,7 @@ import "./DescriptionBlock.css";
 
 function DescriptionBlock(): JSX.Element {
   return (
-    <div className="descriptionBlock-container ">
+    <div id="description" className="descriptionBlock-container ">
       <div className="descriptionBlock-title">
         <h2>Ресторан Leth</h2>
       </div>

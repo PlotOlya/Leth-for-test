@@ -5,9 +5,10 @@ import Contacts from "../Contacts/Contacts";
 import Navbar from "../NavBar/Navbar";
 import VideoBlock from "../VideoBlock/VideoBlock";
 import Carusel from "../Carusel/Carusel";
-import DescriptionBlock from "../descriptionBlock/DescriptionBlock";
-import Certificate from "../Certificate/CertificateForm";
+import DescriptionBlock from "../DescriptionBlock/DescriptionBlock";
 import ShefBlock from "../ShefBlock/ShefBlock";
+import Menu from "../Menu/Menu";
+import Certificate from "../Certificate/CertificateForm";
 
 export default function Layout(): JSX.Element {
   return (
@@ -15,8 +16,9 @@ export default function Layout(): JSX.Element {
       <Navbar />
       <VideoBlock />
       <DescriptionBlock />
-      <Carusel />
+      <Menu />
       <ShefBlock />
+      <Carusel />
       <Contacts />
       <Certificate />
       <Footer />

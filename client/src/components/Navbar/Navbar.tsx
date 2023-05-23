@@ -5,12 +5,12 @@ import "./Navbar.css";
 import { Item } from "./types/itemTypes";
 
 const items: Item[] = [
-  { value: "О РЕСТОРАНЕ", href: "/" },
-  { value: "МЕНЮ", href: "/" },
-  { value: "О ШЕФЕ", href: "/" },
+  { value: "О РЕСТОРАНЕ", href: "#description" },
+  { value: "МЕНЮ", href: "#menu" },
+  { value: "О ШЕФЕ", href: "#shefBlock" },
   { value: "ЗАБРОНИРОВАТЬ", href: "/" },
   { value: "СЕРТИФИКАТ", href: "/sertif" },
-  { value: "КОНТАКТЫ", href: "/" },
+  { value: "КОНТАКТЫ", href: "#contacts" },
 ];
 
 export default function Navbar(): JSX.Element {
