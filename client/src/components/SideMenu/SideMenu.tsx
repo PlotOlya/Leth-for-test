@@ -3,7 +3,7 @@
 /* eslint-disable react/self-closing-comp */
 import React, { useState, memo } from 'react';
 import './SideMenu.css'
-import { Item } from '../Navbar/types/itemTypes';
+import { Item } from '../NavBar/types/itemTypes';
 
 
 type SideMenuProps = {
@@ -36,7 +36,7 @@ function SideMenu({ items, active, setActive }:SideMenuProps):JSX.Element {
       </div>
       
     </div>
-  )
+  );
 }
 
 export default memo(SideMenu)

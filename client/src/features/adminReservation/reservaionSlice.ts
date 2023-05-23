@@ -30,4 +30,8 @@ const timeTableSlice = createSlice({
   },
 });
 
+// export const selectReservationById = () => {
+//   ReservationList.filter(el => el.id === )
+// }
+
 export default timeTableSlice.reducer;

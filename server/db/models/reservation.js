@@ -2,8 +2,7 @@ const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Reservation extends Model {
-    static associate({ Time, Table }) {
-      this.belongsTo(Time, { foreignKey: 'time_id' });
+    static associate({ Table }) {
       this.belongsTo(Table, { foreignKey: 'table_id' });
     }
   }
@@ -22,15 +21,8 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       date: {
-        type: DataTypes.TEXT,
+        type: DataTypes.DATE,
         allowNull: false,
-      },
-      time_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'Times',
-          key: 'id',
-        },
       },
       table_id: {
         type: DataTypes.INTEGER,
@@ -50,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'Reservation',
-    },
+    }
   );
   return Reservation;
 };
