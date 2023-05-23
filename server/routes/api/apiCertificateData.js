@@ -7,7 +7,7 @@ const { Certificate } = require('../../db/models');
 certificateRoute.post('/', async (req, res) => {
   try {
     const data = req.body;
-    const certificateList = await Certificate.create({
+    const certificate = await Certificate.create({
       name: data.name,
       email: data.email,
       amount: data.amount,
@@ -15,7 +15,7 @@ certificateRoute.post('/', async (req, res) => {
       status: 'activ',
     });
     // console.log(certificateList);
-    res.status(200).json({ certificateList });
+    res.status(200).json(certificate);
   } catch (err) {
     res.status(500).json(err);
   }
