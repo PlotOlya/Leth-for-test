@@ -24,6 +24,11 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
+
+      guests: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       table: {
         type: Sequelize.INTEGER,
       },

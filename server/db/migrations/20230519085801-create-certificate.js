@@ -12,10 +12,6 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
-      phoneNumber: {
-        type: Sequelize.CHAR,
-        allowNull: false,
-      },
       email: {
         type: Sequelize.TEXT,
         allowNull: false,
@@ -42,7 +38,7 @@ module.exports = {
       },
     });
   },
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.dropTable('Certificates');
   },
 };

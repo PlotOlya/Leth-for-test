@@ -1,11 +1,13 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { memo } from "react";
 
-import NavBar1 from '../components/NavBar1/NavBar1';
+import { Route, Routes } from "react-router-dom";
 
-import Reservation from '../features/adminReservation/Reservation';
-import Layout from '../components/Layout/Layout';
-import Certificate from '../components/Certificate/Certificate';
+import NavBar1 from "../components/NavBar1/NavBar1";
+
+import Reservation from "../features/adminReservation/Reservation";
+import Layout from "../components/Layout/Layout";
+import Certificate from "../components/Certificate/CertificateForm";
+import MenuList from "../components/MenuList/MenuList";
 
 function App(): JSX.Element {
   return (
@@ -13,10 +15,11 @@ function App(): JSX.Element {
       <Route path="/admin/" element={<NavBar1 />}>
         <Route path="reservation" element={<Reservation />} />
       </Route>
-      <Route path="/sertif" element={<Certificate />} /> 
+      <Route path="/sertif" element={<Certificate />} />
       <Route path="/" element={<Layout />} />
+      <Route path="/menu" element={<MenuList />} />
     </Routes>
   );
 }
 
-export default App;
+export default memo(App);
