@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import React, { memo, useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../store";
@@ -27,9 +28,10 @@ function CertificatePage(): JSX.Element {
     },
     [dispatch, inputVal]
   );
+  const [statusVal, setStatusVal] = useState(oneCertificat?.status);
 
   const handlerCklick = (): void => {
-    // oneCertificat?.status = "netu";
+    setStatusVal(statusVal);
   };
 
   useEffect(() => {
@@ -53,7 +55,7 @@ function CertificatePage(): JSX.Element {
         <div>Номер сертификата:{oneCertificat?.numberCertificates}</div>
         <div>Сумма: {oneCertificat?.amount}</div>
         <div>Email: {oneCertificat?.email}</div>
-        <div>Status: {oneCertificat?.status}</div>
+        <div>Status: {statusVal ? "activ" : "passiv"}</div>
 
         <button type="submit" onClick={handlerCklick}>
           Использовать
