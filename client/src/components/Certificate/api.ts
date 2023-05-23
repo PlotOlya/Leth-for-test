@@ -9,8 +9,14 @@ export async function apiCertificate(
     headers: { "Content-type": "application/json" },
     body: JSON.stringify(certificate),
   });
-  console.log("3", res);
+  // console.log("3", res);
 
   const result = await res.json();
   return result;
+}
+export async function apiInitCertificate(): Promise<Certificate[]> {
+  const res = await fetch('/api/certificate');
+  console.log(res);
+
+  return res.json();
 }

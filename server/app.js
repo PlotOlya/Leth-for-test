@@ -7,6 +7,7 @@ const PORT = process.env.PORT ?? 5000;
 const serverConfig = require('./config/serverConfig');
 const ReservationTable = require('./routes/api/apiReservationTableInit');
 const certificateTable = require('./routes/api/apiCertificateData');
+
 // config
 serverConfig(app);
 
