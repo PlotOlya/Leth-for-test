@@ -3,6 +3,7 @@ import React, { memo } from "react";
 import "./Contacts.css";
 import MapContakt from "../MapContact/MapContakt";
 
+
 function Contacts(): JSX.Element {
   return (
     <section className="Contacts">
@@ -32,6 +33,7 @@ function Contacts(): JSX.Element {
         </div>
         <MapContakt />{" "}
       </div>
+
     </section>
   );
 }
