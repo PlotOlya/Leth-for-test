@@ -11,5 +11,6 @@ export async function apiCertificate(
   });
   console.log("3", res);
 
-  return res.json();
+  const result = await res.json();
+  return result;
 }

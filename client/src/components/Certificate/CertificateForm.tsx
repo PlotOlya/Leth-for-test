@@ -1,31 +1,41 @@
 import React, { memo, useCallback, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import "./Certificate.css";
 import pwgen from "pwgen";
 import { Certificate } from "./type/Certificate";
-import { useAppDispatch } from "../../store";
+import store, { RootState, useAppDispatch } from "../../store";
 import { addCertificate } from "./CertificateSlice";
 import { CertificateData } from "./type/CertificateData";
+import YooKassa from "../YooKassa/YooKassa";
+
 // type CertificateProps = {
 
 // };
 
 function CertificateForm(): JSX.Element {
-  const { register, handleSubmit, reset} = useForm<CertificateData>();
+  const { register, handleSubmit, reset } = useForm<CertificateData>();
 
   const dispatch = useAppDispatch();
 
+  const certificate = useSelector(
+    (state: RootState) => state.certificates.currentCertificate
+  );
+  console.log("forma", certificate);
+
   const submitFormValues = useCallback(
-    async (values: CertificateData): Promise<void> => {
+    async (values: CertificateData): Promise<number> => {
       const dispatchResult = await dispatch(addCertificate(values));
-      if(addCertificate.fulfilled.match(dispatchResult)){
-        reset()
+      if (addCertificate.fulfilled.match(dispatchResult)) {
+        reset();
       }
+      // console.log(values.amount);
+      const defaultInput = values.amount;
+      return defaultInput;
     },
     [dispatch]
   );
-
 
   return (
     <>
@@ -67,7 +77,9 @@ function CertificateForm(): JSX.Element {
               name="amount"
             />
           </div>
+
           <button type="submit">Оформить</button>
+          <YooKassa certificate={certificate} />
         </div>
       </form>
     </>
