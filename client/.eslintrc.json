@@ -24,7 +24,11 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "@typescript-eslint", "react-hooks"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "react-hooks"
+  ],
   "rules": {
     "no-param-reassign": 0,
     "@typescript-eslint/default-param-last": 0,
@@ -49,9 +53,15 @@
       }
     ],
     "@typescript-eslint/switch-exhaustiveness-check": "error",
-    "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
+    "@typescript-eslint/consistent-type-definitions": [
+      "warn",
+      "type"
+    ],
     "import/no-extraneous-dependencies": "off",
     "no-console": "off",
-    "no-nested-ternary": 0
+    "no-nested-ternary": 0,
+    "@typescript-eslint/no-unsafe-call": 0,
+    "react/jsx-props-no-spreading": 0,
+    "@typescript-eslint/no-misused-promises": 0
   }
 }

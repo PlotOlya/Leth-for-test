@@ -12,7 +12,7 @@ serverConfig(app);
 
 // routing
 app.use('/api/admin/reservation', ReservationTable);
-app.use('/api/admin/certificate', certificateTable);
+app.use('/api/certificate', certificateTable);
 
 try {
   app.listen(PORT, () => {
