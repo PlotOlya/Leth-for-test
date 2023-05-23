@@ -18,10 +18,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    phoneNumber: {
-      type: DataTypes.CHAR,
-      allowNull: false,
-    },
     email: {
       type: DataTypes.TEXT,
       allowNull: false,
