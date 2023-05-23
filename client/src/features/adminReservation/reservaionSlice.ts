@@ -1,19 +1,34 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { apiinitTimeTable } from './api';
+/* eslint-disable import/no-cycle */
+import {
+  createAsyncThunk,
+  createSelector,
+  createSlice,
+} from '@reduxjs/toolkit';
+import { RootState } from '../../store';
+import { apiInitTable, apiUpdateTable } from './api';
+import { OneReservation } from './types/OneReservation';
 import { ReservationState } from './types/ReservationState';
+import { Tables } from './types/Tables';
 
 const initialState: ReservationState = {
-  timeList: [],
   tablesList: [],
   reservationList: [],
 };
 
 export const initTimeTable = createAsyncThunk(
-  'timeTable/initTimeTable',
+  'adminReservation/initTimeTable',
   async () => {
-    const timeTable = await apiinitTimeTable();
+    const timeTable = await apiInitTable();
 
     return timeTable;
+  }
+);
+
+export const updateReserv = createAsyncThunk(
+  'adminReservation/updateReserv',
+  async (reserv: OneReservation) => {
+    const newReserv = await apiUpdateTable(reserv);
+    return newReserv;
   }
 );
 
@@ -23,15 +38,22 @@ const timeTableSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     return builder.addCase(initTimeTable.fulfilled, (state, action) => {
-      state.timeList = action.payload.timeList;
       state.tablesList = action.payload.tablesList;
       state.reservationList = action.payload.reservationList;
     });
   },
 });
 
-// export const selectReservationById = () => {
-//   ReservationList.filter(el => el.id === )
-// }
+export const selectTablesList = (state: RootState): Tables[] =>
+  state.adminReservation.tablesList;
+
+export const selectReservationList = (state: RootState): OneReservation[] =>
+  state.adminReservation.reservationList;
+
+export const selectReservationById = createSelector(
+  [selectReservationList, (state: RootState, reservId: number) => reservId],
+  (reservationList, reservId) =>
+    reservationList.find((el) => el.id === reservId)
+);
 
 export default timeTableSlice.reducer;
