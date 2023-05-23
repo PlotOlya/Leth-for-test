@@ -21,9 +21,10 @@ function YooKassa(): JSX.Element {
               className="ym-input ym-sum-input ym-required-input"
               type="number"
               step="any"
+              style={{ color: "black" }}
             />
           </div>
-          <button type="button" className="ym-btn-pay ym-result-price">
+          <button type="submit" className="ym-btn-pay ym-result-price">
             <span className="ym-text-crop">Заплатить</span>
             <span className="ym-price-output" />
           </button>
