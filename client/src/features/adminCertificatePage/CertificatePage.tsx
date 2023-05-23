@@ -1,29 +1,56 @@
-import React, { memo, useEffect } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../store";
-import { initCertificate } from "../../components/Certificate/CertificateSlice";
-
+import {
+  findeCertificate,
+  initCertificate,
+} from "../../components/Certificate/CertificateSlice";
 
 function CertificatePage(): JSX.Element {
   const dispatch = useAppDispatch();
   const currentCertificates = useSelector(
     (state: RootState) => state.certificates.certificateList
   );
-  useEffect(()=>{
-    dispatch(initCertificate())
-  }, [dispatch])
-  console.log(currentCertificates);
+  const oneCertificat = useSelector(
+    (state: RootState) => state.certificates.oneCertificate
+  );
+  const [inputVal, setInputVal] = useState("");
+  const handelInput: React.ChangeEventHandler<HTMLInputElement> = (e): void => {
+    setInputVal(e.target.value);
+  };
+  console.log(inputVal);
+
+  const handlerSubmit = useCallback(
+    async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+      event.preventDefault();
+      await dispatch(findeCertificate(inputVal));
+    },
+    [dispatch, inputVal]
+  );
+
+  useEffect(() => {
+    dispatch(initCertificate());
+  }, [dispatch]);
+  //   console.log(currentCertificates);
 
   return (
     <div className="certificate-container">
-      <form>
-        <input type="text" placeholder="номер сертификата" />
+      <form onSubmit={handlerSubmit}>
+        <input
+          type="text"
+          placeholder="номер сертификата"
+          value={inputVal}
+          onChange={(e) => handelInput(e)}
+        />
         <button type="submit">Найти</button>
       </form>
       <div className="found-certificate">
-        <div>Имя</div>
-        <div>Номер сертификата</div>
-        <div>Сумма</div>
+        <div>Имя: {oneCertificat?.name}</div>
+        <div>Номер сертификата:{oneCertificat?.numberCertificates}</div>
+        <div>Сумма: {oneCertificat?.amount}</div>
+        <div>Email: {oneCertificat?.email}</div>
+        <div>Status: {oneCertificat?.status}</div>
+
         <button type="submit">Использовать</button>
       </div>
       <div className="found-certificate">

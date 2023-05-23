@@ -24,12 +24,14 @@ certificateRoute.post("/", async (req, res) => {
 certificateRoute.get("/", async (req, res) => {
   try {
     const certificateList = await Certificate.findAll();
-    console.log(certificateList);
+    // console.log(certificateList);
     res.status(200).json(certificateList);
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
   }
 });
+
+
 
 module.exports = certificateRoute;

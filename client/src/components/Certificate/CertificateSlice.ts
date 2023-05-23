@@ -1,11 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { CertificateState } from "./type/CertificateState";
 import { CertificateData } from "./type/CertificateData";
-import { apiCertificate, apiInitCertificate } from "./api";
+import { apiCertificate, apiFindCertificate, apiInitCertificate } from "./api";
+import { Certificate } from "./type/Certificate";
 
 const initialState: CertificateState = {
   certificateList: [],
   currentCertificate: undefined,
+  oneCertificate: undefined,
 };
 
 export const addCertificate = createAsyncThunk(
@@ -19,8 +21,15 @@ export const initCertificate = createAsyncThunk(
   "certificate/initCertificate",
   async () => {
     const newCertificate = await apiInitCertificate();
-    console.log(newCertificate);
+  
     return newCertificate;
+  }
+);
+export const findeCertificate = createAsyncThunk(
+  "certificate/findCertificate",
+  async (inputVal: string) => {
+    const certificate = await apiFindCertificate(inputVal);
+    return certificate;
   }
 );
 
@@ -38,8 +47,12 @@ const certificateSlice = createSlice({
         // console.log("state", state.currentCertificate);
       })
       .addCase(initCertificate.fulfilled, (state, action) => {
-        console.log("slise init->", action.payload);
+        // console.log("slise init->", action.payload);
         state.certificateList = action.payload;
+      })
+      .addCase(findeCertificate.fulfilled, (state, action) => {
+        // console.log("slise init->", action.payload);
+        state.oneCertificate = action.payload;
       });
   },
 });
