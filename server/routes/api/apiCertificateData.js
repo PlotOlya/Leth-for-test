@@ -1,8 +1,7 @@
 const { v4: uuidv4 } = require('uuid');
-
 const certificateRoute = require('express').Router();
-
 const { Certificate } = require('../../db/models');
+const mailer = require('../../nodemailer');
 
 certificateRoute.post('/', async (req, res) => {
   try {
@@ -15,6 +14,18 @@ certificateRoute.post('/', async (req, res) => {
       status: 'activ',
     });
     // console.log(certificateList);
+    const message = {
+      to: req.body.email,
+      subject: 'Сертификат',
+      text: `поздравляю, вы успешно приобрели Сертификат !!
+      
+      данные вашей учетной записи
+      login: ${req.body.email}
+      amount: ${req.body.amount}
+
+      `,
+    };
+    mailer(message);
     res.status(200).json({ certificateList });
   } catch (err) {
     res.status(500).json(err);
