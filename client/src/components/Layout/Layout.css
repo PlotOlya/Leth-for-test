@@ -1,4 +1,10 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("../../../public/Fonts/Montserrat/Montserrat-Regular.ttf");
+}
 .body {
   background-color: rgb(29, 29, 29);
-  max-width: 468px;
+  /* max-width: 468px; */
+  color: white;
+  font-family: "Montserrat", sans-serif;
 }

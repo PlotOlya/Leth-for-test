@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { memo, useEffect, useState } from 'react';
-import Table from 'react-bootstrap/Table';
+import React, { memo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Timeline, {
   TimelineMarkers,
@@ -10,16 +9,20 @@ import Timeline, {
   CursorMarker,
 } from 'react-calendar-timeline';
 import moment from 'moment';
-import { Modal } from 'react-bootstrap';
 import { RootState, useAppDispatch } from '../../store';
 import { initTimeTable } from './reservaionSlice';
 import styles from './styles.module.css';
 import 'react-calendar-timeline/lib/Timeline.css';
-import ReservationModal from './ReservationModal';
 
-function ReservationTable(): JSX.Element {
-  const [showModal, setShowModal] = useState(false);
-  const [activModalReserv, setActivModalReserv] = useState(0);
+type Props = {
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setActivModalReserv: React.Dispatch<React.SetStateAction<number>>;
+};
+
+function ReservationTable({
+  setShowModal,
+  setActivModalReserv,
+}: Props): JSX.Element {
   const dispatch = useAppDispatch();
   const timeList = useSelector(
     (state: RootState) => state.adminReservation.timeList
@@ -47,7 +50,6 @@ function ReservationTable(): JSX.Element {
     const newDate = new Date(originalDate);
     const newHours = newDate.getHours() + hoursToAdd;
     newDate.setHours(newHours);
-
     return newDate;
   };
 
@@ -62,36 +64,24 @@ function ReservationTable(): JSX.Element {
   const today = Date.now();
   const handleModal = (itemId: number): void => {
     setShowModal(true);
-    console.log('click');
-    console.log(showModal);
     setActivModalReserv(itemId);
   };
 
   return (
-    <>
-      <Timeline
-        groups={groups}
-        items={items}
-        defaultTimeStart={moment().add(-6, 'hour')}
-        defaultTimeEnd={moment().add(6, 'hour')}
-        onItemClick={handleModal}
-      >
-        <TimelineMarkers>
-          <TodayMarker />
-          <CustomMarker date={today} />
+    <Timeline
+      groups={groups}
+      items={items}
+      defaultTimeStart={moment().add(-6, 'hour')}
+      defaultTimeEnd={moment().add(6, 'hour')}
+      onItemClick={handleModal}
+    >
+      <TimelineMarkers>
+        <TodayMarker />
+        <CustomMarker date={today} />
 
-          <CursorMarker />
-        </TimelineMarkers>
-      </Timeline>
-      <br />
-      <br />
-      <ReservationModal
-        showModal={showModal}
-        setShowModal={setShowModal}
-        activModalReserv={activModalReserv}
-        setActivModalReserv={setActivModalReserv}
-      />
-    </>
+        <CursorMarker />
+      </TimelineMarkers>
+    </Timeline>
   );
 }
 

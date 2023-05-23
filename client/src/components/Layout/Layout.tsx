@@ -7,6 +7,7 @@ import VideoBlock from "../VideoBlock/VideoBlock";
 import Carusel from "../Carusel/Carusel";
 import DescriptionBlock from "../descriptionBlock/DescriptionBlock";
 import Certificate from "../Certificate/CertificateForm";
+import ShefBlock from "../ShefBlock/ShefBlock";
 
 export default function Layout(): JSX.Element {
   return (
@@ -15,6 +16,7 @@ export default function Layout(): JSX.Element {
       <VideoBlock />
       <DescriptionBlock />
       <Carusel />
+      <ShefBlock />
       <Contacts />
       <Certificate />
       <Footer />
