@@ -9,7 +9,7 @@ mainRouter
     try {
       const tablesList = await Table.findAll();
       const reservationList = await Reservation.findAll();
-      console.log(tablesList);
+      console.log('table', tablesList);
       res.status(200).json({ tablesList, reservationList });
     } catch (err) {
       console.error(err);
