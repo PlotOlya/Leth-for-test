@@ -19,9 +19,9 @@ export default function VideoBlock(): JSX.Element {
         <source src={video2} type="video/webm" />
       </video>
       <div className="buttonWrapper">
-        <button type="button" className="videoButton">
+        <a href='#mainReservationForm' type="button" className="videoButton">
           ЗАБРОНИРОВАТЬ
-        </button>
+        </a>
       </div>
     </div>
   );

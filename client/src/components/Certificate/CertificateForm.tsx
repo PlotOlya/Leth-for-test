@@ -24,7 +24,7 @@ function CertificateForm(): JSX.Element {
   const certificate = useSelector(
     (state: RootState) => state.certificates.currentCertificate
   );
-  console.log("forma", certificate);
+
 
   const submitFormValues = useCallback(
     async (values: CertificateData): Promise<number> => {
@@ -40,7 +40,7 @@ function CertificateForm(): JSX.Element {
   );
 
   return (
-    <div className="main_certificate">
+    <div id='certificate' className="main_certificate">
       <div>
         <button
           type="button"

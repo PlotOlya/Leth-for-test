@@ -29,7 +29,7 @@ function SideMenu({ items, active, setActive }:SideMenuProps):JSX.Element {
         <ul>
           {items.map((item) => 
             <li key={item.id}>
-              <a href={item.href}>{item.value}</a>
+              <a onClick={closeMenuHandle} href={item.href}>{item.value}</a>
             </li>
             )}
         </ul>
