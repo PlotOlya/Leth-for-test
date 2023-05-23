@@ -11,9 +11,9 @@ certificateRoute.post('/', async (req, res) => {
       email: data.email,
       amount: data.amount,
       numberCertificates: uuidv4(),
-      status: 'activ',
+      status: true,
     });
-    // console.log(certificateList);
+
     const message = {
       to: req.body.email,
       subject: 'Сертификат',
@@ -22,6 +22,7 @@ certificateRoute.post('/', async (req, res) => {
       данные вашей учетной записи
       login: ${req.body.email}
       amount: ${req.body.amount}
+      numberCertificates: ${certificateList.numberCertificates}
 
       `,
     };

@@ -12,31 +12,42 @@ import { CertificateData } from "./type/CertificateData";
 // };
 
 function CertificateForm(): JSX.Element {
-  const { register, handleSubmit, reset} = useForm<CertificateData>();
+  const { register, handleSubmit, reset } = useForm<CertificateData>();
+  const [modalSertificat, setModalSertificat] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
 
   const submitFormValues = useCallback(
     async (values: CertificateData): Promise<void> => {
       const dispatchResult = await dispatch(addCertificate(values));
-      if(addCertificate.fulfilled.match(dispatchResult)){
-        reset()
+      if (addCertificate.fulfilled.match(dispatchResult)) {
+        reset();
       }
     },
     [dispatch]
   );
 
-
   return (
-    <>
+    <div className="main_certificate">
       <div>
-        <button type="button"> Оформить сертификат </button>
+        <button
+          type="button"
+          onClick={() => setModalSertificat(!modalSertificat)}
+          className="button_certificate"
+        >
+          {" "}
+          Оформить сертификат{" "}
+        </button>
       </div>
       <form
-        className="modal_sertificat"
+        className="modal_certificat"
         onSubmit={handleSubmit(submitFormValues)}
       >
-        <div className="modal_data">
+        <div
+          className={
+            modalSertificat ? "modal_data_activ" : "modal_data_deactiv"
+          }
+        >
           <label htmlFor="name">
             <p className="modal_name">Имя</p>
             <input
@@ -67,10 +78,12 @@ function CertificateForm(): JSX.Element {
               name="amount"
             />
           </div>
-          <button type="submit">Оформить</button>
+          <button type="submit" className="design_button">
+            Оформить
+          </button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
 
