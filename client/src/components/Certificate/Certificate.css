@@ -1,16 +1,22 @@
-.main_certificate {
-  padding: 20px;
-  margin: 0 auto;
-  text-align: center;
+
+.main_certificate{
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
 }
-.button_certificate {
-  margin: 30px;
-  border: 1px solid grey;
-  width: 250px;
+.button_certificate{
+    margin-top: 40px;
+    border: 1px solid grey;
+    width: 250px;
 }
-.modal_certificate_activ {
-  color: rgb(1, 7, 11);
-  /* background-color: beige !important; */
+.modal_certificate_activ{
+     color: rgb(1, 7, 11) ;
+     background-color: beige !important;  
+}
+.modal_data_activ{
+    background-color: beige !important;
+    display: block;
+
 }
 .modal_data_activ {
   /* background-color: beige !important; */

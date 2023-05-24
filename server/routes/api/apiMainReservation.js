@@ -20,9 +20,10 @@ mainReservationRouter.post('/', async (req, res) => {
       guests: data.guests,
       comment: data.comment,
       status: data.status,
-    
-
     });
+
+    console.log(newReservation)
+    
     res.status(201).json(newReservation);
   } catch (error) {
     console.log(error);
