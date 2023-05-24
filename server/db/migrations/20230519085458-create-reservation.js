@@ -24,18 +24,18 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      table_id: {
+      guests: {
         type: Sequelize.INTEGER,
-        references: {
-          model: 'Tables',
-          key: 'id',
-        },
+        allowNull: false,
+      },
+      table: {
+        type: Sequelize.INTEGER,
       },
       comment: {
         type: Sequelize.TEXT,
       },
       status: {
-        type: Sequelize.TEXT,
+        type: Sequelize.BOOLEAN,
         allowNull: false,
       },
       createdAt: {

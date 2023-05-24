@@ -1,11 +1,11 @@
-export type ReservationType = {
+export type OneReservation = {
   id: number;
   name: string;
   phoneNumber: string;
   email: string;
   date: Date;
+  guests: number;
   comment: string;
-  status: string;
-  time_id: number;
-  table_id: number;
+  status: boolean;
+  table: number;
 };

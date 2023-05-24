@@ -15,7 +15,7 @@ function NavBar1(): JSX.Element {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/admin/reservation">Брони</Nav.Link>
-              <Nav.Link href="#">Сертификаты</Nav.Link>
+              <Nav.Link href="/admin/certificate" >Сертификаты</Nav.Link>
               <Nav.Link href="#">Отзывы</Nav.Link>
             </Nav>
             <Nav>
