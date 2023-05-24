@@ -66,13 +66,18 @@ const certificateSlice = createSlice({
       })
       .addCase(findeCertificate.fulfilled, (state, action) => {
         // console.log("slise init->", action.payload);
+        console.log(state.oneCertificate);
         state.oneCertificate = action.payload;
+        console.log(state.oneCertificate);
       })
       .addCase(updateCertificate.fulfilled, (state, action) => {
-        console.log("slise init->", action.payload);
-        // state.certificateList = state.certificateList.map((el) =>
-        //   el.id === action.payload.id ? action.payload : el
-        // );
+        // console.log("slise init->", action.payload);
+        state.certificateList = state.certificateList.map((el) =>
+          el.id === action.payload.id ? action.payload : el
+        );
+        if (state.oneCertificate?.status) {
+          state.oneCertificate.status = false;
+        }
       });
   },
 });

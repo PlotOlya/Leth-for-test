@@ -53,8 +53,8 @@ certificateRoute.get("/", async (req, res) => {
 certificateRoute.put("/:id", async (req, res, next) => {
   try {
     const currentCert = await Certificate.findByPk(Number(req.params.id));
-    // console.log(currentCert);
-    const { id, name, email, amount, numberCertificates, status } = req.body;
+
+    const { id, name, email, amount, numberCertificates } = req.body;
     if (!currentCert) {
       res
         .status(404)
@@ -67,8 +67,9 @@ certificateRoute.put("/:id", async (req, res, next) => {
         (currentCert.email = email),
         (currentCert.amount = amount),
         (currentCert.numberCertificates = numberCertificates),
-        (currentCert.status = status);
+        (currentCert.status = false);
       await currentCert.save();
+      console.log("server ====>", currentCert.status, req.body);
       res.json(currentCert);
     }
   } catch (er) {

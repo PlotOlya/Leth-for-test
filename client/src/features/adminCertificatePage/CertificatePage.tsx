@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
 import React, { memo, useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../store";
@@ -12,9 +11,6 @@ import { Certificate } from "../../components/Certificate/type/Certificate";
 
 function CertificatePage(): JSX.Element {
   const dispatch = useAppDispatch();
-  const currentCertificates = useSelector(
-    (state: RootState) => state.certificates.certificateList
-  );
 
   const oneCertificat = useSelector(
     (state: RootState) => state.certificates.oneCertificate
@@ -35,8 +31,11 @@ function CertificatePage(): JSX.Element {
   const [statusVal, setStatusVal] = useState(oneCertificat?.status);
 
   const handlerCklick = (): void => {
-    if (oneCertificat && statusVal) {
+    console.log("handler work", oneCertificat, statusVal);
+
+    if (oneCertificat) {
       setStatusVal(false);
+
       dispatch(updateCertificate(oneCertificat));
     }
   };
@@ -63,7 +62,7 @@ function CertificatePage(): JSX.Element {
         <div>Email: {oneCertificat?.email}</div>
         <div>Status: {oneCertificat?.status ? "activ" : "pasiv"}</div>
 
-        <button type="submit" onClick={handlerCklick}>
+        <button type="button" onClick={handlerCklick}>
           Использовать
         </button>
       </div>

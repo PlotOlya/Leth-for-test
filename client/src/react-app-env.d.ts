@@ -11,4 +11,3 @@ declare module '*.webm' {
 }
 
 declare module 'react-calendar-timeline';
-``

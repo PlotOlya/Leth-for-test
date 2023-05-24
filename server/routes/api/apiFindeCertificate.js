@@ -10,7 +10,7 @@ certificateRoute.post("/", async (req, res) => {
     const currentcertificate = await Certificate.findOne({
       where: { numberCertificates: inputVal },
     });
-    console.log(currentcertificate);
+    // console.log(currentcertificate);
     res.status(200).json(currentcertificate);
   } catch (err) {
     console.error(err);

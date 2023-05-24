@@ -36,7 +36,7 @@ export async function apiFindCertificate(
 export async function apiUpdateCertificate(
   certificate: Certificate
 ): Promise<Certificate> {
-  
+  console.log(certificate.id);
   const res = await fetch(`/api/certificate/${certificate.id}`, {
     method: "PUT",
     body: JSON.stringify(certificate),
@@ -44,6 +44,6 @@ export async function apiUpdateCertificate(
       "Content-Type": "application/json",
     },
   });
-  console.log(res);
+
   return res.json();
 }
