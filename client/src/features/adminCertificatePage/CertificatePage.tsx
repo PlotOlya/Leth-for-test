@@ -8,6 +8,7 @@ import {
   updateCertificate,
 } from "../../components/Certificate/CertificateSlice";
 import CertificateItem from "./CertificateItem";
+import { Certificate } from "../../components/Certificate/type/Certificate";
 
 function CertificatePage(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -18,6 +19,7 @@ function CertificatePage(): JSX.Element {
   const oneCertificat = useSelector(
     (state: RootState) => state.certificates.oneCertificate
   );
+
   const [inputVal, setInputVal] = useState("");
   const handelInput: React.ChangeEventHandler<HTMLInputElement> = (e): void => {
     setInputVal(e.target.value);
@@ -30,12 +32,12 @@ function CertificatePage(): JSX.Element {
     },
     [dispatch, inputVal]
   );
-  const [statusVal, setStatusVal] = useState(!oneCertificat?.status);
+  const [statusVal, setStatusVal] = useState(oneCertificat?.status);
 
   const handlerCklick = (): void => {
-    if (statusVal) {
-      setStatusVal(!statusVal);
-      // dispatch (updateCertificate())
+    if (oneCertificat && statusVal) {
+      setStatusVal(false);
+      dispatch(updateCertificate(oneCertificat));
     }
   };
 
@@ -59,7 +61,7 @@ function CertificatePage(): JSX.Element {
         <div>Номер сертификата:{oneCertificat?.numberCertificates}</div>
         <div>Сумма: {oneCertificat?.amount}</div>
         <div>Email: {oneCertificat?.email}</div>
-        <div>Status: {statusVal ? "activ" : "passiv"}</div>
+        <div>Status: {oneCertificat?.status ? "activ" : "pasiv"}</div>
 
         <button type="submit" onClick={handlerCklick}>
           Использовать

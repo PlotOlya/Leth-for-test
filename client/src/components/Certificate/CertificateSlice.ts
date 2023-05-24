@@ -7,6 +7,7 @@ import {
   apiInitCertificate,
   apiUpdateCertificate,
 } from "./api";
+import { Certificate } from "./type/Certificate";
 // import { Certificate } from "./type/Certificate";
 
 const initialState: CertificateState = {
@@ -40,7 +41,7 @@ export const findeCertificate = createAsyncThunk(
 
 export const updateCertificate = createAsyncThunk(
   "certificate/updateCertificate",
-  async (certificate: CertificateData) => {
+  async (certificate: Certificate) => {
     const chengeCertificate = await apiUpdateCertificate(certificate);
     return chengeCertificate;
   }

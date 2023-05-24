@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-sequences */
 // const { v4: uuidv4 } = require('uuid');
 
 const certificateRoute = require("express").Router();
@@ -51,19 +53,24 @@ certificateRoute.get("/", async (req, res) => {
 certificateRoute.put("/:id", async (req, res, next) => {
   try {
     const currentCert = await Certificate.findByPk(Number(req.params.id));
-    console.log(currentCert);
+    // console.log(currentCert);
+    const { id, name, email, amount, numberCertificates, status } = req.body;
     if (!currentCert) {
       res
         .status(404)
         .json({ success: false, message: "Нет такого сертификата" });
-
       return;
     }
-
-    // if ("done" in req.body) task.done = req.body.done;
-    await currentCert.save();
-
-    res.json({ success: true });
+    if (currentCert) {
+      (currentCert.id = id),
+        (currentCert.name = name),
+        (currentCert.email = email),
+        (currentCert.amount = amount),
+        (currentCert.numberCertificates = numberCertificates),
+        (currentCert.status = status);
+      await currentCert.save();
+      res.json(currentCert);
+    }
   } catch (er) {
     next(er);
   }
