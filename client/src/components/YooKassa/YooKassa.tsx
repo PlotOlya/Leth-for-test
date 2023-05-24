@@ -3,9 +3,12 @@ import React, { memo } from "react";
 // import { RootState, useAppDispatch } from "../../store";
 // import { useSelector } from "react-redux";
 
-function YooKassa({certificate}:{certificate:number|undefined}): JSX.Element {
- 
-console.log("kassa = ", certificate);
+function YooKassa({
+  certificate,
+}: {
+  certificate: number | undefined;
+}): JSX.Element {
+  console.log("kassa = ", certificate);
 
   return (
     <div className="kassa-container">
@@ -18,7 +21,6 @@ console.log("kassa = ", certificate);
         action="https://yookassa.ru/integration/simplepay/payment"
         method="post"
         acceptCharset="utf-8"
-        // onSubmit={handleSubmit(submitFormValues)}
       >
         <div className="ym-payment-btn-block ym-align-space-between">
           <div className="ym-input-icon-rub">
@@ -30,7 +32,6 @@ console.log("kassa = ", certificate);
               step="any"
               style={{ color: "black" }}
               defaultValue={certificate}
-
             />
           </div>
           <button type="submit" className="ym-btn-pay ym-result-price">
@@ -45,4 +46,4 @@ console.log("kassa = ", certificate);
   );
 }
 
-export default memo (YooKassa);
+export default memo(YooKassa);

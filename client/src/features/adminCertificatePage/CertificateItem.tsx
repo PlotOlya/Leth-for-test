@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import { useSelector } from "react-redux";
 
 import { RootState, useAppDispatch } from "../../store";
-import "./CertificateItem.css"
+import "./CertificateItem.css";
 
 function CertificateItem(): JSX.Element {
   const currentCertificates = useSelector(
@@ -18,7 +18,6 @@ function CertificateItem(): JSX.Element {
               <div>Имя: {el.name}</div>
               <div>Номер сертификата: {el.numberCertificates}</div>
               <div>Сумма: {el.amount}</div>
-              <button type="submit">Использовать</button>
             </div>
           </div>
         ) : (
@@ -27,8 +26,7 @@ function CertificateItem(): JSX.Element {
               <div>Имя: {el.name}</div>
               <div>Номер сертификата: {el.numberCertificates}</div>
               <div>Сумма: {el.amount}</div>
-              <div>Статус :{el.status}</div>
-              <button type="submit">Использовать</button>
+              <div>Статус : использован</div>
             </div>
           </div>
         )

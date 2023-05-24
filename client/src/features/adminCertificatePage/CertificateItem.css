@@ -1,13 +1,15 @@
 .all-certificate {
   display: flex;
-  justify-content: center;
-  margin: 20px auto;
-  border: 1px solid black;
+  
+  margin: 50px auto;
+  /* border: 1px solid black; */
+  max-width: 1200px;
 }
 .activ-certificate {
-  border: 2px solid green;
+  border: 3px solid green;
+  width: 500px;
 }
 
 .passiv-certificate {
-  border: 2px solid gray;
+  border: 1px solid gray;
 }

@@ -1,39 +1,40 @@
-.main_certificate{
-    padding: 20px;
-    margin: 0 auto;
-    text-align: center;
+.main_certificate {
+  padding: 20px;
+  margin: 0 auto;
+  text-align: center;
 }
-.button_certificate{
-    margin: 30px;
-    border: 1px solid grey;
-    width: 250px;
+.button_certificate {
+  margin: 30px;
+  border: 1px solid grey;
+  width: 250px;
 }
-.modal_certificate_activ{
-     color: rgb(1, 7, 11) ;
-     background-color: beige !important;  
+.modal_certificate_activ {
+  color: rgb(1, 7, 11);
+  /* background-color: beige !important; */
 }
-.modal_data_activ{
-    background-color: beige !important;
-    display: block;
-    
+.modal_data_activ {
+  /* background-color: beige !important; */
+  display: block;
+}
+.modal_data_deactiv {
+  display: none;
+}
+.modal_name {
+  color:white;
+  margin: 10px;
+}
+.modal_inp {
+  color: black;
+  border: 1px solid white;
+  width: 250px;
 
 }
-.modal_data_deactiv{
-    display: none;
-}
-.modal_name{
-    color: rgb(18, 30, 40);
-    margin: 10px;
-}
-.modal_inp{
-    color: aliceblue;
-    border: 1px solid black;
-    width: 250px;
-}
 
-.design_button{
-    margin: 20px;
-    border: 1px solid black;
-    width: 150px;
-    color: black;
+.design_button {
+  font-size: 15px;
+  margin: 8px auto;
+  text-align: center;
+  border: 2px solid white;
+  padding: 10px;
+  width: 200px;
 }
