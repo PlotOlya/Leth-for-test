@@ -4,12 +4,14 @@ import React, { memo, useState } from "react";
 import { Document, pdfjs, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "./MenuList.css";
+import { useNavigate } from "react-router-dom";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 function MenuList(): JSX.Element {
   const [numPages, setNumPages] = useState(5);
   const [pageNumber, setPageNumber] = useState(1);
+  const navigate = useNavigate();
 
   function onDocumentLoadSuccess(): void {
     setNumPages(numPages);
@@ -27,6 +29,9 @@ function MenuList(): JSX.Element {
   function changePageNext(): void {
     changePage(+1);
   }
+  function closeMenu(): void {
+    navigate(-1)
+  }
 
   return (
     <div className="menu-container">
@@ -36,14 +41,17 @@ function MenuList(): JSX.Element {
       <div className="menu-pages">
         Page {pageNumber} of {numPages}
       </div>
+      <button type="button" className="menu-button" onClick={closeMenu}>
+        Закрыть меню
+      </button>
       {pageNumber > 1 && (
         <button type="button" onClick={changePageBack} className="menu-button">
-          Previous Page
+          Предыдущея страница
         </button>
       )}
       {pageNumber < numPages && (
         <button type="button" className="menu-button" onClick={changePageNext}>
-          Next Page
+          Следующая страница
         </button>
       )}
     </div>

@@ -1,0 +1,15 @@
+.all-certificate {
+  display: flex;
+  
+  margin: 50px auto;
+  /* border: 1px solid black; */
+  max-width: 1200px;
+}
+.activ-certificate {
+  border: 3px solid green;
+  width: 500px;
+}
+
+.passiv-certificate {
+  border: 1px solid gray;
+}

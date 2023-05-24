@@ -1,25 +1,24 @@
-const {
-  Model,
-} = require('sequelize');
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Admin extends Model {
-    static associate(models) {
-      // define association here
-    }
+    static associate() {}
   }
-  Admin.init({
-    login: {
-      type: DataTypes.TEXT,
-      allowNull: false,
+  Admin.init(
+    {
+      login: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      password: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
     },
-    password: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-  }, {
-    sequelize,
-    modelName: 'Admin',
-  });
+    {
+      sequelize,
+      modelName: 'Admin',
+    }
+  );
   return Admin;
 };

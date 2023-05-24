@@ -3,10 +3,12 @@ import {
   createAsyncThunk,
   createSelector,
   createSlice,
+  PayloadAction,
 } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 import { apiInitTable, apiUpdateTable } from './api';
 import { OneReservation } from './types/OneReservation';
+import { ReservationData } from './types/ReservationData';
 import { ReservationState } from './types/ReservationState';
 import { Tables } from './types/Tables';
 
@@ -26,8 +28,8 @@ export const initTimeTable = createAsyncThunk(
 
 export const updateReserv = createAsyncThunk(
   'adminReservation/updateReserv',
-  async (reserv: OneReservation) => {
-    const newReserv = await apiUpdateTable(reserv);
+  async (value: OneReservation) => {
+    const newReserv = await apiUpdateTable(value);
     return newReserv;
   }
 );
@@ -37,10 +39,16 @@ const timeTableSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers(builder) {
-    return builder.addCase(initTimeTable.fulfilled, (state, action) => {
-      state.tablesList = action.payload.tablesList;
-      state.reservationList = action.payload.reservationList;
-    });
+    return builder
+      .addCase(initTimeTable.fulfilled, (state, action) => {
+        state.tablesList = action.payload.tablesList;
+        state.reservationList = action.payload.reservationList;
+      })
+      .addCase(updateReserv.fulfilled, (state, action) => {
+        state.reservationList = state.reservationList.map((reserv) =>
+          reserv.id === action.payload.id ? action.payload : reserv
+        );
+      });
   },
 });
 

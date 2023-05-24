@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import "./Certificate.css";
-import pwgen from "pwgen";
 import { Certificate } from "./type/Certificate";
 import store, { RootState, useAppDispatch } from "../../store";
 import { addCertificate } from "./CertificateSlice";
@@ -18,13 +17,11 @@ function CertificateForm(): JSX.Element {
   const { register, handleSubmit, reset } = useForm<CertificateData>();
   const [modalSertificat, setModalSertificat] = useState<boolean>(false);
 
-
   const dispatch = useAppDispatch();
 
   const certificate = useSelector(
     (state: RootState) => state.certificates.currentCertificate
   );
-
 
   const submitFormValues = useCallback(
     async (values: CertificateData): Promise<number> => {
@@ -38,9 +35,9 @@ function CertificateForm(): JSX.Element {
     },
     [dispatch]
   );
-
+// fsafas
   return (
-    <div id='certificate' className="main_certificate">
+    <div id="certificate" className="main_certificate">
       <div>
         <button
           type="button"
