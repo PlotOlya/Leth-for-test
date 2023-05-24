@@ -7,7 +7,6 @@ const transporter = nodemailer.createTransport(
     port: 465,
     secure: true, // true for 465, false for other ports
     auth: {
-
       user: 'max_nazarow@mail.ru', // ваша почта яндекс
       pass: '92T3LvUrn61dVyCmULgn',
 
@@ -16,7 +15,7 @@ const transporter = nodemailer.createTransport(
   },
   {
     from: 'Mailer Test <max_nazarow@mail.ru>', // ваша почта яндекс
-  },
+  }
 );
 
 const mailer = (message) => {

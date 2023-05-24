@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import ReservationDate from './ReservationDate';
@@ -40,4 +40,4 @@ function Reservation(): JSX.Element {
   );
 }
 
-export default Reservation;
+export default memo(Reservation);
