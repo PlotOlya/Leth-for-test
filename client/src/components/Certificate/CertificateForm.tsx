@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import "./Certificate.css";
-import pwgen from "pwgen";
 import { Certificate } from "./type/Certificate";
 import store, { RootState, useAppDispatch } from "../../store";
 import { addCertificate } from "./CertificateSlice";
@@ -24,7 +23,7 @@ function CertificateForm(): JSX.Element {
   const certificate = useSelector(
     (state: RootState) => state.certificates.currentCertificate
   );
-  console.log("forma", certificate);
+ 
 
   const submitFormValues = useCallback(
     async (values: CertificateData): Promise<number> => {

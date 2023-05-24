@@ -8,6 +8,9 @@ import Reservation from "../features/adminReservation/Reservation";
 import Layout from "../components/Layout/Layout";
 import Certificate from "../components/Certificate/CertificateForm";
 import MenuList from "../components/MenuList/MenuList";
+import AdminAuthorization from "../components/AdminAuthorization/AdminAuthorization";
+
+
 
 function App(): JSX.Element {
   return (
@@ -15,9 +18,10 @@ function App(): JSX.Element {
       <Route path="/admin/" element={<NavBar1 />}>
         <Route path="reservation" element={<Reservation />} />
       </Route>
-      <Route path="/sertif" element={<Certificate />} />
+      {/* <Route path="/sertif" element={<Certificate />} /> */}
       <Route path="/" element={<Layout />} />
       <Route path="/menu" element={<MenuList />} />
+      <Route path="/adminAut" element={<AdminAuthorization />} />
     </Routes>
   );
 }
