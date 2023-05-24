@@ -18,18 +18,19 @@ function Contacts(): JSX.Element {
         <div className="phone-item">Номер телефона: +7-904-648-60-60</div>
         <div className="social">
           <h2 className="">Социальные сети</h2>
-
-          <a href="https://vk.com/leth_spb" target="_blank" rel="noreferrer">
-            <span className="social-item">Vk</span>
-          </a>
-          <a
-            className="social-item"
-            href="https://t.me/leth_spb"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span className="social-item">Telegram</span>
-          </a>
+          <div className="logo-container">
+            <a href="https://vk.com/leth_spb" target="_blank" rel="noreferrer">
+              <img src='/img/vk.png' alt='VK' />
+            </a>
+            <a
+              className="social-item"
+              href="https://t.me/leth_spb"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src='/img/telegram.png' alt='Telegram' />
+            </a>
+          </div>
         </div>
         <MapContakt />{" "}
       </div>

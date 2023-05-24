@@ -9,6 +9,7 @@ const transporter = nodemailer.createTransport(
     auth: {
       user: 'max_nazarow@mail.ru', // ваша почта яндекс
       pass: '92T3LvUrn61dVyCmULgn',
+
       // потом нужно Создайте пароль приложения в яндексе на почте и вставит в сточку выше
     },
   },
