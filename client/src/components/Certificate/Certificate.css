@@ -1,46 +1,46 @@
 
 .main_certificate{
-    padding: 20px;
-    margin: 0 auto;
-    text-align: center;
+  padding: 20px;
+  margin: 0 auto;
+  text-align: center;
 }
 .button_certificate{
-    margin-top: 40px;
-    border: 1px solid grey;
-    width: 250px;
+  margin-top: 40px;
+  border: 1px solid grey;
+  width: 250px;
 }
 .modal_certificate_activ{
-     color: rgb(1, 7, 11) ;
-     background-color: beige !important;  
+   color: white ;
+   background-color: beige !important;  
 }
 .modal_data_activ{
-    background-color: beige !important;
-    display: block;
+  /* background-color: beige !important; */
+  display: block;
 
 }
 .modal_data_activ {
-  /* background-color: beige !important; */
-  display: block;
+/* background-color: beige !important; */
+display: block;
 }
 .modal_data_deactiv {
-  display: none;
+display: none;
 }
 .modal_name {
-  color:white;
-  margin: 10px;
+color:white;
+margin: 10px;
 }
 .modal_inp {
-  color: black;
-  border: 1px solid white;
-  width: 250px;
+color: white;
+border: 1px solid white;
+width: 250px;
 
 }
 
 .design_button {
-  font-size: 15px;
-  margin: 8px auto;
-  text-align: center;
-  border: 2px solid white;
-  padding: 10px;
-  width: 200px;
+font-size: 15px;
+margin: 8px auto;
+text-align: center;
+border: 2px solid white;
+padding: 10px;
+width: 200px;
 }
