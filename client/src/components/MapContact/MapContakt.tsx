@@ -1,11 +1,9 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
-import React, { memo } from "react";
-import './MapContact.css'
+import React, { memo } from 'react';
+import './MapContact.css';
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 
-
 function MapContakt(): JSX.Element {
-
   return (
     <div className="map-container">
       Тут должна быть карта API
@@ -19,16 +17,17 @@ function MapContakt(): JSX.Element {
       /> */}
       {/* <div id="first_map" className='map' /> */}
       <YMaps>
-    <div>
-      <Map defaultState={{ center: [59.926467, 30.332020], zoom: 15 }}>
-      <Placemark geometry={[59.926467, 30.332020]} options={{preset: 'islands#blackStretchyIcon'}}/>
-      </Map>
-    </div>
-    </YMaps>
-
+        <div>
+          <Map defaultState={{ center: [59.926467, 30.33202], zoom: 15 }}>
+            <Placemark
+              geometry={[59.926467, 30.33202]}
+              options={{ preset: 'islands#blackStretchyIcon' }}
+            />
+          </Map>
+        </div>
+      </YMaps>
     </div>
   );
 }
 
 export default memo(MapContakt);
- 

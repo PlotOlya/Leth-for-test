@@ -1,4 +1,3 @@
-import { StringDataType } from 'sequelize';
 import { OneReservation } from '../features/adminReservation/types/OneReservation';
 import { ReservationData } from '../features/adminReservation/types/ReservationData';
 

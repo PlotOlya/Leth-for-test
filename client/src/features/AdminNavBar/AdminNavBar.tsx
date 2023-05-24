@@ -2,7 +2,6 @@ import React, { memo, useCallback } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 import {
   adminLogout,
@@ -13,7 +12,6 @@ import { useAppDispatch } from '../../store';
 function AdminNavBar(): JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const admin = useSelector(getAdmin);
 
   const handleLogout = useCallback(
     async (event: React.MouseEvent) => {
@@ -35,16 +33,12 @@ function AdminNavBar(): JSX.Element {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/admin/reservation">Брони</Nav.Link>
-              <Nav.Link href="#">Сертификаты</Nav.Link>
+              <Nav.Link href="/admin/certificate">Сертификаты</Nav.Link>
               <Nav.Link href="#">Отзывы</Nav.Link>
             </Nav>
-            {admin ? (
-              <Nav>
-                <Nav.Link onClick={handleLogout}>Выход</Nav.Link>
-              </Nav>
-            ) : (
-              []
-            )}
+            <Nav>
+              <Nav.Link onClick={handleLogout}>Выход</Nav.Link>
+            </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>

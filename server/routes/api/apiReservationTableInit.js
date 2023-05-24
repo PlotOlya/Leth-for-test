@@ -8,8 +8,11 @@ mainRouter.get('/', async (req, res) => {
   try {
     const tablesList = await Table.findAll();
     const reservationList = await Reservation.findAll();
-    // console.log('table', tablesList);
-    res.status(200).json({ tablesList, reservationList });
+    if (tablesList && reservationList) {
+      res.status(200).json({ tablesList, reservationList });
+    } else {
+      res.status(400).json({ success: false, message: 'Записи не найдены' });
+    }
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -35,7 +38,11 @@ mainRouter.put('/:id/update', async (req, res) => {
       reservOne.comment = comment;
       reservOne.status = status;
       await reservOne.save();
-      res.json(reservOne);
+      res.status(200).json(reservOne);
+    } else {
+      res
+        .status(400)
+        .json({ success: false, message: 'Такая запись не найдена' });
     }
 
     const message = {

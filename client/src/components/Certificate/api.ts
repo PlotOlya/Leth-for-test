@@ -9,14 +9,20 @@ export async function apiCertificate(
     headers: { 'Content-type': 'application/json' },
     body: JSON.stringify(certificate),
   });
+  if (res.status >= 400) {
+    const { error } = await res.json();
+    throw error;
+  }
 
-  const result = await res.json();
-  return result;
+  return res.json();
 }
 
 export async function apiInitCertificate(): Promise<Certificate[]> {
-  const res = await fetch("/api/certificate");
-  // console.log(res);
+  const res = await fetch('/api/certificate');
+  if (res.status >= 400) {
+    const { error } = await res.json();
+    throw error;
+  }
 
   return res.json();
 }
@@ -24,11 +30,15 @@ export async function apiInitCertificate(): Promise<Certificate[]> {
 export async function apiFindCertificate(
   inputVal: string
 ): Promise<Certificate> {
-  const res = await fetch("/api/findeCertificate", {
-    method: "POST",
-    headers: { "Content-type": "application/json" },
+  const res = await fetch('/api/findeCertificate', {
+    method: 'POST',
+    headers: { 'Content-type': 'application/json' },
     body: JSON.stringify({ inputVal }),
   });
+  if (res.status >= 400) {
+    const { error } = await res.json();
+    throw error;
+  }
 
   return res.json();
 }
@@ -38,12 +48,16 @@ export async function apiUpdateCertificate(
 ): Promise<Certificate> {
   console.log(certificate.id);
   const res = await fetch(`/api/certificate/${certificate.id}`, {
-    method: "PUT",
+    method: 'PUT',
     body: JSON.stringify(certificate),
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
+  if (res.status >= 400) {
+    const { error } = await res.json();
+    throw error;
+  }
 
   return res.json();
 }

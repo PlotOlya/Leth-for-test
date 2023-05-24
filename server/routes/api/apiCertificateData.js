@@ -2,13 +2,13 @@
 /* eslint-disable no-sequences */
 // const { v4: uuidv4 } = require('uuid');
 
-const certificateRoute = require("express").Router();
+const certificateRoute = require('express').Router();
 
-const { Certificate } = require("../../db/models");
+const { Certificate } = require('../../db/models');
 
-const mailer = require("../../nodemailer");
+const mailer = require('../../nodemailer');
 
-certificateRoute.post("/", async (req, res) => {
+certificateRoute.post('/', async (req, res) => {
   try {
     const data = req.body;
     const certificateList = await Certificate.create({
@@ -22,7 +22,7 @@ certificateRoute.post("/", async (req, res) => {
 
     const message = {
       to: req.body.email,
-      subject: "Сертификат",
+      subject: 'Сертификат',
       text: `Поздравляем!
 
       Вам предоставляется сертификат на посещение нашего ресторана. Это прекрасная возможность насладиться отличной кухней и атмосерой нашего заведения.
@@ -38,24 +38,29 @@ certificateRoute.post("/", async (req, res) => {
     mailer(message);
 
     res.status(200).json(certificateList);
-  } catch (err) {
-    res.status(500).json(err);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
   }
 });
 
-certificateRoute.get("/", async (req, res) => {
+certificateRoute.get('/', async (req, res) => {
   try {
     const certificateList = await Certificate.findAll();
-    // console.log(certificateList);
-    res.status(200).json(certificateList);
-
-  } catch (err) {
-    console.error(err);
-    res.status(500).json(err);
+    if (certificateList) {
+      res.status(200).json(certificateList);
+    } else {
+      res
+        .status(400)
+        .json({ success: false, message: 'Сертификаты не найдены' });
+    }
+  } catch (error) {
+    console.erroror(error);
+    res.status(500).json(error);
   }
 });
 
-certificateRoute.put("/:id", async (req, res, next) => {
+certificateRoute.put('/:id', async (req, res) => {
   try {
     const currentCert = await Certificate.findByPk(Number(req.params.id));
 
@@ -63,7 +68,7 @@ certificateRoute.put("/:id", async (req, res, next) => {
     if (!currentCert) {
       res
         .status(404)
-        .json({ success: false, message: "Нет такого сертификата" });
+        .json({ success: false, message: 'Нет такого сертификата' });
       return;
     }
     if (currentCert) {
@@ -74,11 +79,11 @@ certificateRoute.put("/:id", async (req, res, next) => {
         (currentCert.numberCertificates = numberCertificates),
         (currentCert.status = false);
       await currentCert.save();
-      console.log("server ====>", currentCert.status, req.body);
-      res.json(currentCert);
+      res.status(200).json(currentCert);
     }
-  } catch (er) {
-    next(er);
+  } catch (error) {
+    console.erroror(error);
+    res.status(500).json(error);
   }
 });
 

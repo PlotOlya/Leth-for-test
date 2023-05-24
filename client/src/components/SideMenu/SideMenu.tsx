@@ -3,7 +3,7 @@
 /* eslint-disable react/self-closing-comp */
 import React, { useState, memo } from 'react';
 import './SideMenu.css';
-import { Item } from '../Navbar/types/Item';
+import { Item } from '../NavBar/types/Item';
 
 type SideMenuProps = {
   items: Item[];
@@ -29,7 +29,9 @@ function SideMenu({ items, active, setActive }: SideMenuProps): JSX.Element {
         <ul>
           {items.map((item) => (
             <li key={item.id}>
-              <a onClick={closeMenuHandle} href={item.href}>{item.value}</a>
+              <a onClick={closeMenuHandle} href={item.href}>
+                {item.value}
+              </a>
             </li>
           ))}
         </ul>

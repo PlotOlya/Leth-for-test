@@ -11,7 +11,7 @@ import Timeline, {
 import moment from 'moment';
 import { useAppDispatch } from '../../store';
 import {
-  initTimeTable,
+  initReservationsTable,
   selectReservationList,
   selectTablesList,
 } from './reservaionSlice';
@@ -36,7 +36,7 @@ function ReservationTable({
   console.log('резервы', reservationList);
 
   useEffect(() => {
-    dispatch(initTimeTable());
+    dispatch(initReservationsTable());
   }, [dispatch]);
 
   const groups = tablesList.map((table) => ({

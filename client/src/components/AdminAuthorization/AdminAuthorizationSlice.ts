@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Admin } from './type/Admin';
 import { AdminState } from './type/AdminState';
-import * as api from './apiLogin';
+import * as api from './loginApi';
 import { RootState } from '../../store';
 
 const initialState: AdminState = {
@@ -12,7 +12,6 @@ const initialState: AdminState = {
 export const getUser = createAsyncThunk('AdminAuthorization/getUser', () =>
   api.admin()
 );
-console.log('getUser', getUser);
 
 export const adminLogIn = createAsyncThunk(
   'AdminAuthorization/adminLogIn',
@@ -60,6 +59,7 @@ const authSlice = createSlice({
   },
 });
 
+// ???????????????????????
 export const getAdmin = (state: RootState): Admin => state.adminAuth.admin;
 
 export default authSlice.reducer;

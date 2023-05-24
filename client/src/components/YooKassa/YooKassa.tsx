@@ -1,14 +1,11 @@
-import React, { memo } from "react";
-// import { useForm } from "react-hook-form";
-// import { RootState, useAppDispatch } from "../../store";
-// import { useSelector } from "react-redux";
+import React, { memo } from 'react';
 
 function YooKassa({
   certificate,
 }: {
   certificate: number | undefined;
 }): JSX.Element {
-  console.log("kassa = ", certificate);
+  console.log('kassa = ', certificate);
 
   return (
     <div className="kassa-container">
@@ -30,7 +27,7 @@ function YooKassa({
               className="ym-input ym-sum-input ym-required-input"
               type="number"
               step="any"
-              style={{ color: "black" }}
+              style={{ color: 'black' }}
               defaultValue={certificate}
             />
           </div>
