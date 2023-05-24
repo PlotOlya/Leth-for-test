@@ -27,7 +27,7 @@ function App(): JSX.Element {
         <Route path="reservation" element={<Reservation />} />
         <Route path="certificate" element={<CertificatePage />} />
       </Route>
-      {/* <Route path="/sertif" element={<Certificate />} /> */}
+
       <Route path="/" element={<Layout />} />
       <Route path="/menu" element={<MenuList />} />
       <Route path="/adminAut" element={<AdminAuthorization />} />
