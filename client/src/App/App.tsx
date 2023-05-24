@@ -6,10 +6,13 @@ import NavBar1 from "../components/NavBar1/NavBar1";
 
 import Reservation from "../features/adminReservation/Reservation";
 import Layout from "../components/Layout/Layout";
-import Certificate from "../components/Certificate/CertificateForm";
+// import Certificate from "../components/Certificate/CertificateForm";
 import MenuList from "../components/MenuList/MenuList";
 import AdminAuthorization from "../components/AdminAuthorization/AdminAuthorization";
 
+
+
+import NotFoundPage from "../components/NotFoundPage/NotFoundPage";
 
 
 function App(): JSX.Element {
@@ -22,6 +25,8 @@ function App(): JSX.Element {
       <Route path="/" element={<Layout />} />
       <Route path="/menu" element={<MenuList />} />
       <Route path="/adminAut" element={<AdminAuthorization />} />
+      <Route path="/*" element={<NotFoundPage/>} />
+
     </Routes>
   );
 }

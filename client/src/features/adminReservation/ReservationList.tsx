@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { formatDate } from '../../utils/formatDate';
-import { formatTime } from '../../utils/formatTime';
-import { ReservationType } from './types/ReservationType';
+import { formatDate, formatTime } from '../../utils/date';
+import { OneReservation } from './types/OneReservation';
 
 type Props = {
-  oneReserv: ReservationType;
+  oneReserv: OneReservation;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   setActivModalReserv: React.Dispatch<React.SetStateAction<number>>;
   activModalReserv: number;
@@ -44,7 +43,7 @@ function ReservationList({
            Почта гостя: ${oneReserv.email}
            Дата брони: ${normDate}
            Время брони: ${normTime}
-           Номер стола: 
+           Номер стола: ${oneReserv.table}
            `}
         </Card.Text>
         <Button type="button" onClick={() => handleModal(oneReserv.id)}>
