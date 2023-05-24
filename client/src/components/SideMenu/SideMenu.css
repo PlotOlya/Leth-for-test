@@ -20,7 +20,7 @@
     left: 0;
     transform: translate(-150%);
     transition: all 0.2s;
-    z-index:1;
+    z-index: 3 !important;
 
 }
 
