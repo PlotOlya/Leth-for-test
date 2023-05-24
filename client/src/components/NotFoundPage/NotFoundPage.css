@@ -1,0 +1,30 @@
+.notFound-container {
+  margin: 0 auto;
+  text-align: center;
+  /* position: relative; */
+}
+.notFound-img {
+  position: relative;
+  z-index: -1;
+}
+
+.notFound-text {
+  position: absolute;
+  margin-top: 17px;
+  color: white;
+  text-align: initial;
+  margin-left: 40px;
+  font-size: 13px;
+}
+
+.go-back-btn {
+  font-size: 12px;
+  text-align: center;
+  border: 2px solid white;
+  color: white;
+  box-sizing: border-box;
+  padding: 5px;
+  max-width: 195px;
+  position: absolute;
+  margin-top: 298px;
+}
