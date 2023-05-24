@@ -5,6 +5,7 @@ import { RootState, useAppDispatch } from "../../store";
 import {
   findeCertificate,
   initCertificate,
+  updateCertificate,
 } from "../../components/Certificate/CertificateSlice";
 import CertificateItem from "./CertificateItem";
 
@@ -34,6 +35,7 @@ function CertificatePage(): JSX.Element {
   const handlerCklick = (): void => {
     if (statusVal) {
       setStatusVal(!statusVal);
+      dispatch (updateCertificate())
     }
   };
 
