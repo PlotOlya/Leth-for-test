@@ -11,15 +11,10 @@ export async function apiInitTable(): Promise<ReservationState> {
 export async function apiUpdateTable(
   reserv: OneReservation
 ): Promise<OneReservation> {
-  const response = await fetch('/api/admin/reservation', {
+  const res = await fetch(`/api/admin/reservation/${reserv.id}/update`, {
     method: 'PUT',
-    headers: { 'content-type': 'applisation/json' },
-    body: JSON.stringify({ reserv }),
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(reserv),
   });
-  if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.message);
-  }
-
-  return response.json();
+  return res.json();
 }

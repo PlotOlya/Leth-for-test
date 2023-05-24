@@ -11,6 +11,7 @@ function MainReservationForm(): JSX.Element {
   const dispatch = useAppDispatch();
 
   const [message, setMessage] = useState<boolean>(false);
+  const [toggleRegisterForm, setToggleRegisterForm] = useState<boolean>(false)
 
   const { register, handleSubmit, reset } = useForm<MainReservationData>();
 
@@ -36,14 +37,22 @@ function MainReservationForm(): JSX.Element {
       reset();
       setMessage((prev) => !prev);
     }
-
+    
   };
+
+  const registerFormHandle = ():void => {
+    setToggleRegisterForm((prev) => !prev)
+  }
+
   const closeButtonHandle = ():void => {
     setMessage(false);
   }
 
   return (
-    <form onSubmit={handleSubmit(submitHandler)} className="reservationFormer">
+    <div className='form_container'>
+    <button id='mainReservationForm' className="button_certificate" type='button' onClick={registerFormHandle}>ЗАБРОНИРОВАТЬ</button>
+
+    <form  onSubmit={handleSubmit(submitHandler)} className={toggleRegisterForm ? 'reservationFormer_active' : 'reservationFormer_inactive'}>
       <label className="reservationFormLabel" htmlFor="name">
         Имя
         <input
@@ -153,6 +162,7 @@ function MainReservationForm(): JSX.Element {
         </div>
       )}
     </form>
+  </div>
   );
 }
 
