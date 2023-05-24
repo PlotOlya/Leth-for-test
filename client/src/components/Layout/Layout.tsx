@@ -5,7 +5,7 @@ import Contacts from '../Contacts/Contacts';
 import Navbar from '../NavBar/Navbar';
 import VideoBlock from '../VideoBlock/VideoBlock';
 import Carusel from '../Carusel/Carusel';
-import DescriptionBlock from '../DescriptionBlock/DescriptionBlock';
+import DescriptionBlock from '../descriptionBlock/DescriptionBlock';
 import ShefBlock from '../ShefBlock/ShefBlock';
 import Menu from '../Menu/Menu';
 import Certificate from '../Certificate/CertificateForm';
