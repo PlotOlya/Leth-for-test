@@ -1,14 +1,13 @@
-import React, { memo, useCallback, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "../../store";
+import React, { memo, useCallback, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../../store';
 import {
   findeCertificate,
   initCertificate,
   updateCertificate,
-} from "../../components/Certificate/CertificateSlice";
-import CertificateItem from "./CertificateItem";
-// import { Certificate } from "../../components/Certificate/type/Certificate";
-import "./CertificateItem.css";
+} from '../../components/Certificate/CertificateSlice';
+import CertificateItem from './CertificateItem';
+import './CertificateItem.css';
 
 function CertificatePage(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -17,7 +16,7 @@ function CertificatePage(): JSX.Element {
     (state: RootState) => state.certificates.oneCertificate
   );
 
-  const [inputVal, setInputVal] = useState("");
+  const [inputVal, setInputVal] = useState('');
   const handelInput: React.ChangeEventHandler<HTMLInputElement> = (e): void => {
     setInputVal(e.target.value);
   };
@@ -32,12 +31,10 @@ function CertificatePage(): JSX.Element {
   const [statusVal, setStatusVal] = useState(oneCertificat?.status);
 
   const handlerCklick = (): void => {
-    // console.log("handler work", oneCertificat, statusVal);
-
     if (oneCertificat) {
       setStatusVal(false);
       dispatch(updateCertificate(oneCertificat));
-      setInputVal("");
+      setInputVal('');
     }
   };
 
@@ -47,9 +44,8 @@ function CertificatePage(): JSX.Element {
 
   return (
     <div className="certificate-container">
-    
       <form onSubmit={handlerSubmit}>
-      <p>Проверка сертификата</p>
+        <p>Проверка сертификата</p>
         <input
           type="text"
           placeholder="номер сертификата"
@@ -64,7 +60,7 @@ function CertificatePage(): JSX.Element {
           <div>Номер сертификата:{oneCertificat?.numberCertificates}</div>
           <div>Сумма: {oneCertificat?.amount}</div>
           <div>Email: {oneCertificat?.email}</div>
-          <div>Status: {oneCertificat?.status ? "activ" : "pasiv"}</div>
+          <div>Status: {oneCertificat?.status ? 'activ' : 'pasiv'}</div>
 
           <button type="button" onClick={handlerCklick}>
             Использовать

@@ -3,8 +3,10 @@ import { ReservationState } from './types/ReservationState';
 
 export async function apiInitTable(): Promise<ReservationState> {
   const res = await fetch('/api/admin/reservation');
-  console.log(res);
-
+  if (res.status >= 400) {
+    const { error } = await res.json();
+    throw error;
+  }
   return res.json();
 }
 
@@ -16,5 +18,10 @@ export async function apiUpdateTable(
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify(reserv),
   });
+  if (res.status >= 400) {
+    const { error } = await res.json();
+    throw error;
+  }
+
   return res.json();
 }

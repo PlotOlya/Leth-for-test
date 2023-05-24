@@ -1,14 +1,13 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { CertificateState } from "./type/CertificateState";
-import { CertificateData } from "./type/CertificateData";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { CertificateState } from './type/CertificateState';
+import { CertificateData } from './type/CertificateData';
 import {
   apiCertificate,
   apiFindCertificate,
   apiInitCertificate,
   apiUpdateCertificate,
-} from "./api";
-import { Certificate } from "./type/Certificate";
-// import { Certificate } from "./type/Certificate";
+} from './api';
+import { Certificate } from './type/Certificate';
 
 const initialState: CertificateState = {
   certificateList: [],
@@ -17,38 +16,49 @@ const initialState: CertificateState = {
 };
 
 export const addCertificate = createAsyncThunk(
-  "certificate/addCertificate",
+  'certificate/addCertificate',
   async (certificate: CertificateData) => {
     const newCertificate = await apiCertificate(certificate);
+    if (!newCertificate) {
+      throw new Error('Не удалось зоздать записть');
+    }
     return newCertificate;
   }
 );
 export const initCertificate = createAsyncThunk(
-  "certificate/initCertificate",
+  'certificate/initCertificate',
   async () => {
     const newCertificate = await apiInitCertificate();
-
+    if (!newCertificate) {
+      throw new Error('Записи не найдены');
+    }
     return newCertificate;
   }
 );
 export const findeCertificate = createAsyncThunk(
-  "certificate/findCertificate",
+  'certificate/findCertificate',
   async (inputVal: string) => {
     const certificate = await apiFindCertificate(inputVal);
+    if (!certificate) {
+      throw new Error('Запись не надена');
+    }
     return certificate;
   }
 );
 
 export const updateCertificate = createAsyncThunk(
-  "certificate/updateCertificate",
+  'certificate/updateCertificate',
   async (certificate: Certificate) => {
     const chengeCertificate = await apiUpdateCertificate(certificate);
+    if (!chengeCertificate) {
+      throw new Error('Не удалось выполнить');
+    }
     return chengeCertificate;
   }
 );
 
 const certificateSlice = createSlice({
-  name: "certificates",
+  name: 'certificates',
   initialState,
   reducers: {},
   extraReducers(builder) {
@@ -58,7 +68,7 @@ const certificateSlice = createSlice({
 
         state.certificateList.push(action.payload);
         state.currentCertificate = action.payload.amount;
-        console.log("state", state.currentCertificate);
+        console.log('state', state.currentCertificate);
       })
       .addCase(initCertificate.fulfilled, (state, action) => {
         // console.log("slise init->", action.payload);

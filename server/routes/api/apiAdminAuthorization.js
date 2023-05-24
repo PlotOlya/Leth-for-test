@@ -6,13 +6,10 @@ adminAuthorization.post('/login', async (req, res) => {
   const { login, password } = req.body;
   try {
     const existingAdmin = await Admin.findOne({ where: { login } });
-
-    // проверяем, что такой пользователь есть в БД и пароли совпадают
     if (
       existingAdmin &&
       (await bcrypt.compare(password, existingAdmin.password))
     ) {
-      // кладём id нового пользователя в хранилище сессии (логиним пользователя)
       req.session.adminId = existingAdmin.id;
       res.json({ id: existingAdmin.id, login: existingAdmin.login });
     } else {
@@ -22,10 +19,11 @@ adminAuthorization.post('/login', async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'I(server) fell down' });
+    res.status(500).json(error);
   }
 });
 
+// ???????????????????????
 adminAuthorization.get('/admin', (req, res) => {
   try {
     console.log('res.locals', res.locals);
@@ -40,17 +38,25 @@ adminAuthorization.get('/admin', (req, res) => {
         },
       });
     } else {
-      res.status(404).json({ isLoggedIn: false });
+      res
+        .status(404)
+        .json({ isLoggedIn: false, message: 'Пользователь отсутствует' });
     }
   } catch (error) {
     console.error(error);
+    res.status(500).json(error);
   }
 });
 
 adminAuthorization.post('/logout', (req, res) => {
-  req.session.destroy(() => {
-    res.json({ success: true });
-  });
+  try {
+    req.session.destroy(() => {
+      res.status(200).json({ success: true });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
 });
 
 module.exports = adminAuthorization;
