@@ -1,15 +1,60 @@
 .all-certificate {
   display: flex;
-  
+  flex-direction: row;
   margin: 50px auto;
-  /* border: 1px solid black; */
-  max-width: 1200px;
 }
-.activ-certificate {
-  border: 3px solid green;
-  width: 500px;
+p {
+  text-align: center;
+}
+.activ-container,
+.pasiv-container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+
+  width: 570px;
+  max-height: 800px;
+  box-sizing: border-box;
+  overflow: auto;
 }
 
+.activ-certificate,
 .passiv-certificate {
-  border: 1px solid gray;
+  border: 1px solid black;
+  margin: 8px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.found-certificate {
+  border: 1px solid black;
+  margin: 8px auto;
+  padding: 10px;
+  border-radius: 10px;
+  width: 500px;
+  
+}
+.found-certificate button {
+  background: rgb(235, 148, 145);
+}
+.passiv-certificate {
+  background: rgb(211, 210, 210);
+  opacity: 70%;
+}
+
+.activ-certificate {
+  background: rgb(105, 169, 118);
+}
+.certificate-container {
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 50px auto;
+}
+p {
+  font-size: 20px;
 }
