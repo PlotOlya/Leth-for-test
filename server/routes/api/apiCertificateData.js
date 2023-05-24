@@ -13,8 +13,8 @@ certificateRoute.post("/", async (req, res) => {
       name: data.name,
       email: data.email,
       amount: data.amount,
-      numberCertificates: uuidv4(),
-
+      // numberCertificates: uuidv4(),
+      numberCertificates: Math.floor(Math.random() * 10000),
       status: true,
     });
 

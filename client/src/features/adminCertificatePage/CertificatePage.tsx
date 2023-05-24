@@ -6,12 +6,14 @@ import {
   findeCertificate,
   initCertificate,
 } from "../../components/Certificate/CertificateSlice";
+import CertificateItem from "./CertificateItem";
 
 function CertificatePage(): JSX.Element {
   const dispatch = useAppDispatch();
   const currentCertificates = useSelector(
     (state: RootState) => state.certificates.certificateList
   );
+
   const oneCertificat = useSelector(
     (state: RootState) => state.certificates.oneCertificate
   );
@@ -19,7 +21,6 @@ function CertificatePage(): JSX.Element {
   const handelInput: React.ChangeEventHandler<HTMLInputElement> = (e): void => {
     setInputVal(e.target.value);
   };
-  console.log(inputVal);
 
   const handlerSubmit = useCallback(
     async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
@@ -39,7 +40,6 @@ function CertificatePage(): JSX.Element {
   useEffect(() => {
     dispatch(initCertificate());
   }, [dispatch]);
-  //   console.log(currentCertificates);
 
   return (
     <div className="certificate-container">
@@ -63,17 +63,8 @@ function CertificatePage(): JSX.Element {
           Использовать
         </button>
       </div>
-      <div className="found-certificate">
-        List from server
-        {currentCertificates.map((el) => (
-          <div key={el.id}>
-            <div>Имя: {el.name}</div>
-            <div>Номер сертификата: {el.numberCertificates}</div>
-            <div>Сумма: {el.amount}</div>
-            <button type="submit">Использовать</button>
-          </div>
-        ))}
-      </div>
+
+      <CertificateItem />
     </div>
   );
 }
