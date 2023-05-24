@@ -5,6 +5,7 @@ import React, { memo } from "react";
 
 function YooKassa({certificate}:{certificate:number|undefined}): JSX.Element {
  
+console.log("kassa = ", certificate);
 
   return (
     <div className="kassa-container">

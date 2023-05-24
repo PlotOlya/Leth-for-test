@@ -34,7 +34,6 @@ function ReservationTable({
 
   console.log('столы', tablesList);
   console.log('резервы', reservationList);
-  console.log('111', reservationList[0].status);
 
   useEffect(() => {
     dispatch(initTimeTable());
