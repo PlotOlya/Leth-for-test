@@ -17,15 +17,25 @@ mainRouter.get('/', async (req, res) => {
 
 mainRouter.put('/:id/update', async (req, res) => {
   try {
-    const { reserv } = req.body;
-    console.log('reserv', reserv);
-    console.log('req.params.id', req.params.id);
+    const { name, phoneNumber, guests, email, date, table, comment, status } =
+      req.body;
     const reservOne = await Reservation.findByPk(Number(req.params.id));
-    console.log('reservOne', reservOne);
     // if (!reservOne || req.session.adminId) {
     //   res.status(404).json({ success: false, message: 'Запись не найдена' });
     //   return;
     // }
+    if (reservOne) {
+      reservOne.name = name;
+      reservOne.phoneNumber = phoneNumber;
+      reservOne.guests = guests;
+      reservOne.email = email;
+      reservOne.date = date;
+      reservOne.table = table;
+      reservOne.comment = comment;
+      reservOne.status = status;
+      await reservOne.save();
+      res.json(reservOne);
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json(error.message);

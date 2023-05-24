@@ -13,8 +13,8 @@ export async function apiUpdateTable(
 ): Promise<OneReservation> {
   const res = await fetch(`/api/admin/reservation/${reserv.id}/update`, {
     method: 'PUT',
-    headers: { 'content-type': 'applisation/json' },
-    body: JSON.stringify({ reserv }),
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(reserv),
   });
   return res.json();
 }

@@ -5,6 +5,7 @@ export type ReservationData = {
   email: string;
   date: string;
   time: string;
+  guests: number;
   comment: string;
   status: boolean;
   table: number;

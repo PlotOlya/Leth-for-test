@@ -8,7 +8,6 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { getValue } from '@testing-library/user-event/dist/utils';
 import { RootState, useAppDispatch } from '../../store';
 import {
   transformFormDataToReservation,
@@ -50,13 +49,13 @@ function ReservationModal({
 
   useEffect(() => {
     console.log('insert values into form');
-
     reset(activeReserv && transformReservationToFormData(activeReserv));
   }, [activModalReserv, activeReserv, reset]);
 
   const formSubmit = (value: ReservationData): void => {
-    console.log('form submitted', value);
+    value.table = Number(value.table);
     dispatch(updateReserv(transformFormDataToReservation(value)));
+    console.log('form submitted', value);
   };
 
   const onError = (errors: any, e: any): void => console.log(errors, 'evnt', e);
@@ -143,8 +142,9 @@ function ReservationModal({
               <Form.Label>Table</Form.Label>
               <Form.Control
                 // value={date}
-                {...register('table', { required: true })}
-                onChange={(event) => handleDate(event)}
+                {...register('table', {
+                  required: true,
+                })}
                 type="text"
               />
             </Form.Group>
