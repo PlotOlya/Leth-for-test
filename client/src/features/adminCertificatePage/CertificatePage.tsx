@@ -35,7 +35,7 @@ function CertificatePage(): JSX.Element {
   const handlerCklick = (): void => {
     if (statusVal) {
       setStatusVal(!statusVal);
-      dispatch (updateCertificate())
+      // dispatch (updateCertificate())
     }
   };
 
