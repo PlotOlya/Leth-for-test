@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { useSelector } from "react-redux";
 
-import { RootState, useAppDispatch } from "../../store";
+import { RootState} from "../../store";
 import "./CertificateItem.css";
 
 function CertificateItem(): JSX.Element {
