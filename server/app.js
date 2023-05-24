@@ -19,11 +19,10 @@ serverConfig(app);
 app.use('/api/admin/reservation', ReservationTable);
 
 app.use('/api/certificate', certificateTable);
-app.use('/api/auth/login', adminAuthorization);
+app.use('/api/auth', adminAuthorization);
 
 app.use('/api/admin/certificate', certificateTable);
 app.use('/api/mainReservation', mainReservation);
-
 
 try {
   app.listen(PORT, () => {

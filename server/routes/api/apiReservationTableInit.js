@@ -1,6 +1,7 @@
 const mainRouter = require('express').Router();
 
 const { Table, Reservation } = require('../../db/models');
+const mailer = require('../../nodemailer');
 
 // запрос массива времени
 mainRouter.get('/', async (req, res) => {
@@ -35,6 +36,26 @@ mainRouter.put('/:id/update', async (req, res) => {
       reservOne.status = status;
       await reservOne.save();
       res.json(reservOne);
+    }
+
+    const message = {
+      to: req.body.email,
+      subject: 'Бронирование в ресторане Leth',
+      text: `Здравствуйте, ${req.body.name}.
+      
+      Ваш зарпрос на бронирование подтвержден. Мы с нетерпение ждем встречи с вами.
+
+      Детали бронирования:
+      ${req.body.name}
+      ${req.body.guests}
+      ${req.body.date}
+      
+      Просим обратить внимание на то, что посещение ограничено 2 часами!
+      `,
+    };
+
+    if (req.body.table) {
+      mailer(message);
     }
   } catch (error) {
     console.error(error);

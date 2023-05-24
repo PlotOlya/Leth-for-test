@@ -3,12 +3,10 @@ import {
   createAsyncThunk,
   createSelector,
   createSlice,
-  PayloadAction,
 } from '@reduxjs/toolkit';
-import { RootState } from '../../store';
+import { type RootState } from '../../store';
 import { apiInitTable, apiUpdateTable } from './api';
 import { OneReservation } from './types/OneReservation';
-import { ReservationData } from './types/ReservationData';
 import { ReservationState } from './types/ReservationState';
 import { Tables } from './types/Tables';
 
