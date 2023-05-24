@@ -17,13 +17,11 @@ function CertificateForm(): JSX.Element {
   const { register, handleSubmit, reset } = useForm<CertificateData>();
   const [modalSertificat, setModalSertificat] = useState<boolean>(false);
 
-
   const dispatch = useAppDispatch();
 
   const certificate = useSelector(
     (state: RootState) => state.certificates.currentCertificate
   );
-
 
   const submitFormValues = useCallback(
     async (values: CertificateData): Promise<number> => {
@@ -39,7 +37,7 @@ function CertificateForm(): JSX.Element {
   );
 
   return (
-    <div id='certificate' className="main_certificate">
+    <div id="certificate" className="main_certificate">
       <div>
         <button
           type="button"
