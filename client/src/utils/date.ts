@@ -1,3 +1,4 @@
+import { StringDataType } from 'sequelize';
 import { OneReservation } from '../features/adminReservation/types/OneReservation';
 import { ReservationData } from '../features/adminReservation/types/ReservationData';
 
@@ -16,11 +17,19 @@ export function formatTime(argumentDate: Date): string {
   return `${hours}:${minutes}`;
 }
 
+export function formateDateServer(date: string, time: string): Date {
+  const [year, month, day] = date.split('-');
+  const [hours, minutes] = time.split(':');
+  const combineDate = `${year}-${month}-${day}T${hours}:${minutes}:00.000Z`;
+  return new Date(combineDate);
+}
+
 export function transformReservationToFormData(
   reserv: OneReservation
 ): ReservationData {
-  const { name, phoneNumber, email, date, comment, table } = reserv;
+  const { id, name, phoneNumber, email, date, comment, table, status } = reserv;
   const formReserv: ReservationData = {
+    id,
     name,
     phoneNumber,
     email,
@@ -28,6 +37,28 @@ export function transformReservationToFormData(
     time: formatTime(date),
     comment,
     table,
+    status,
   };
+
   return formReserv;
+}
+
+export function transformFormDataToReservation(
+  value: ReservationData
+): OneReservation {
+  const { id, name, phoneNumber, email, date, time, table, comment, status } =
+    value;
+  const formToServer: OneReservation = {
+    id,
+    name,
+    phoneNumber,
+    email,
+    date: formateDateServer(date, time), // .toISOString()
+    table,
+    comment,
+    status,
+  };
+  console.log('formToServer', formToServer);
+
+  return formToServer;
 }

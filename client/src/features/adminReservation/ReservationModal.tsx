@@ -8,15 +8,15 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { getValue } from '@testing-library/user-event/dist/utils';
 import { RootState, useAppDispatch } from '../../store';
 import {
-  formatDate,
-  formatTime,
+  transformFormDataToReservation,
   transformReservationToFormData,
 } from '../../utils/date';
 import styles from './styles.module.css';
 import { ReservationData } from './types/ReservationData';
-import { selectReservationById } from './reservaionSlice';
+import { selectReservationById, updateReserv } from './reservaionSlice';
 
 type Props = {
   showModal: boolean;
@@ -41,19 +41,25 @@ function ReservationModal({
   const activeReserv = useSelector((state: RootState) =>
     selectReservationById(state, activModalReserv)
   );
-  
-  useEffect(
-    () => reset(activeReserv && transformReservationToFormData(activeReserv)),
-    [activModalReserv]
-  );
 
   const { register, handleSubmit, reset } = useForm<ReservationData>({
-    defaultValues: activeReserv && transformReservationToFormData(activeReserv),
+    resetOptions: {
+      keepDirtyValues: true, // user-interacted input will be retained
+    },
   });
 
+  useEffect(() => {
+    console.log('insert values into form');
+
+    reset(activeReserv && transformReservationToFormData(activeReserv));
+  }, [activModalReserv, activeReserv, reset]);
+
   const formSubmit = (value: ReservationData): void => {
-    console.log(value);
+    console.log('form submitted', value);
+    dispatch(updateReserv(transformFormDataToReservation(value)));
   };
+
+  const onError = (errors: any, e: any): void => console.log(errors, 'evnt', e);
 
   return (
     <div
@@ -62,7 +68,7 @@ function ReservationModal({
     >
       {activeReserv && (
         <Form
-          // onSubmit={handleSubmit(formSubmit)}
+          onSubmit={handleSubmit(formSubmit, onError)}
           className={styles.modalform}
           onClick={(e) => e.stopPropagation()}
         >
@@ -156,7 +162,7 @@ function ReservationModal({
           <Button
             onClick={() => setShowModal(false)}
             variant="primary"
-            type="button"
+            type="submit"
           >
             Button
           </Button>
