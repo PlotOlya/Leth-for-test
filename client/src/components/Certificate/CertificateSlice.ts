@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { CertificateState } from "./type/CertificateState";
 import { CertificateData } from "./type/CertificateData";
 import { apiCertificate, apiFindCertificate, apiInitCertificate } from "./api";
-import { Certificate } from "./type/Certificate";
+// import { Certificate } from "./type/Certificate";
 
 const initialState: CertificateState = {
   certificateList: [],
@@ -44,7 +44,7 @@ const certificateSlice = createSlice({
 
         state.certificateList.push(action.payload);
         state.currentCertificate = action.payload.amount;
-        // console.log("state", state.currentCertificate);
+        console.log("state", state.currentCertificate);
       })
       .addCase(initCertificate.fulfilled, (state, action) => {
         // console.log("slise init->", action.payload);

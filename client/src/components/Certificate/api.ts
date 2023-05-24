@@ -13,11 +13,14 @@ export async function apiCertificate(
   const result = await res.json();
   return result;
 }
+
 export async function apiInitCertificate(): Promise<Certificate[]> {
   const res = await fetch("/api/certificate");
+console.log(res);
 
   return res.json();
 }
+
 export async function apiFindCertificate(
   inputVal: string
 ): Promise<Certificate> {

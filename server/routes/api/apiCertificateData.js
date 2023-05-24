@@ -31,7 +31,7 @@ certificateRoute.post("/", async (req, res) => {
       `,
     };
     mailer(message);
-    res.status(200).json({ certificateList });
+    res.status(200).json(certificateList);
   } catch (err) {
     res.status(500).json(err);
   }
