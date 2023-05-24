@@ -1,0 +1,41 @@
+.conteiner{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(29, 29, 29);
+}
+.form_admin{
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid rgb(216, 132, 24);
+    width: 50vh;
+    border-radius: 30px;
+}
+.names,.admin_button{
+    color: rgb(216, 132, 24);
+}
+.admin_inp:hover::placeholder{
+    border-bottom: 1px solid rgb(216, 132, 24);
+    color: rgb(216, 132, 24);
+}
+
+.admin_inp{
+    color:rgb(216, 132, 24) ;
+}
+
+.admin_button{
+    margin-top: 10px;
+    border: 1px solid rgb(216, 132, 24);
+    padding: 2px 15px;
+    border-radius: 30px;
+    transition: transform 0.3s;
+}
+.admin_button:hover{
+    transform: scale(1.05);
+    border: 1px solid rgb(300, 137, 25);
+}
+.admin_button:active{
+    transform: scale(0.95);
+}

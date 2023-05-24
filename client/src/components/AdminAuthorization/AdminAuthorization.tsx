@@ -7,6 +7,7 @@ import { RootState, useAppDispatch } from "../../store";
 import { CertificateData } from "../Certificate/type/CertificateData";
 import { addCertificate } from "../Certificate/CertificateSlice";
 import { login } from "./AdminAuthorizationSlice";
+import './Admin.css'
 
 function AdminAuthorization(): JSX.Element {
   const navigate = useNavigate();
@@ -32,31 +33,35 @@ function AdminAuthorization(): JSX.Element {
   };
 
   return (
+    <div className="conteiner">
     <form className="form_admin" onSubmit={handleSubmit(submitAdminAut)}>
-      <div>
-        <div>
-          <p>login</p>
+      <div className="admin_div">
+        <div className="admin_box">
+          <p className="names">login</p>
           <input
             type="login"
+            className="admin_inp"
             placeholder="login"
             {...register("login", { required: true })}
             name="login"
           />
         </div>
-        <div>
-          <p>password</p>
+        <div className="admin_box">
+          <p className="names">password</p>
           <input
-            type="passvord"
+            type="password"
+            className="admin_inp"
             placeholder="passvord"
             {...register("password", { required: true })}
             name="password"
           />
         </div>
         <div>
-          <button type="submit">Войти</button>
+          <button className="admin_button" type="submit">Войти</button>
         </div>
       </div>
     </form>
+    </div>
   );
 }
 
