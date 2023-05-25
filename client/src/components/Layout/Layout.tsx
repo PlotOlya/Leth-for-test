@@ -9,7 +9,7 @@ import DescriptionBlock from '../DescriptionBlock/DescriptionBlock';
 import ShefBlock from '../ShefBlock/ShefBlock';
 import Menu from '../Menu/Menu';
 import Certificate from '../Certificate/CertificateForm';
-import MainReservationForm from '../ReservationForm/MainReservationForm';
+import MainReservationForm from '../MainReservationForm/MainReservationForm';
 
 export default function Layout(): JSX.Element {
   return (

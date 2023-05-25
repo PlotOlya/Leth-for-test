@@ -44,26 +44,35 @@ mainRouter.put('/:id/update', async (req, res) => {
         .status(400)
         .json({ success: false, message: 'Такая запись не найдена' });
     }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error.message);
+  }
+});
 
+mainRouter.post('/:id/sendmail', (req, res) => {
+  try {
+    console.log('req.body', req.body);
+    const fromAdmin = req.body;
     const message = {
-      to: req.body.email,
+      to: fromAdmin.email,
       subject: 'Бронирование в ресторане Leth',
-      text: `Здравствуйте, ${req.body.name}.
+      text: `Здравствуйте, ${fromAdmin.name}.
       
       Ваш зарпрос на бронирование подтвержден. Мы с нетерпение ждем встречи с вами.
 
       Детали бронирования:
-      ${req.body.name}
-      ${req.body.guests}
-      ${req.body.date}
+      
+      
       
       Просим обратить внимание на то, что посещение ограничено 2 часами!
       `,
     };
+    console.log(message);
 
-    if (req.body.table) {
-      mailer(message);
-    }
+    mailer(message);
+    console.log(mailer(message));
+    res.status(200).json({ success: true, message: 'Письмо отправлено' });
   } catch (error) {
     console.error(error);
     res.status(500).json(error.message);

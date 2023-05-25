@@ -25,3 +25,20 @@ export async function apiUpdateTable(
 
   return res.json();
 }
+
+export async function apiSendMessage(reserv: OneReservation): Promise<string> {
+  console.log('async fetch', reserv);
+
+  const res = await fetch(`/api/admin/reservation/${reserv.id}/sendmail`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(reserv),
+  });
+  console.log('res', res);
+
+  if (res.status >= 400) {
+    const { error } = await res.json();
+    throw error;
+  }
+  return res.json();
+}
