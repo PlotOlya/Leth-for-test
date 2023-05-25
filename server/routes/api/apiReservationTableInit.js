@@ -90,4 +90,26 @@ mainRouter.post('/:id/sendmail', (req, res) => {
   }
 });
 
+mainRouter.delete('/:id/deletereserv', async (req, res) => {
+  try {
+    console.log('req.params.id', req.params.id);
+    let reservDel;
+    if (req.session.adminId) {
+      reservDel = await Reservation.destroy({
+        where: {
+          id: Number(req.params.id),
+        },
+      });
+    }
+    console.log('reservDel', reservDel);
+    if (reservDel === 0) {
+      res.status(400).json({ success: false, message: 'Нет такого резерва' });
+    }
+    res.json({ success: true });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error.message);
+  }
+});
+
 module.exports = mainRouter;
