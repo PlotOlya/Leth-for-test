@@ -72,10 +72,11 @@ function ReservationTable({
       defaultTimeStart={moment().add(-6, 'hour')}
       defaultTimeEnd={moment().add(6, 'hour')}
       onItemClick={handleModal}
+      className="text-dark"
     >
-      <TimelineMarkers>
+      <TimelineMarkers className="text-dark">
         <TodayMarker />
-        <CustomMarker date={today} />
+        <CustomMarker date={today} className="text-dark"/>
 
         <CursorMarker />
       </TimelineMarkers>

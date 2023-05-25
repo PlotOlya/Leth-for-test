@@ -74,7 +74,7 @@ function ReservationModal({
           className={styles.modalform}
           onClick={(e) => e.stopPropagation()}
         >
-          <Row className="mb-3">
+          <Row className="mb-3 ">
             <Form.Group as={Col} controlId="formGridEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control
@@ -164,6 +164,7 @@ function ReservationModal({
             </Form.Group>
 
             <Button
+              className=' my-2'
               onClick={() => setShowModal(false)}
               variant="primary"
               type="submit"
@@ -171,6 +172,7 @@ function ReservationModal({
               Добавить запись
             </Button>
             <Button
+            className='my-2'
               style={{ backgroundColor: 'black' }}
               onClick={handleSendMail}
               variant="primary"
