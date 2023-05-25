@@ -3,7 +3,7 @@ export type OneReservation = {
   name: string;
   phoneNumber: string;
   email: string;
-  date: Date;
+  date: string;
   guests: number;
   comment: string;
   status: boolean;

@@ -3,10 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Outlet, useNavigate } from 'react-router-dom';
-import {
-  adminLogout,
-  getAdmin,
-} from '../../components/AdminAuthorization/AdminAuthorizationSlice';
+import { adminLogout } from '../../components/AdminAuthorization/AdminAuthorizationSlice';
 import { useAppDispatch } from '../../store';
 
 function AdminNavBar(): JSX.Element {

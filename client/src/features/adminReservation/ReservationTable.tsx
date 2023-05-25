@@ -56,7 +56,7 @@ function ReservationTable({
     group: reserv.table,
     title: reserv.name,
     start_time: new Date(reserv.date),
-    end_time: addHours(reserv.date),
+    end_time: addHours(new Date(reserv.date)),
   }));
 
   const today = Date.now();

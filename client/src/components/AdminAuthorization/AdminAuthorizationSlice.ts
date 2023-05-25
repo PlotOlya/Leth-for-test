@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Admin } from './type/Admin';
 import { AdminState } from './type/AdminState';
 import * as api from './loginApi';
-import { RootState } from '../../store';
 
 const initialState: AdminState = {
   authChecked: false,
@@ -60,6 +59,5 @@ const authSlice = createSlice({
 });
 
 // ???????????????????????
-export const getAdmin = (state: RootState): Admin => state.adminAuth.admin;
 
 export default authSlice.reducer;
