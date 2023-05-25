@@ -1,12 +1,13 @@
 .menu-container {
-  background-color: #282c34;
+  background-color: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
+  /* padding-top: 20px; */
 }
 
 .menu-list-ite {
@@ -14,11 +15,15 @@
   text-align: center;
 }
 
+.menu-pages{
+  font-size: 12px;
+}
+
 .menu-button {
-  font-size: 15px;
+  font-size: 10px;
   margin: 8px auto;
   text-align: center;
-  border: 2px solid white;
-  padding: 10px;
-  width: 200px;
+  border: 1px solid black;
+  padding: 5px;
+  width: 150px;
 }

@@ -3,13 +3,13 @@
 import React, { memo, useState } from "react";
 import { Document, pdfjs, Page } from "react-pdf";
 // import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-import "./MenuList.css";
+import "./BarMenuList.css";
 import { useNavigate } from "react-router-dom";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-function MenuList(): JSX.Element {
-  const [numPages, setNumPages] = useState(5);
+function BarMenuList(): JSX.Element {
+  const [numPages, setNumPages] = useState(8);
   const [pageNumber, setPageNumber] = useState(1);
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ function MenuList(): JSX.Element {
     setPageNumber(1);
   }
 
-  function changePage(offSet: any): void {
+  function changePage(offSet:number): void {
     setPageNumber((prevPageNumber) => prevPageNumber + offSet);
   }
 
@@ -35,7 +35,7 @@ function MenuList(): JSX.Element {
 
   return (
     <div className="menu-container">
-      <Document file="/menu.pdf" onLoadSuccess={onDocumentLoadSuccess}>
+      <Document file="/BarMenu.pdf" onLoadSuccess={onDocumentLoadSuccess}>
         <Page className="menu-list-item" pageNumber={pageNumber} />
       </Document>
       <div className="menu-pages">
@@ -44,17 +44,17 @@ function MenuList(): JSX.Element {
       <button type="button" className="menu-button" onClick={closeMenu}>
         Закрыть меню
       </button>
-      {pageNumber > 1 && (
-        <button type="button" onClick={changePageBack} className="menu-button">
-          Предыдущая страница
-        </button>
-      )}
       {pageNumber < numPages && (
         <button type="button" className="menu-button" onClick={changePageNext}>
           Следующая страница
         </button>
       )}
+      {pageNumber > 1 && (
+        <button type="button" onClick={changePageBack} className="menu-button">
+          Предыдущая страница
+        </button>
+      )}
     </div>
   );
 }
-export default memo(MenuList);
+export default memo(BarMenuList);

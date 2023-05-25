@@ -21,6 +21,15 @@ function NavBar(): JSX.Element {
 
   return (
     <div className="Navbar">
+      <div className='wideNavbar'>
+        <a className='' href='#description'>{items[0].value}</a>
+        <a href='#menu'>{items[1].value}</a>
+        <a href='#shefBlock'>{items[2].value}</a>
+        <div className="logowide" />
+        <a href='#mainReservationForm'>{items[3].value}</a>
+        <a href='#certificate'>{items[4].value}</a>
+        <a href='#contacts'>{items[5].value}</a>
+      </div>
       <div className="logo" />
       <button
         type="button"

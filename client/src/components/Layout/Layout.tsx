@@ -3,6 +3,11 @@ import './Layout.css';
 import Footer from '../Footer/Footer';
 import Navbar from '../NavBar/NavBar';
 import Contacts from '../Contacts/Contacts';
+
+
+import Navbar from '../Navbar/Navbar';
+
+
 import VideoBlock from '../VideoBlock/VideoBlock';
 import Carusel from '../Carusel/Carusel';
 import DescriptionBlock from '../DescriptionBlock/DescriptionBlock';
