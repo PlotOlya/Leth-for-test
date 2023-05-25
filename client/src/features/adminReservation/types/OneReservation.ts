@@ -9,3 +9,5 @@ export type OneReservation = {
   status: boolean;
   table: number;
 };
+
+export type ReservId = OneReservation['id'];

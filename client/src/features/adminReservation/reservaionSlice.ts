@@ -5,8 +5,13 @@ import {
   createSlice,
 } from '@reduxjs/toolkit';
 import { type RootState } from '../../store';
-import { apiInitTable, apiSendMessage, apiUpdateTable } from './adminApi';
-import { OneReservation } from './types/OneReservation';
+import {
+  apiDeleteReserv,
+  apiInitTable,
+  apiSendMessage,
+  apiUpdateTable,
+} from './adminApi';
+import { OneReservation, ReservId } from './types/OneReservation';
 import { ReservationState } from './types/ReservationState';
 import { Tables } from './types/Tables';
 
@@ -48,6 +53,16 @@ export const sendMail = createAsyncThunk(
   }
 );
 
+export const deleteReserv = createAsyncThunk(
+  'adminReservation/deleteReserv',
+  async (id: ReservId) => {
+    console.log('id thunk', id);
+
+    await apiDeleteReserv(id);
+    return id;
+  }
+);
+
 const timeTableSlice = createSlice({
   name: 'timeTables',
   initialState,
@@ -61,6 +76,11 @@ const timeTableSlice = createSlice({
       .addCase(updateReserv.fulfilled, (state, action) => {
         state.reservationList = state.reservationList.map((reserv) =>
           reserv.id === action.payload.id ? action.payload : reserv
+        );
+      })
+      .addCase(deleteReserv.fulfilled, (state, action) => {
+        state.reservationList = state.reservationList.filter(
+          (reserv) => reserv.id !== action.payload
         );
       });
   },
