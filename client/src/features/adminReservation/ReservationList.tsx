@@ -8,14 +8,12 @@ type Props = {
   oneReserv: OneReservation;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   setActivModalReserv: React.Dispatch<React.SetStateAction<number>>;
-  activModalReserv: number;
 };
 
 function ReservationList({
   oneReserv,
   setShowModal,
   setActivModalReserv,
-  activModalReserv,
 }: Props): JSX.Element {
   const [normDate, setNormDate] = useState('');
   const [normTime, setNormTime] = useState('');
@@ -47,7 +45,7 @@ function ReservationList({
            `}
         </Card.Text>
         <Button type="button" onClick={() => handleModal(oneReserv.id)}>
-          Go somewhere
+          Открыть резерв
         </Button>
       </Card.Body>
     </Card>

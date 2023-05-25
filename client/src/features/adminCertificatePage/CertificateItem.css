@@ -31,7 +31,6 @@ p {
   padding: 10px;
   border-radius: 10px;
   width: 500px;
-  
 }
 .found-certificate button {
   background: rgb(235, 148, 145);
@@ -57,4 +56,9 @@ form {
 }
 p {
   font-size: 20px;
+}
+
+.div_error {
+  text-align: center;
+  color: red;
 }

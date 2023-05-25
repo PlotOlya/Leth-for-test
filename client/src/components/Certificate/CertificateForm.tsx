@@ -1,17 +1,15 @@
-import React, { memo, useCallback, useState } from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useForm } from "react-hook-form";
-import "./Certificate.css";
-import { Certificate } from "./type/Certificate";
-import store, { RootState, useAppDispatch } from "../../store";
-import { addCertificate } from "./CertificateSlice";
-import { CertificateData } from "./type/CertificateData";
-import YooKassa from "../YooKassa/YooKassa";
 
-// type CertificateProps = {
+import React, { memo, useCallback, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useForm } from 'react-hook-form';
+import './Certificate.css';
+import { Certificate } from './type/Certificate';
+import store, { RootState, useAppDispatch } from '../../store';
+import { addCertificate } from './CertificateSlice';
+import { CertificateData } from './type/CertificateData';
+import YooKassa from '../YooKassa/YooKassa';
 
-// };
 
 function CertificateForm(): JSX.Element {
   const { register, handleSubmit, reset } = useForm<CertificateData>();
@@ -41,6 +39,7 @@ function CertificateForm(): JSX.Element {
   const handlerClick = (): void => {
     setToggle(!toggle);
   };
+
   // fsafas
   return (
     <div id="certificate" className="main_certificate">
@@ -50,18 +49,18 @@ function CertificateForm(): JSX.Element {
           onClick={() => setModalSertificat(!modalSertificat)}
           className="button_certificate"
         >
-          {" "}
-          Оформить сертификат{" "}
+          {' '}
+          Оформить сертификат{' '}
         </button>
       </div>
 
       <form
-        className={!toggle ? "modal_certificat" : "modal_certificat_diactive"}
+        className={!toggle ? 'modal_certificat' : 'modal_certificat_diactive'}
         onSubmit={handleSubmit(submitFormValues)}
       >
         <div
           className={
-            modalSertificat ? "modal_data_activ" : "modal_data_deactiv"
+            modalSertificat ? 'modal_data_activ' : 'modal_data_deactiv'
           }
         >
           <label htmlFor="name">
@@ -70,7 +69,7 @@ function CertificateForm(): JSX.Element {
               type="text"
               className="modal_inp"
               placeholder="Имя"
-              {...register("name", { required: true })}
+              {...register('name', { required: true })}
               name="name"
             />
           </label>
@@ -80,7 +79,7 @@ function CertificateForm(): JSX.Element {
               type="email"
               className="modal_inp"
               placeholder="Почта"
-              {...register("email", { required: true })}
+              {...register('email', { required: true })}
               name="email"
             />
           </div>
@@ -90,7 +89,7 @@ function CertificateForm(): JSX.Element {
               type="text"
               className="modal_inp"
               placeholder="Сумма"
-              {...register("amount", { required: true })}
+              {...register('amount', { required: true })}
               name="amount"
             />
           </div>
