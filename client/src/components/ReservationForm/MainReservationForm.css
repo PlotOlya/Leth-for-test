@@ -9,6 +9,12 @@
     transition: all 0.2s;
 }
 
+.reservation-text {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 40px;
+}
+
 .reservationFormer_inactive {
     display: flex;
     flex-direction: column;
@@ -48,7 +54,7 @@
 
 .message {
     font-size: 10px;
-    color: darkred;
+    color: orange;
     margin: 15px 5px 20px;
 }
 
@@ -62,4 +68,79 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-top: 30px;
+}
+
+@media screen and (min-width: 768px) {
+
+    .reservationFormer_active {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        background-color: rgb(29, 29, 29);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        transition: all 0.2s;
+        margin-top: 25px;
+    }
+    
+    .reservationFormLabel {
+        display: flex;
+        flex-direction: column;
+        font-size: 25px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: rgb(226, 226, 226);
+    }
+
+    .reservationFormInput {
+        border: 1px solid grey;
+        margin-bottom: 15px;
+        margin-top: 10px;
+        width: 360px;
+        padding-left: 5px;
+
+    }
+
+    .reservation-text {
+        text-align: center;
+        font-size: 20px;
+        margin-top: 60px;
+        margin-bottom: 15px;
+    }
+
+    .reservationFormButton {
+        width: 360px;
+        font-size: 25px;
+        color: rgb(226, 226, 226);
+        border: 1px solid grey;
+        padding: 5px 15px 5px;
+        margin-bottom: 30px;
+        margin-top: 20px;
+    }
+
+    .reservationFormButton:hover {
+        width: 360px;
+        font-size: 25px;
+        color: orange;
+        border: 1px solid orange;
+        padding: 5px 15px 5px;
+        margin-bottom: 30px;
+        margin-top: 20px;
+    }
+
+    .message {
+        font-size: 25px;
+        color: orange;
+        margin: 15px 5px 20px;
+    }
+
+    .message-close-button {
+        width: 30px;
+        margin-left: 5px;
+        vertical-align: super;
+        font-size: 25px;
+        color: red;
+    }
 }

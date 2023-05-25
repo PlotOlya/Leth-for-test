@@ -8,8 +8,12 @@ import "./Menu.css"
 function Menu(): JSX.Element {
 
   return (
-    <div id="menu">
-      <Link className="show-menu-btn" to="/menu">Открыть меню</Link>
+    <div className="main-menu-container" id="menu">
+      <h2>Меню</h2>
+      <div className='menu-btn-container'>
+        <Link className="show-menu-btn" to="/menu">Открыть меню</Link>
+        <Link className="show-menu-btn" to="/barmenu">Открыть барную карту</Link>
+      </div>
     </div>
   );
 }

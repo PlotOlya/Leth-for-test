@@ -17,6 +17,7 @@ import AdminAuthorization from "../components/AdminAuthorization/AdminAuthorizat
 
 
 import NotFoundPage from "../components/NotFoundPage/NotFoundPage";
+import BarMenuList from "../components/BarMenuList/BarMenuList";
 
 
 
@@ -30,6 +31,7 @@ function App(): JSX.Element {
       {/* <Route path="/sertif" element={<Certificate />} /> */}
       <Route path="/" element={<Layout />} />
       <Route path="/menu" element={<MenuList />} />
+      <Route path="/barmenu" element={<BarMenuList />} />
       <Route path="/adminAut" element={<AdminAuthorization />} />
       <Route path="/*" element={<NotFoundPage/>} />
 

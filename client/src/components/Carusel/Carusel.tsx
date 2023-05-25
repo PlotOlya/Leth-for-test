@@ -1,10 +1,14 @@
 import React, { memo } from "react";
 import Carousel from "react-bootstrap/Carousel";
+import './Carusel.css'
 
 function Caruselview(): JSX.Element {
   return (
-    <div>
-      <Carousel>
+    <div className='carousel-container'>
+      <div className='carousel-title'>
+        <h2 className='carousel-title-text'>Интерьер ресторана LETH</h2>
+      </div>
+      <Carousel indicators={false} >
         <Carousel.Item interval={2000}>
           <img
             className="d-block w-100"

@@ -58,6 +58,7 @@
     cursor: pointer;
 }
 
+
 ul li a {
     color: white;
     text-decoration: none;
@@ -65,6 +66,10 @@ ul li a {
     padding-right: 15px;
     margin-top: 5px;
 
+}
+
+ul li a:hover {
+    color:orange
 }
 
 ul {

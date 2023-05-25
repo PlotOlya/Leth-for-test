@@ -10,7 +10,7 @@ import MainReservationData from "./types/MainReservationData";
 function MainReservationForm(): JSX.Element {
   const dispatch = useAppDispatch();
 
-  const [message, setMessage] = useState<boolean>(false);
+  const [message, setMessage] = useState<boolean>(true);
   const [toggleRegisterForm, setToggleRegisterForm] = useState<boolean>(false)
 
   const { register, handleSubmit, reset } = useForm<MainReservationData>();
@@ -49,8 +49,9 @@ function MainReservationForm(): JSX.Element {
   }
 
   return (
-    <div className='form_container'>
-    <button id='mainReservationForm' className="button_certificate" type='button' onClick={registerFormHandle}>ЗАБРОНИРОВАТЬ</button>
+    <div id='mainReservationForm' className='form_container'>
+      <span className="reservation-text">Уважаемые гости нашего ресторана! Обратите внимание, что посещение нашего ресторана ограничено 2 часами!</span>
+    <button  className="button_certificate" type='button' onClick={registerFormHandle}>ЗАБРОНИРОВАТЬ</button>
 
     <form  onSubmit={handleSubmit(submitHandler)} className={toggleRegisterForm ? 'reservationFormer_active' : 'reservationFormer_inactive'}>
       <label className="reservationFormLabel" htmlFor="name">
@@ -158,7 +159,7 @@ function MainReservationForm(): JSX.Element {
       {message && (
         <div className="message">
           Ваша заявка отправлена, ожидайте подтверждения от ресторана
-          <button onClick={closeButtonHandle} type='button' className='message-close-button'>❌</button>
+          <button onClick={closeButtonHandle} type='button' className='message-close-button'>x</button>
         </div>
       )}
     </form>

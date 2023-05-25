@@ -1,0 +1,24 @@
+.carousel-title {
+    display: flex;
+    align-items: center;
+    margin: 40px 10px 20px;
+    text-align: center;
+}
+
+.carousel-title-text {
+    font-size: 40px;
+
+}
+
+@media screen and (min-width: 768px) {
+    .carousel-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 50px 10px 30px;
+    }
+
+    .carousel-title-text {
+        font-size: 50px;
+    }
+}

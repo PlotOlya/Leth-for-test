@@ -8,7 +8,6 @@ function MapContakt(): JSX.Element {
 
   return (
     <div className="map-container">
-      Тут должна быть карта API
       {/* <iframe
         // frameBorder="0"
         // scrolling="no"
@@ -18,9 +17,9 @@ function MapContakt(): JSX.Element {
         aria-label="Санкт-Петербург, набережная реки фонтанки, 82"
       /> */}
       {/* <div id="first_map" className='map' /> */}
-      <YMaps>
+      <YMaps >
     <div>
-      <Map defaultState={{ center: [59.926467, 30.332020], zoom: 15 }}>
+      <Map width='600px' className="map"  defaultState={{ center: [59.926467, 30.332020], zoom: 15 }}>
       <Placemark geometry={[59.926467, 30.332020]} options={{preset: 'islands#blackStretchyIcon'}}/>
       </Map>
     </div>
