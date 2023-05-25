@@ -57,7 +57,10 @@ function ReservationTable({
     title: reserv.name,
     start_time: new Date(reserv.date),
     end_time: addHours(new Date(reserv.date)),
+    color: 'rgb(0, 0, 0)',
   }));
+
+  // const itemRenderer = ({ getItemProps }) => {const color = itemContext.selected && itemContext.};
 
   const today = Date.now();
   const handleModal = (itemId: number): void => {
@@ -72,11 +75,11 @@ function ReservationTable({
       defaultTimeStart={moment().add(-6, 'hour')}
       defaultTimeEnd={moment().add(6, 'hour')}
       onItemClick={handleModal}
-      className="text-dark"
+      className={styles.myItem}
     >
       <TimelineMarkers className="text-dark">
         <TodayMarker />
-        <CustomMarker date={today} className="text-dark"/>
+        <CustomMarker date={today} className="text-dark" />
 
         <CursorMarker />
       </TimelineMarkers>

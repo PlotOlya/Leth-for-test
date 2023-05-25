@@ -3,15 +3,17 @@ const mainRouter = require('express').Router();
 const { Table, Reservation } = require('../../db/models');
 const mailer = require('../../nodemailer');
 
-// запрос массива времени
+// запрос массива резервов и столов
 mainRouter.get('/', async (req, res) => {
   try {
-    const tablesList = await Table.findAll();
-    const reservationList = await Reservation.findAll();
-    if (tablesList && reservationList) {
-      res.status(200).json({ tablesList, reservationList });
-    } else {
-      res.status(400).json({ success: false, message: 'Записи не найдены' });
+    if (req.session.adminId) {
+      const tablesList = await Table.findAll();
+      const reservationList = await Reservation.findAll();
+      if (tablesList && reservationList) {
+        res.status(200).json({ tablesList, reservationList });
+      } else {
+        res.status(400).json({ success: false, message: 'Записи не найдены' });
+      }
     }
   } catch (err) {
     console.error(err);
@@ -19,26 +21,54 @@ mainRouter.get('/', async (req, res) => {
   }
 });
 
+// создание нового резерва от админа
+mainRouter.post('/', async (req, res) => {
+  try {
+    const { name, phoneNumber, guests, email, date, table, comment, status } =
+      req.body;
+    if (req.session.adminId) {
+      const newReserv = await Reservation.create({
+        name,
+        phoneNumber,
+        guests,
+        email,
+        date,
+        table,
+        comment,
+        status,
+      });
+      res.status(201).json(newReserv);
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error.message);
+  }
+});
+
 mainRouter.put('/:id/update', async (req, res) => {
   try {
     const { name, phoneNumber, guests, email, date, table, comment, status } =
       req.body;
-    const reservOne = await Reservation.findByPk(Number(req.params.id));
-    // if (!reservOne || req.session.adminId) {
-    //   res.status(404).json({ success: false, message: 'Запись не найдена' });
-    //   return;
-    // }
-    if (reservOne) {
-      reservOne.name = name;
-      reservOne.phoneNumber = phoneNumber;
-      reservOne.guests = guests;
-      reservOne.email = email;
-      reservOne.date = date;
-      reservOne.table = table;
-      reservOne.comment = comment;
-      reservOne.status = status;
-      await reservOne.save();
-      res.status(200).json(reservOne);
+    let reservOne;
+    if (req.session.adminId) {
+      reservOne = await Reservation.findByPk(Number(req.params.id));
+      if (!reservOne) {
+        res.status(404).json({ success: false, message: 'Запись не найдена' });
+        return;
+      }
+
+      if (reservOne) {
+        reservOne.name = name;
+        reservOne.phoneNumber = phoneNumber;
+        reservOne.guests = guests;
+        reservOne.email = email;
+        reservOne.date = date;
+        reservOne.table = table;
+        reservOne.comment = comment;
+        reservOne.status = status;
+        await reservOne.save();
+        res.status(200).json(reservOne);
+      }
     } else {
       res
         .status(400)
@@ -52,13 +82,13 @@ mainRouter.put('/:id/update', async (req, res) => {
 
 mainRouter.post('/:id/sendmail', (req, res) => {
   try {
-    console.log('req.body', req.body);
     const fromAdmin = req.body;
-    const message = {
-      to: fromAdmin.email,
-      subject: 'Бронирование в ресторане Leth',
+    if (req.session.adminId) {
+      const message = {
+        to: fromAdmin.email,
+        subject: 'Бронирование в ресторане Leth',
 
-      html: `<h1>Бронирование в ресторане Leth</h1>
+        html: `<h1>Бронирование в ресторане Leth</h1>
       <p>Здравствуйте, ${req.body.name}.</p>
 
       
@@ -77,13 +107,10 @@ mainRouter.post('/:id/sendmail', (req, res) => {
       
       <p><i>Просим обратить внимание на то, что посещение ограничено 2 часами!</i></p>
       `,
-    };
-
-    console.log(message);
-
-    mailer(message);
-    console.log(mailer(message));
-    res.status(200).json({ success: true, message: 'Письмо отправлено' });
+      };
+      mailer(message);
+      res.status(200).json({ success: true, message: 'Письмо отправлено' });
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json(error.message);
@@ -92,7 +119,6 @@ mainRouter.post('/:id/sendmail', (req, res) => {
 
 mainRouter.delete('/:id/deletereserv', async (req, res) => {
   try {
-    console.log('req.params.id', req.params.id);
     let reservDel;
     if (req.session.adminId) {
       reservDel = await Reservation.destroy({
@@ -101,7 +127,6 @@ mainRouter.delete('/:id/deletereserv', async (req, res) => {
         },
       });
     }
-    console.log('reservDel', reservDel);
     if (reservDel === 0) {
       res.status(400).json({ success: false, message: 'Нет такого резерва' });
     }

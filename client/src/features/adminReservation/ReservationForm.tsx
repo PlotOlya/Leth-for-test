@@ -10,30 +10,26 @@ import { useAppDispatch } from '../../store';
 import { addReservation } from '../../components/MainReservationForm/mainReservationFormSlice';
 import MainReservationData from '../../components/MainReservationForm/types/MainReservationData';
 import styles from './styles.module.css';
+import { createNewReserv } from './reservaionSlice';
+import { OneReservation } from './types/OneReservation';
+import { transformFormDataToReservation } from '../../utils/date';
+import { ReservationData } from './types/ReservationData';
 
 function ReservationForm(): JSX.Element {
   const dispatch = useAppDispatch();
 
   const [message, setMessage] = useState<boolean>(false);
 
-  const { register, handleSubmit, reset } = useForm<MainReservationData>();
+  const { register, handleSubmit, reset } = useForm<ReservationData>();
 
-  const submitHandler: SubmitHandler<MainReservationData> = async (
-    data
+  const submitHandler: SubmitHandler<ReservationData> = async (
+    value
   ): Promise<void> => {
-    const { name, number, email, table, date, time, guests, comment } = data;
+    value.table = Number(value.table);
+    value.guests = Number(value.guests);
+    value.status = false;
     const dispatchResult = await dispatch(
-      addReservation({
-        name,
-        number,
-        email,
-        date,
-        time,
-        guests,
-        comment,
-        table,
-        status: false,
-      })
+      createNewReserv(transformFormDataToReservation(value))
     );
 
     if (addReservation.fulfilled.match(dispatchResult)) {
@@ -73,7 +69,7 @@ function ReservationForm(): JSX.Element {
           <Form.Group className="mb-3" controlId="formGridCity">
             <Form.Label>Phone</Form.Label>
             <Form.Control
-              {...register('number')}
+              {...register('phoneNumber')}
               type="phone"
               placeholder="Phone"
             />
@@ -86,7 +82,11 @@ function ReservationForm(): JSX.Element {
         </Row>
 
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridCity" className='form-control-sm'>
+          <Form.Group
+            as={Col}
+            controlId="formGridCity"
+            className="form-control-sm"
+          >
             <Form.Label>Date</Form.Label>
             <Form.Control {...register('date')} type="date" />
           </Form.Group>

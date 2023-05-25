@@ -6,6 +6,7 @@ import {
 } from '@reduxjs/toolkit';
 import { type RootState } from '../../store';
 import {
+  apiCreateReserv,
   apiDeleteReserv,
   apiInitTable,
   apiSendMessage,
@@ -29,6 +30,17 @@ export const initReservationsTable = createAsyncThunk(
     }
 
     return timeTable;
+  }
+);
+
+export const createNewReserv = createAsyncThunk(
+  'adminReservation/createNewReservation',
+  async (reserv: OneReservation) => {
+    const newReserv = await apiCreateReserv(reserv);
+    if (!newReserv) {
+      throw new Error('Ошибка создания резерва');
+    }
+    return newReserv;
   }
 );
 
@@ -72,6 +84,9 @@ const timeTableSlice = createSlice({
       .addCase(initReservationsTable.fulfilled, (state, action) => {
         state.tablesList = action.payload.tablesList;
         state.reservationList = action.payload.reservationList;
+      })
+      .addCase(createNewReserv.fulfilled, (state, action) => {
+        state.reservationList.push(action.payload);
       })
       .addCase(updateReserv.fulfilled, (state, action) => {
         state.reservationList = state.reservationList.map((reserv) =>

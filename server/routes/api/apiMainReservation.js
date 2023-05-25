@@ -1,10 +1,11 @@
 const mainReservationRouter = require('express').Router();
 const { Reservation } = require('../../db/models');
 
+// Принимает резерв от клиента
 mainReservationRouter.post('/', async (req, res) => {
   try {
     const data = req.body;
-
+    // IDOR???
     const newReservation = await Reservation.create({
       name: data.name,
       phoneNumber: data.number,
@@ -12,7 +13,6 @@ mainReservationRouter.post('/', async (req, res) => {
       date: `${data.date} ${data.time}`,
       guests: data.guests,
       comment: data.comment,
-      table: data.table,
       status: data.status,
     });
     res.status(201).json(newReservation);

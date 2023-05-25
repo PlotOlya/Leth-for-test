@@ -36,7 +36,7 @@ td {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  z-index: 85 !important; 
+  z-index: 85 !important;
 }
 
 .disable {
@@ -77,4 +77,8 @@ td {
 
 .rightCol {
   width: 40%;
+}
+
+.myItem {
+  color: rgb(0, 0, 0) !important;
 }

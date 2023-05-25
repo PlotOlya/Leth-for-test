@@ -48,7 +48,6 @@ function ReservationModal({
   const watch1 = watch();
 
   useEffect(() => {
-    console.log('insert values into form');
     reset(activeReserv && transformReservationToFormData(activeReserv));
   }, [activModalReserv, activeReserv, reset]);
 
@@ -65,11 +64,11 @@ function ReservationModal({
     dispatch(sendMail(transformFormDataToReservation(watch1)));
   };
 
+  // удаление резерва
   const handleDeleteReserv = useCallback(
     (id: ReservId): void => {
-      console.log('id handler', id);
-
       dispatch(deleteReserv(id));
+      setShowModal(false);
     },
     [dispatch]
   );
@@ -174,27 +173,27 @@ function ReservationModal({
             </Form.Group>
 
             <Button
-              className=' my-2'
+              className=" my-2"
               onClick={() => setShowModal(false)}
-              variant="primary"
-              type="submit"
-            >
-              Добавить запись
-            </Button>
-            <Button
-            className='my-2'
-              style={{ backgroundColor: 'black' }}
-              onClick={handleSendMail}
               variant="primary"
               type="submit"
             >
               Подвердить бронь
             </Button>
             <Button
+              className="my-2"
+              style={{ backgroundColor: 'black' }}
+              onClick={handleSendMail}
+              variant="primary"
+              type="button"
+            >
+              Отправить уведомление
+            </Button>
+            <Button
               style={{ backgroundColor: 'red' }}
               onClick={() => handleDeleteReserv(activeReserv.id)}
               variant="primary"
-              type="submit"
+              type="button"
             >
               Удалить бронь
             </Button>

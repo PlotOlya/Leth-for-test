@@ -18,7 +18,6 @@ function MainReservationForm(): JSX.Element {
   const submitHandler: SubmitHandler<MainReservationData> = async (
     data
   ): Promise<void> => {
-    console.log(data);
     const { name, number, table, email, date, time, guests, comment } = data;
     const dispatchResult = await dispatch(
       addReservation({

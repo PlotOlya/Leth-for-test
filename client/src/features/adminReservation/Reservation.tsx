@@ -1,11 +1,9 @@
 import React, { memo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
-import ReservationDate from './ReservationDate';
 import ReservationTable from './ReservationTable';
 import ReservationList from './ReservationList';
 import ReservationModal from './ReservationModal';
-import MainReservationForm from '../../components/MainReservationForm/MainReservationForm';
 import ReservationForm from './ReservationForm';
 import styles from './styles.module.css';
 
