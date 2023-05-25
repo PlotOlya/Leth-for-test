@@ -7,6 +7,7 @@ import './SideMenu.css';
 import { Item } from '../NavBar/types/Item';
 
 
+
 type SideMenuProps = {
   items: Item[];
   active: boolean;

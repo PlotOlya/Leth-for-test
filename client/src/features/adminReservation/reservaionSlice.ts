@@ -5,6 +5,7 @@ import {
   createSlice,
 } from '@reduxjs/toolkit';
 import { type RootState } from '../../store';
+
 import {
   apiCreateReserv,
   apiDeleteReserv,
@@ -13,6 +14,7 @@ import {
   apiUpdateTable,
 } from './adminApi';
 import { OneReservation, ReservId } from './types/OneReservation';
+
 import { ReservationState } from './types/ReservationState';
 import { Tables } from './types/Tables';
 
@@ -65,6 +67,7 @@ export const sendMail = createAsyncThunk(
   }
 );
 
+
 export const deleteReserv = createAsyncThunk(
   'adminReservation/deleteReserv',
   async (id: ReservId) => {
@@ -74,6 +77,7 @@ export const deleteReserv = createAsyncThunk(
     return id;
   }
 );
+
 
 const timeTableSlice = createSlice({
   name: 'timeTables',

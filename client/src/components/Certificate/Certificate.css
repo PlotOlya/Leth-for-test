@@ -8,9 +8,19 @@
   border: 1px solid grey;
   width: 250px;
 }
-.modal_certificate_activ {
-  color: white;
-  background-color: beige !important;
+
+
+.button_certificate:hover{
+  margin-top: 40px;
+  border: 1px solid orange;
+  width: 250px;
+  color: orange;
+}
+
+.modal_certificate_activ{
+   color: white ;
+   background-color: beige !important;  
+
 }
 .modal_data_activ {
   /* background-color: beige !important; */
@@ -19,6 +29,11 @@
 .modal_data_activ {
   /* background-color: beige !important; */
   display: block;
+
+.modal_data_activ {
+  /* background-color: beige !important; */
+  display: block;
+
 }
 .modal_data_deactiv, .modal_certificat_diactive{
   display: none;
@@ -34,10 +49,34 @@
 }
 
 .design_button {
-  font-size: 15px;
-  margin: 12px auto;
-  text-align: center;
-  border: 2px solid white;
-  padding: 10px;
-  width: 200px;
+
+font-size: 15px;
+margin: 8px auto;
+text-align: center;
+border: 2px solid white;
+padding: 10px;
+width: 200px;
+}
+
+@media screen and (min-width: 768px) {
+
+  .button_certificate{
+    font-size: 25px;
+    margin-top: 40px;
+    border: 1px solid grey;
+    width: 360px;
+    padding: 5px 20px 5px;
+  
+  }
+
+  .button_certificate:hover{
+    margin-top: 40px;
+    border: 1px solid orange;
+    width: 250px;
+    color: orange;
+    width: 360px;
+    padding: 5px 20px 5px;
+  }
+
+
 }

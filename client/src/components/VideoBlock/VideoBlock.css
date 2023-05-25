@@ -12,16 +12,37 @@
 .buttonWrapper {
   position: absolute;
   width: 100%;
-  bottom: 30px;
+  bottom: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .videoButton {
+  font-size: 25px;
+  font-weight: bold;
   border: 1px solid white;
   letter-spacing: 1px;
   padding: 5px 20px 5px;
   color: white;
   font-size: 20px;
+}
+
+.videoButton:hover {
+  color: orange;
+  background-color: rgb(29, 29, 29);
+  border-color: orange;
+}
+
+@media screen and (min-width: 768px) {
+
+  .videoButton {
+    font-size: 35px !important;
+    border: 1px solid white;
+    letter-spacing: 1px;
+    padding: 5px 30px 5px;
+    color: white;
+    font-size: 20px;
+  }
+
 }
