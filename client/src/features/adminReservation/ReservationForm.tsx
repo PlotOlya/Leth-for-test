@@ -86,7 +86,7 @@ function ReservationForm(): JSX.Element {
         </Row>
 
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridCity">
+          <Form.Group as={Col} controlId="formGridCity" className='form-control-sm'>
             <Form.Label>Date</Form.Label>
             <Form.Control {...register('date')} type="date" />
           </Form.Group>
