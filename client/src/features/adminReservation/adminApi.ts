@@ -1,4 +1,6 @@
-import { OneReservation } from './types/OneReservation';
+
+import { OneReservation, ReservId } from './types/OneReservation';
+
 import { ReservationState } from './types/ReservationState';
 
 export async function apiInitTable(): Promise<ReservationState> {
@@ -42,3 +44,13 @@ export async function apiSendMessage(reserv: OneReservation): Promise<string> {
   }
   return res.json();
 }
+
+
+export async function apiDeleteReserv(id: ReservId): Promise<void> {
+  console.log('id fetch', id);
+
+  await fetch(`/api/admin/reservation/${id}/deletereserv`, {
+    method: 'DELETE',
+  });
+}
+

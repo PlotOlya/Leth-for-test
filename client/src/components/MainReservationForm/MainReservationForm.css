@@ -9,6 +9,7 @@
     transition: all 0.2s;
 }
 
+
 .reservation-text {
     text-align: center;
     font-size: 12px;
@@ -68,6 +69,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     padding-top: 30px;
 }
 
@@ -143,4 +145,5 @@
         font-size: 25px;
         color: red;
     }
+
 }

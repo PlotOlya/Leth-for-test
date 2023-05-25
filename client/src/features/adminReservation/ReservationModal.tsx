@@ -1,7 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
+
 import React, { memo, useEffect } from 'react';
+
+import React, { memo, useCallback, useEffect } from 'react';
+
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -16,10 +20,16 @@ import {
 import styles from './styles.module.css';
 import { ReservationData } from './types/ReservationData';
 import {
+
+  deleteReserv,
+
   selectReservationById,
   sendMail,
   updateReserv,
 } from './reservaionSlice';
+
+import { ReservId } from './types/OneReservation';
+
 
 type Props = {
   showModal: boolean;
@@ -62,6 +72,17 @@ function ReservationModal({
   ): void => {
     dispatch(sendMail(transformFormDataToReservation(watch1)));
   };
+
+
+  const handleDeleteReserv = useCallback(
+    (id: ReservId): void => {
+      console.log('id handler', id);
+
+      dispatch(deleteReserv(id));
+    },
+    [dispatch]
+  );
+
 
   return (
     <div
@@ -181,7 +202,9 @@ function ReservationModal({
             </Button>
             <Button
               style={{ backgroundColor: 'red' }}
-              // onClick={handleSendMail}
+
+              onClick={() => handleDeleteReserv(activeReserv.id)}
+
               variant="primary"
               type="submit"
             >

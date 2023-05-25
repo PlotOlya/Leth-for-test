@@ -22,7 +22,6 @@ function MapContakt(): JSX.Element {
       </Map>
     </div>
     </YMaps>
-
     </div>
   );
 }

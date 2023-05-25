@@ -5,7 +5,9 @@ import AdminNavBar from '../features/AdminNavBar/AdminNavBar';
 import Reservation from '../features/adminReservation/Reservation';
 import Layout from '../components/Layout/Layout';
 import MenuList from '../components/MenuList/MenuList';
+
 import BarMenuList from '../components/BarMenuList/BarMenuList';
+
 import AdminAuthorization from '../components/AdminAuthorization/AdminAuthorization';
 import NotFoundPage from '../components/NotFoundPage/NotFoundPage';
 import { getUser } from '../components/AdminAuthorization/AdminAuthorizationSlice';
@@ -36,9 +38,11 @@ function App(): JSX.Element {
 
       <Route path="/" element={<Layout />} />
       <Route path="/menu" element={<MenuList />} />
+
       <Route path="/barmenu" element={<BarMenuList />} />
       <Route path="/adminAut" element={<AdminAuthorization />} />
       <Route path="/*" element={<NotFoundPage/>} />
+
     </Routes>
   );
 }
