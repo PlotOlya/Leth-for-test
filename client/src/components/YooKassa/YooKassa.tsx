@@ -27,8 +27,9 @@ function YooKassa({
               className="ym-input ym-sum-input ym-required-input"
               type="number"
               step="any"
-              style={{ color: 'black' }}
+              style={{ color: 'black' , opacity: 0}}
               defaultValue={certificate}
+
             />
           </div>
           <button type="submit" className="ym-btn-pay ym-result-price">

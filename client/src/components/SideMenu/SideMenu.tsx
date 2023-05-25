@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/self-closing-comp */
-import React, { useState, memo } from 'react';
-import './SideMenu.css';
-import { Item } from '../NavBar/types/Item';
+import React, { useState, memo } from "react";
+import "./SideMenu.css";
+import { Item } from "../Navbar/types/Item";
 
 type SideMenuProps = {
   items: Item[];
@@ -19,7 +19,7 @@ function SideMenu({ items, active, setActive }: SideMenuProps): JSX.Element {
   return (
     <div
       onClick={closeMenuHandle}
-      className={active ? 'sideMenu active' : 'sideMenu'}
+      className={active ? "sideMenu active" : "sideMenu"}
     >
       <div className="blur" />
       <div className="menu_content" onClick={(e) => e.stopPropagation()}>
