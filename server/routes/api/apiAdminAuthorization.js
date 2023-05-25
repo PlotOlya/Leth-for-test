@@ -1,8 +1,8 @@
-const adminAuthorization = require('express').Router();
-const bcrypt = require('bcrypt');
-const { Admin } = require('../../db/models');
+const adminAuthorization = require("express").Router();
+const bcrypt = require("bcrypt");
+const { Admin } = require("../../db/models");
 
-adminAuthorization.post('/login', async (req, res) => {
+adminAuthorization.post("/login", async (req, res) => {
   const { login, password } = req.body;
   try {
     const existingAdmin = await Admin.findOne({ where: { login } });
@@ -15,7 +15,7 @@ adminAuthorization.post('/login', async (req, res) => {
     } else {
       res
         .status(401)
-        .json({ error: 'Такого пользователя нет либо пароли не совпадают' });
+        .json({ error: "Такого пользователя нет либо пароли не совпадают" });
     }
   } catch (error) {
     console.error(error);
@@ -23,12 +23,11 @@ adminAuthorization.post('/login', async (req, res) => {
   }
 });
 
-// ???????????????????????
-adminAuthorization.get('/admin', (req, res) => {
+adminAuthorization.get("/admin", (req, res) => {
   try {
-    console.log('res.locals', res.locals);
+    console.log("res.locals", res.locals);
     const { admin } = res.locals;
-    console.log('admin', admin);
+    console.log("admin", admin);
     if (admin) {
       res.json({
         isLoggedIn: true,
@@ -40,7 +39,7 @@ adminAuthorization.get('/admin', (req, res) => {
     } else {
       res
         .status(404)
-        .json({ isLoggedIn: false, message: 'Пользователь отсутствует' });
+        .json({ isLoggedIn: false, message: "Пользователь отсутствует" });
     }
   } catch (error) {
     console.error(error);
@@ -48,7 +47,7 @@ adminAuthorization.get('/admin', (req, res) => {
   }
 });
 
-adminAuthorization.post('/logout', (req, res) => {
+adminAuthorization.post("/logout", (req, res) => {
   try {
     req.session.destroy(() => {
       res.status(200).json({ success: true });

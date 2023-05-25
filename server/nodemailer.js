@@ -14,8 +14,8 @@ const transporter = nodemailer.createTransport(
     },
   },
   {
-    from: 'Mailer Test <max_nazarow@mail.ru>', // ваша почта яндекс
-  }
+    from: ' Leth <max_nazarow@mail.ru>', // ваша почта яндекс
+  },
 );
 
 const mailer = (message) => {

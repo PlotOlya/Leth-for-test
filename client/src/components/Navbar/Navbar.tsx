@@ -12,7 +12,7 @@ const items: Item[] = [
   { value: 'КОНТАКТЫ', href: '#contacts', id: 6 },
 ];
 
-function Navbar(): JSX.Element {
+function NavBar(): JSX.Element {
   const [menuActive, setMenuActive] = useState(false);
 
   const MenuActiveHandler = (): void => {
@@ -35,4 +35,4 @@ function Navbar(): JSX.Element {
   );
 }
 
-export default memo(Navbar);
+export default memo(NavBar);

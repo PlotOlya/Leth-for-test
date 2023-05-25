@@ -1,3 +1,4 @@
+
 import React, { memo, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -8,6 +9,7 @@ import store, { RootState, useAppDispatch } from '../../store';
 import { addCertificate } from './CertificateSlice';
 import { CertificateData } from './type/CertificateData';
 import YooKassa from '../YooKassa/YooKassa';
+
 
 function CertificateForm(): JSX.Element {
   const { register, handleSubmit, reset } = useForm<CertificateData>();
