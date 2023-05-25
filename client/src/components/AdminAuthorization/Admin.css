@@ -19,6 +19,7 @@
 .admin_inp:hover::placeholder{
     border-bottom: 1px solid rgb(216, 132, 24);
     color: rgb(216, 132, 24);
+    
 }
 
 .admin_inp{
@@ -38,4 +39,6 @@
 }
 .admin_button:active{
     transform: scale(0.95);
+    
 }
+
