@@ -16,7 +16,7 @@ function AdminNavBar(): JSX.Element {
 
       const result = await dispatch(adminLogout());
       if (adminLogout.fulfilled.match(result)) {
-        navigate('/admin/adminAuth');
+        navigate('/adminAuth');
       }
     },
     [dispatch, navigate]

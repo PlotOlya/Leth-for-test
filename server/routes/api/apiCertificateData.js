@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-sequences */
-// const { v4: uuidv4 } = require('uuid');
 
 const certificateRoute = require('express').Router();
 
@@ -40,8 +39,6 @@ certificateRoute.post('/', async (req, res) => {
     };
 
     mailer(message);
-    console.log(mailer(message));
-    
     res.status(200).json(certificateList);
   } catch (error) {
     console.error(error);
@@ -51,13 +48,15 @@ certificateRoute.post('/', async (req, res) => {
 
 certificateRoute.get('/', async (req, res) => {
   try {
-    const certificateList = await Certificate.findAll();
-    if (certificateList) {
-      res.status(200).json(certificateList);
-    } else {
-      res
-        .status(400)
-        .json({ success: false, message: 'Сертификаты не найдены' });
+    if (req.session.adminId) {
+      const certificateList = await Certificate.findAll();
+      if (!certificateList) {
+        res
+          .status(400)
+          .json({ success: false, message: 'Сертификаты не найдены' });
+      } else {
+        res.status(200).json(certificateList);
+      }
     }
   } catch (error) {
     console.erroror(error);
@@ -67,26 +66,25 @@ certificateRoute.get('/', async (req, res) => {
 
 certificateRoute.put('/:id', async (req, res) => {
   try {
-    const currentCert = await Certificate.findByPk(Number(req.params.id));
-
-    const {
-      id, name, email, amount, numberCertificates,
-    } = req.body;
-    if (!currentCert) {
-      res
-        .status(404)
-        .json({ success: false, message: 'Нет такого сертификата' });
-      return;
-    }
-    if (currentCert) {
-      (currentCert.id = id),
-      (currentCert.name = name),
-      (currentCert.email = email),
-      (currentCert.amount = amount),
-      (currentCert.numberCertificates = numberCertificates),
-      (currentCert.status = false);
-      await currentCert.save();
-      res.status(200).json(currentCert);
+    const { id, name, email, amount, numberCertificates } = req.body;
+    if (req.session.adminId) {
+      const currentCert = await Certificate.findByPk(Number(req.params.id));
+      if (!currentCert) {
+        res
+          .status(404)
+          .json({ success: false, message: 'Нет такого сертификата' });
+        return;
+      }
+      if (currentCert) {
+        (currentCert.id = id),
+          (currentCert.name = name),
+          (currentCert.email = email),
+          (currentCert.amount = amount),
+          (currentCert.numberCertificates = numberCertificates),
+          (currentCert.status = false);
+        await currentCert.save();
+        res.status(200).json(currentCert);
+      }
     }
   } catch (error) {
     console.erroror(error);

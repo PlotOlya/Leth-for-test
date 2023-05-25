@@ -12,6 +12,22 @@ export async function apiInitTable(): Promise<ReservationState> {
   return res.json();
 }
 
+export async function apiCreateReserv(
+  reserv: OneReservation
+): Promise<OneReservation> {
+  const res = await fetch('/api/admin/reservation', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(reserv),
+  });
+
+  if (!res.ok) {
+    const error = await res.json();
+    throw new Error(error.message);
+  }
+  return res.json();
+}
+
 export async function apiUpdateTable(
   reserv: OneReservation
 ): Promise<OneReservation> {
@@ -29,14 +45,11 @@ export async function apiUpdateTable(
 }
 
 export async function apiSendMessage(reserv: OneReservation): Promise<string> {
-  console.log('async fetch', reserv);
-
   const res = await fetch(`/api/admin/reservation/${reserv.id}/sendmail`, {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify(reserv),
   });
-  console.log('res', res);
 
   if (res.status >= 400) {
     const { error } = await res.json();
