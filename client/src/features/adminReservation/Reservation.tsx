@@ -23,15 +23,19 @@ function Reservation(): JSX.Element {
       />
       <div className={styles.tableTwoCol}>
         <div className={styles.leftCol}>
+          <h3>Список заявок на резерв</h3>
           {reservationList.length > 0
             ? reservationList.map((reserv) => (
                 <div key={reserv.id} data-id={reserv.id}>
-                  <ReservationList
-                    oneReserv={reserv}
-                    setShowModal={setShowModal}
-                    activModalReserv={activModalReserv}
-                    setActivModalReserv={setActivModalReserv}
-                  />
+                  {reserv.table ? (
+                    []
+                  ) : (
+                    <ReservationList
+                      oneReserv={reserv}
+                      setShowModal={setShowModal}
+                      setActivModalReserv={setActivModalReserv}
+                    />
+                  )}
                 </div>
               ))
             : []}

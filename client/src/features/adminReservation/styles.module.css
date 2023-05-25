@@ -69,6 +69,7 @@ td {
   height: 100vh;
   overflow: auto;
   padding: 10px;
+  text-align: center;
 }
 
 .rightCol {

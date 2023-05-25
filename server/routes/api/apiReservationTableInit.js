@@ -84,7 +84,6 @@ mainRouter.post('/:id/sendmail', (req, res) => {
     mailer(message);
     console.log(mailer(message));
     res.status(200).json({ success: true, message: 'Письмо отправлено' });
-
   } catch (error) {
     console.error(error);
     res.status(500).json(error.message);

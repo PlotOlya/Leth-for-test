@@ -44,6 +44,7 @@ function ReservationForm(): JSX.Element {
 
   return (
     <div className="form_container">
+      <h3>Форма бронирования</h3>
       <Form
         onSubmit={handleSubmit(submitHandler)}
         className={styles.modalform}
@@ -129,7 +130,7 @@ function ReservationForm(): JSX.Element {
         </Form.Group>
 
         <Button variant="primary" type="submit">
-          Button
+          Добавить резерв
         </Button>
       </Form>
     </div>

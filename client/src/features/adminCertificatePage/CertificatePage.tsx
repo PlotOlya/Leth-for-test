@@ -2,14 +2,19 @@ import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
 import {
+  clearFindeCertificate,
+  clearFindeCertificateError,
   findeCertificate,
   initCertificate,
+  selectErrorFindCertificate,
   updateCertificate,
 } from '../../components/Certificate/CertificateSlice';
 import CertificateItem from './CertificateItem';
 import './CertificateItem.css';
 
 function CertificatePage(): JSX.Element {
+  const error = useSelector(selectErrorFindCertificate);
+
   const dispatch = useAppDispatch();
 
   const oneCertificat = useSelector(
@@ -19,12 +24,17 @@ function CertificatePage(): JSX.Element {
   const [inputVal, setInputVal] = useState('');
   const handelInput: React.ChangeEventHandler<HTMLInputElement> = (e): void => {
     setInputVal(e.target.value);
+    dispatch(clearFindeCertificateError());
   };
 
   const handlerSubmit = useCallback(
     async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
       event.preventDefault();
-      await dispatch(findeCertificate(inputVal));
+      dispatch(clearFindeCertificate());
+      const dispatchResult = await dispatch(findeCertificate(inputVal));
+      if (findeCertificate.fulfilled.match(dispatchResult)) {
+        setInputVal('');
+      }
     },
     [dispatch, inputVal]
   );
@@ -34,7 +44,7 @@ function CertificatePage(): JSX.Element {
     if (oneCertificat) {
       setStatusVal(false);
       dispatch(updateCertificate(oneCertificat));
-      setInputVal('');
+      dispatch(clearFindeCertificate());
     }
   };
 
@@ -54,7 +64,7 @@ function CertificatePage(): JSX.Element {
         />
         <button type="submit">Найти</button>
       </form>
-      {oneCertificat && (
+      {oneCertificat ? (
         <div className="found-certificate">
           <div>Имя: {oneCertificat?.name}</div>
           <div>Номер сертификата:{oneCertificat?.numberCertificates}</div>
@@ -66,6 +76,10 @@ function CertificatePage(): JSX.Element {
             Использовать
           </button>
         </div>
+      ) : !oneCertificat ? (
+        error && <div className="div_error">{error}</div>
+      ) : (
+        []
       )}
 
       <CertificateItem />

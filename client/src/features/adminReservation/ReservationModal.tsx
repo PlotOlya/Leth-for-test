@@ -142,7 +142,6 @@ function ReservationModal({
             <Form.Group as={Col} controlId="formGridZip">
               <Form.Label>Table</Form.Label>
               <Form.Control
-                // value={date}
                 {...register('table', {
                   required: true,
                 })}
@@ -177,6 +176,14 @@ function ReservationModal({
               type="submit"
             >
               Подвердить бронь
+            </Button>
+            <Button
+              style={{ backgroundColor: 'red' }}
+              // onClick={handleSendMail}
+              variant="primary"
+              type="submit"
+            >
+              Удалить бронь
             </Button>
           </Row>
         </Form>

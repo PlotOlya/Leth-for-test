@@ -8,11 +8,13 @@ import {
   apiUpdateCertificate,
 } from './api';
 import { Certificate } from './type/Certificate';
+import { RootState } from '../../store';
 
 const initialState: CertificateState = {
   certificateList: [],
   currentCertificate: undefined,
   oneCertificate: undefined,
+  certificateError: undefined,
 };
 
 export const addCertificate = createAsyncThunk(
@@ -60,28 +62,30 @@ export const updateCertificate = createAsyncThunk(
 const certificateSlice = createSlice({
   name: 'certificates',
   initialState,
-  reducers: {},
+  reducers: {
+    clearFindeCertificateError(state) {
+      state.certificateError = undefined;
+    },
+    clearFindeCertificate(state) {
+      state.oneCertificate = undefined;
+    },
+  },
   extraReducers(builder) {
     return builder
       .addCase(addCertificate.fulfilled, (state, action) => {
-        // console.log("slise ->", action.payload);
-
         state.certificateList.push(action.payload);
         state.currentCertificate = action.payload.amount;
-        console.log('state', state.currentCertificate);
       })
       .addCase(initCertificate.fulfilled, (state, action) => {
-        // console.log("slise init->", action.payload);
         state.certificateList = action.payload;
       })
       .addCase(findeCertificate.fulfilled, (state, action) => {
-        // console.log("slise init->", action.payload);
-        console.log(state.oneCertificate);
         state.oneCertificate = action.payload;
-        console.log(state.oneCertificate);
+      })
+      .addCase(findeCertificate.rejected, (state, action) => {
+        state.certificateError = action.error.message;
       })
       .addCase(updateCertificate.fulfilled, (state, action) => {
-        // console.log("slise init->", action.payload);
         state.certificateList = state.certificateList.map((el) =>
           el.id === action.payload.id ? action.payload : el
         );
@@ -93,3 +97,10 @@ const certificateSlice = createSlice({
 });
 
 export default certificateSlice.reducer;
+
+export const { clearFindeCertificateError, clearFindeCertificate } =
+  certificateSlice.actions;
+
+export const selectErrorFindCertificate = (
+  state: RootState
+): string | undefined => state.certificates.certificateError;
