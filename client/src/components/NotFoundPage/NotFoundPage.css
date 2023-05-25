@@ -4,7 +4,7 @@
   position: absolute;
   background-color: black;
   height: 100vh;
-  /* z-index: 3; */
+
   display: flex;
   flex-direction: column;
 }
@@ -16,13 +16,11 @@
 }
 
 .notFound-text {
-  /* position: absolute; */
   margin-top: 17px;
   color: white;
   text-align: initial;
   margin-left: 40px;
   font-size: 13px;
-  /* z-index: 6; */
 }
 
 .go-back-btn {
@@ -33,8 +31,9 @@
   box-sizing: border-box;
   padding: 5px;
   max-width: 195px;
-  /* z-index: 6; */
+
   align-self: center;
+  text-decoration: none;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -43,11 +42,9 @@
   .notFound-container {
     margin: 0 auto;
     text-align: center;
-    /* position: relative; */
+
     background-color: black;
     width: 100%;
-    /* height: 100%; */
-    /* z-index: 3; */
     display: flex;
     flex-direction: row;
   }
@@ -59,33 +56,35 @@
   }
 
   .notFound-text {
-    /* position: absolute; */
+
     margin-top: 17px;
     color: white;
     text-align: initial;
     margin-left: 40px;
     font-size: 13px;
-    /* z-index: 6; */
+
     width: 600px;
   }
-
+  .notFound-text p {
+    text-align: initial;
+  }
   .go-back-btn {
-    font-size: 12px;
+    font-size: 17px;
     text-align: center;
     border: 2px solid white;
     color: white;
     box-sizing: border-box;
-    padding: 5px;
+    padding: 7px;
     max-width: 195px;
-    /* z-index: 7; */
     align-self: center;
+    margin-top: 20px;
   }
 
   .notFound-img {
     width: 100%;
     margin-bottom: 50px;
     margin-top: 50px;
-    float:right;
+    float: right;
   }
   .img_food {
     width: 500px;
