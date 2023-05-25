@@ -16,14 +16,13 @@ const adminAuthorization = require('./routes/api/apiAdminAuthorization');
 serverConfig(app);
 
 // routing
-
 app.use('/api/auth', adminAuthorization);
-
 app.use('/api/admin/reservation', ReservationTable);
+app.use('/api/admin/certificate', certificateTable);
+
 app.use('/api/certificate', certificateTable);
 app.use('/api/findeCertificate', findeCertificate);
 app.use('/api/mainReservation', mainReservation);
-app.use('/api/admin/certificate', certificateTable);
 
 try {
   app.listen(PORT, () => {

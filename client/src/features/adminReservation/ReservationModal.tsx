@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -15,7 +15,11 @@ import {
 } from '../../utils/date';
 import styles from './styles.module.css';
 import { ReservationData } from './types/ReservationData';
-import { selectReservationById, updateReserv } from './reservaionSlice';
+import {
+  selectReservationById,
+  sendMail,
+  updateReserv,
+} from './reservaionSlice';
 
 type Props = {
   showModal: boolean;
@@ -28,24 +32,18 @@ function ReservationModal({
   setShowModal,
   activModalReserv,
 }: Props): JSX.Element {
-  const [date, setDate] = useState('');
   const dispatch = useAppDispatch();
-
-  // ???????????????
-  const handleDate = (event: any): void => {
-    setDate(event.target.value);
-    // console.log(event.target.value);
-  };
 
   const activeReserv = useSelector((state: RootState) =>
     selectReservationById(state, activModalReserv)
   );
 
-  const { register, handleSubmit, reset } = useForm<ReservationData>({
+  const { register, handleSubmit, watch, reset } = useForm<ReservationData>({
     resetOptions: {
       keepDirtyValues: true, // user-interacted input will be retained
     },
   });
+  const watch1 = watch();
 
   useEffect(() => {
     console.log('insert values into form');
@@ -55,10 +53,15 @@ function ReservationModal({
   const formSubmit = (value: ReservationData): void => {
     value.table = Number(value.table);
     dispatch(updateReserv(transformFormDataToReservation(value)));
-    console.log('form submitted', value);
   };
 
   const onError = (errors: any, e: any): void => console.log(errors, 'evnt', e);
+
+  const handleSendMail = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void => {
+    dispatch(sendMail(transformFormDataToReservation(watch1)));
+  };
 
   return (
     <div
@@ -105,8 +108,6 @@ function ReservationModal({
               <Form.Label>Date</Form.Label>
               <Form.Control
                 {...register('date', { required: true })}
-                onChange={(event) => handleDate(event)}
-                // value={date}
                 type="date"
               />
             </Form.Group>
@@ -149,23 +150,35 @@ function ReservationModal({
               />
             </Form.Group>
           </Row>
+          <Row className="mb-3">
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label>Example textarea</Form.Label>
+              <Form.Control
+                {...register('comment', { required: true })}
+                as="textarea"
+                rows={3}
+              />
+            </Form.Group>
 
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label>Example textarea</Form.Label>
-            <Form.Control
-              {...register('comment', { required: true })}
-              as="textarea"
-              rows={3}
-            />
-          </Form.Group>
-
-          <Button
-            onClick={() => setShowModal(false)}
-            variant="primary"
-            type="submit"
-          >
-            Button
-          </Button>
+            <Button
+              onClick={() => setShowModal(false)}
+              variant="primary"
+              type="submit"
+            >
+              Добавить запись
+            </Button>
+            <Button
+              style={{ backgroundColor: 'black' }}
+              onClick={handleSendMail}
+              variant="primary"
+              type="submit"
+            >
+              Подвердить бронь
+            </Button>
+          </Row>
         </Form>
       )}
     </div>

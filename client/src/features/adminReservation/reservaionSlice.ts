@@ -5,7 +5,7 @@ import {
   createSlice,
 } from '@reduxjs/toolkit';
 import { type RootState } from '../../store';
-import { apiInitTable, apiUpdateTable } from './adminApi';
+import { apiInitTable, apiSendMessage, apiUpdateTable } from './adminApi';
 import { OneReservation } from './types/OneReservation';
 import { ReservationState } from './types/ReservationState';
 import { Tables } from './types/Tables';
@@ -35,6 +35,16 @@ export const updateReserv = createAsyncThunk(
       throw new Error('Не удалось загрузить данные ');
     }
     return newReserv;
+  }
+);
+
+export const sendMail = createAsyncThunk(
+  'adminReservation/sendMail',
+  async (reserv: OneReservation) => {
+    const sendmail = await apiSendMessage(reserv);
+    if (!sendmail) {
+      throw new Error('Сообщение не отправлено');
+    }
   }
 );
 
