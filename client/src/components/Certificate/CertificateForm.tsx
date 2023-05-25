@@ -36,7 +36,13 @@ function CertificateForm(): JSX.Element {
     },
     [dispatch]
   );
-// fsafas
+
+  const [toggle, setToggle] = useState(false);
+
+  const handlerClick = (): void => {
+    setToggle(!toggle);
+  };
+  // fsafas
   return (
     <div id="certificate" className="main_certificate">
       <div>
@@ -49,8 +55,9 @@ function CertificateForm(): JSX.Element {
           Оформить сертификат{" "}
         </button>
       </div>
+
       <form
-        className="modal_certificat"
+        className={!toggle ? "modal_certificat" : "modal_certificat_diactive"}
         onSubmit={handleSubmit(submitFormValues)}
       >
         <div
@@ -88,13 +95,17 @@ function CertificateForm(): JSX.Element {
               name="amount"
             />
           </div>
-          {/* <KassaAPI/> */}
-          <button type="submit" className="design_button">
+
+          <button
+            type="submit"
+            className="design_button"
+            onClick={handlerClick}
+          >
             Оплатить
-          </button> 
-           <YooKassa certificate={certificate} />
+          </button>
         </div>
       </form>
+      {toggle && <YooKassa certificate={certificate} />}
     </div>
   );
 }
