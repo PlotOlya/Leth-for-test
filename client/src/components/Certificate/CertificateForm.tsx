@@ -8,6 +8,7 @@ import store, { RootState, useAppDispatch } from "../../store";
 import { addCertificate } from "./CertificateSlice";
 import { CertificateData } from "./type/CertificateData";
 import YooKassa from "../YooKassa/YooKassa";
+import KassaAPI from "../KassaAPI/KassaAPI";
 
 // type CertificateProps = {
 
@@ -87,10 +88,11 @@ function CertificateForm(): JSX.Element {
               name="amount"
             />
           </div>
+          {/* <KassaAPI/> */}
           <button type="submit" className="design_button">
-            Оформить
-          </button>
-          <YooKassa certificate={certificate} />
+            Оплатить
+          </button> 
+           <YooKassa certificate={certificate} />
         </div>
       </form>
     </div>

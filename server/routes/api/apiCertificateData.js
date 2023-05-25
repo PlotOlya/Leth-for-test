@@ -22,19 +22,23 @@ certificateRoute.post('/', async (req, res) => {
 
     const message = {
       to: req.body.email,
-      subject: 'Сертификат',
-      text: `Поздравляем!
+      subject: 'Сертификат в Ресторан Leth',
+      html: ` <h1>Поздравляем с приобретением сертификата</h1>
 
-      Вам предоставляется сертификат на посещение нашего ресторана. Это прекрасная возможность насладиться отличной кухней и атмосерой нашего заведения.
+      <p><b>${req.body.name}</b> вам предоставляется сертификат на посещение нашего ресторана.</p>
+      <p>
+      <div><p>На сумму ${req.body.amount}</p></div>
+      Это прекрасная возможность насладиться отличной кухней и атмосерой нашего заведения.
+      Мы гарантируем, что вы будете удовлетворены нашим сервисом и качеством блюд.
+      Пожалуйста, свяжитесь с нами, чтобы заброниров столик и воспользоваться своим сертификатом.</p>
+      <p>Номер вашего сертификата: <b>${certificateList.numberCertificates}</b></p>
       
-      Вы можете выбрать любое блюдо из нашего меню и получить его абсолютно бесплат. Мы гарантируем, что вы будете удовлетворены нашим сервисом и качеством блю.
+      <p>С уважением,
+      Команда ресторана <a href='http://localhost:3000/'>Leth</a>.</p>
       
-      Сертификат действителен в течение месяца с момента его получения. Пожалуйста, свяжитесь с нами, чтобы заброниров столик и воспользоваться своим сертификатом.
-      
-      С уважением,
-      Команда ресторана.
       `,
     };
+
     mailer(message);
 
     res.status(200).json(certificateList);
@@ -64,7 +68,9 @@ certificateRoute.put('/:id', async (req, res) => {
   try {
     const currentCert = await Certificate.findByPk(Number(req.params.id));
 
-    const { id, name, email, amount, numberCertificates } = req.body;
+    const {
+      id, name, email, amount, numberCertificates,
+    } = req.body;
     if (!currentCert) {
       res
         .status(404)
@@ -73,11 +79,11 @@ certificateRoute.put('/:id', async (req, res) => {
     }
     if (currentCert) {
       (currentCert.id = id),
-        (currentCert.name = name),
-        (currentCert.email = email),
-        (currentCert.amount = amount),
-        (currentCert.numberCertificates = numberCertificates),
-        (currentCert.status = false);
+      (currentCert.name = name),
+      (currentCert.email = email),
+      (currentCert.amount = amount),
+      (currentCert.numberCertificates = numberCertificates),
+      (currentCert.status = false);
       await currentCert.save();
       res.status(200).json(currentCert);
     }

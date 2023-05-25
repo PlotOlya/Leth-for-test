@@ -57,22 +57,34 @@ mainRouter.post('/:id/sendmail', (req, res) => {
     const message = {
       to: fromAdmin.email,
       subject: 'Бронирование в ресторане Leth',
-      text: `Здравствуйте, ${fromAdmin.name}.
-      
-      Ваш зарпрос на бронирование подтвержден. Мы с нетерпение ждем встречи с вами.
 
-      Детали бронирования:
+      html: `<h1>Бронирование в ресторане Leth</h1>
+      <p>Здравствуйте, ${req.body.name}.</p>
+
       
+      <p>Ваш зарпрос на бронирование <b>подтвержден</b>. Мы с нетерпение ждем встречи с вами.</p>
+
+
+     <p> <b>Детали бронирования:</b>
+     <br/>
+     ${req.body.name}
+     <br/>
+     ${req.body.guests}
+     <br/>
+     ${req.body.date}
+     </p>
+
       
-      
-      Просим обратить внимание на то, что посещение ограничено 2 часами!
+      <p><i>Просим обратить внимание на то, что посещение ограничено 2 часами!</i></p>
       `,
     };
+
     console.log(message);
 
     mailer(message);
     console.log(mailer(message));
     res.status(200).json({ success: true, message: 'Письмо отправлено' });
+
   } catch (error) {
     console.error(error);
     res.status(500).json(error.message);
