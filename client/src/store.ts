@@ -2,14 +2,15 @@ import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import timeTableSlice from './features/adminReservation/reservaionSlice';
 import CertificateSlice from './components/Certificate/CertificateSlice';
-import  MainReservationSlice  from './components/ReservationForm/mainReservationFormSlice'
-
+import MainReservationSlice from './components/MainReservationForm/mainReservationFormSlice';
+import AdminAuthorizationSlice from './components/AdminAuthorization/AdminAuthorizationSlice';
 
 const store = configureStore({
   reducer: {
     adminReservation: timeTableSlice,
-    certificates: CertificateSlice ,
-    mainReservationForm: MainReservationSlice
+    certificates: CertificateSlice,
+    mainReservationForm: MainReservationSlice,
+    adminAuth: AdminAuthorizationSlice,
   },
 });
 

@@ -1,34 +1,61 @@
-const adminAuthorization = require('express').Router();
-const bcrypt = require('bcrypt');
-const { Admin } = require('../../db/models');
+const adminAuthorization = require("express").Router();
+const bcrypt = require("bcrypt");
+const { Admin } = require("../../db/models");
 
-adminAuthorization.post('/', async (req, res) => {
+adminAuthorization.post("/login", async (req, res) => {
   const { login, password } = req.body;
   try {
-    const existingUser = await Admin.findOne({ where: { login } });
-
-    // проверяем, что такой пользователь есть в БД и пароли совпадают
+    const existingAdmin = await Admin.findOne({ where: { login } });
     if (
-      existingUser
-      && (await bcrypt.compare(password, existingUser.password))
+      existingAdmin &&
+      (await bcrypt.compare(password, existingAdmin.password))
     ) {
-      // кладём id нового пользователя в хранилище сессии (логиним пользователя)
-      req.session.user = existingUser;
-      res.json({ id: existingUser.id, login: existingUser.login });
+      req.session.adminId = existingAdmin.id;
+      res.json({ id: existingAdmin.id, login: existingAdmin.login });
     } else {
       res
         .status(401)
-        .json({ error: 'Такого пользователя нет либо пароли не совпадают' });
+        .json({ error: "Такого пользователя нет либо пароли не совпадают" });
     }
   } catch (error) {
-    res.status(500).json({ error: 'I(server) fell down' });
+    console.error(error);
+    res.status(500).json(error);
   }
 });
 
-adminAuthorization.post('/logout', (req, res) => {
-  req.session.destroy(() => {
-    res.json({ success: true });
-  });
+adminAuthorization.get("/admin", (req, res) => {
+  try {
+    console.log("res.locals", res.locals);
+    const { admin } = res.locals;
+    console.log("admin", admin);
+    if (admin) {
+      res.json({
+        isLoggedIn: true,
+        admin: {
+          id: admin.id,
+          name: admin.login,
+        },
+      });
+    } else {
+      res
+        .status(404)
+        .json({ isLoggedIn: false, message: "Пользователь отсутствует" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+});
+
+adminAuthorization.post("/logout", (req, res) => {
+  try {
+    req.session.destroy(() => {
+      res.status(200).json({ success: true });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
 });
 
 module.exports = adminAuthorization;

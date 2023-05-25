@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/self-closing-comp */
+
 import React, { useState, memo } from 'react';
 import './SideMenu.css';
 import { Item } from '../Navbar/types/Item';
+
 
 type SideMenuProps = {
   items: Item[];
@@ -29,7 +31,9 @@ function SideMenu({ items, active, setActive }: SideMenuProps): JSX.Element {
         <ul>
           {items.map((item) => (
             <li key={item.id}>
-              <a onClick={closeMenuHandle} href={item.href}>{item.value}</a>
+              <a onClick={closeMenuHandle} href={item.href}>
+                {item.value}
+              </a>
             </li>
           ))}
         </ul>

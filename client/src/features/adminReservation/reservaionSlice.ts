@@ -3,12 +3,10 @@ import {
   createAsyncThunk,
   createSelector,
   createSlice,
-  PayloadAction,
 } from '@reduxjs/toolkit';
-import { RootState } from '../../store';
-import { apiInitTable, apiUpdateTable } from './api';
+import { type RootState } from '../../store';
+import { apiInitTable, apiSendMessage, apiUpdateTable } from './adminApi';
 import { OneReservation } from './types/OneReservation';
-import { ReservationData } from './types/ReservationData';
 import { ReservationState } from './types/ReservationState';
 import { Tables } from './types/Tables';
 
@@ -17,10 +15,13 @@ const initialState: ReservationState = {
   reservationList: [],
 };
 
-export const initTimeTable = createAsyncThunk(
+export const initReservationsTable = createAsyncThunk(
   'adminReservation/initTimeTable',
   async () => {
     const timeTable = await apiInitTable();
+    if (!timeTable) {
+      throw new Error('Не удолось загрузить данные');
+    }
 
     return timeTable;
   }
@@ -30,7 +31,20 @@ export const updateReserv = createAsyncThunk(
   'adminReservation/updateReserv',
   async (value: OneReservation) => {
     const newReserv = await apiUpdateTable(value);
+    if (!newReserv) {
+      throw new Error('Не удалось загрузить данные ');
+    }
     return newReserv;
+  }
+);
+
+export const sendMail = createAsyncThunk(
+  'adminReservation/sendMail',
+  async (reserv: OneReservation) => {
+    const sendmail = await apiSendMessage(reserv);
+    if (!sendmail) {
+      throw new Error('Сообщение не отправлено');
+    }
   }
 );
 
@@ -40,7 +54,7 @@ const timeTableSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     return builder
-      .addCase(initTimeTable.fulfilled, (state, action) => {
+      .addCase(initReservationsTable.fulfilled, (state, action) => {
         state.tablesList = action.payload.tablesList;
         state.reservationList = action.payload.reservationList;
       })

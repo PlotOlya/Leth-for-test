@@ -11,7 +11,7 @@ import Timeline, {
 import moment from 'moment';
 import { useAppDispatch } from '../../store';
 import {
-  initTimeTable,
+  initReservationsTable,
   selectReservationList,
   selectTablesList,
 } from './reservaionSlice';
@@ -36,7 +36,7 @@ function ReservationTable({
   console.log('резервы', reservationList);
 
   useEffect(() => {
-    dispatch(initTimeTable());
+    dispatch(initReservationsTable());
   }, [dispatch]);
 
   const groups = tablesList.map((table) => ({
@@ -56,7 +56,7 @@ function ReservationTable({
     group: reserv.table,
     title: reserv.name,
     start_time: new Date(reserv.date),
-    end_time: addHours(reserv.date),
+    end_time: addHours(new Date(reserv.date)),
   }));
 
   const today = Date.now();
@@ -72,10 +72,11 @@ function ReservationTable({
       defaultTimeStart={moment().add(-6, 'hour')}
       defaultTimeEnd={moment().add(6, 'hour')}
       onItemClick={handleModal}
+      className="text-dark"
     >
-      <TimelineMarkers>
+      <TimelineMarkers className="text-dark">
         <TodayMarker />
-        <CustomMarker date={today} />
+        <CustomMarker date={today} className="text-dark"/>
 
         <CursorMarker />
       </TimelineMarkers>

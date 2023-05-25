@@ -1,4 +1,3 @@
-import { StringDataType } from 'sequelize';
 import { OneReservation } from '../features/adminReservation/types/OneReservation';
 import { ReservationData } from '../features/adminReservation/types/ReservationData';
 
@@ -11,16 +10,16 @@ export function formatDate(argumentDate: Date): string {
 }
 
 export function formatTime(argumentDate: Date): string {
-  const hours = new Date(argumentDate).getHours();
-  const minutes = new Date(argumentDate).getMinutes();
+  const hours = String(argumentDate.getHours()).padStart(2, '0');
+  const minutes = String(argumentDate.getMinutes()).padStart(2, '0');
 
   return `${hours}:${minutes}`;
 }
 
-export function formateDateServer(date: string, time: string): any {
+export function formateDateServer(date: string, time: string): string {
   const [year, month, day] = date.split('-');
   const [hours, minutes] = time.split(':');
-  const combineDate = `${year}-${month}-${day}T${hours}:${minutes}:00.000Z`;
+  const combineDate = `${year}-${month}-${day} ${hours}:${minutes}:00`;
   return combineDate;
 }
 
@@ -35,8 +34,8 @@ export function transformReservationToFormData(
     phoneNumber,
     guests,
     email,
-    date: formatDate(date),
-    time: formatTime(date),
+    date: formatDate(new Date(date)),
+    time: formatTime(new Date(date)),
     comment,
     table,
     status,

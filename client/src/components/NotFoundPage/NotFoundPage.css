@@ -4,29 +4,23 @@
   position: absolute;
   background-color: black;
   height: 100vh;
-  z-index: -2;
+
   display: flex;
   flex-direction: column;
-  
-
 }
 .notFound-img {
-   position: absolute;
-   z-index: -1;
-   width: 100%;
-   margin: 0;
-   
- 
+  position: absolute;
+  z-index: 4;
+  width: 100%;
+  margin: 0;
 }
 
 .notFound-text {
-  /* position: absolute; */
   margin-top: 17px;
   color: white;
   text-align: initial;
   margin-left: 40px;
   font-size: 13px;
-  z-index: 1;
 }
 
 .go-back-btn {
@@ -37,6 +31,63 @@
   box-sizing: border-box;
   padding: 5px;
   max-width: 195px;
-  z-index: 1;
+
   align-self: center;
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 1000px) {
+  /* Стили для компьютерной версии */
+
+  .notFound-container {
+    margin: 0 auto;
+    text-align: center;
+
+    background-color: black;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .notFound-img {
+    margin-bottom: 50px;
+    margin-top: 50px;
+    margin-left: 205px;
+  }
+
+  .notFound-text {
+
+    margin-top: 17px;
+    color: white;
+    text-align: initial;
+    margin-left: 40px;
+    font-size: 13px;
+
+    width: 600px;
+  }
+  .notFound-text p {
+    text-align: initial;
+  }
+  .go-back-btn {
+    font-size: 17px;
+    text-align: center;
+    border: 2px solid white;
+    color: white;
+    box-sizing: border-box;
+    padding: 7px;
+    max-width: 195px;
+    align-self: center;
+    margin-top: 20px;
+  }
+
+  .notFound-img {
+    width: 100%;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    float: right;
+  }
+  .img_food {
+    width: 500px;
+    height: 600px;
+  }
 }

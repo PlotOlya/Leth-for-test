@@ -1,11 +1,9 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
-import React, { memo } from "react";
-import './MapContact.css'
+import React, { memo } from 'react';
+import './MapContact.css';
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 
-
 function MapContakt(): JSX.Element {
-
   return (
     <div className="map-container">
       {/* <iframe
@@ -30,4 +28,3 @@ function MapContakt(): JSX.Element {
 }
 
 export default memo(MapContakt);
- 
