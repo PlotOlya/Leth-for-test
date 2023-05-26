@@ -43,7 +43,7 @@ function ReservationList({
 
   return (
     <Card>
-      <Card.Header as="h5">Featured</Card.Header>
+      {/* <Card.Header as="h5">Заявка на бронирование</Card.Header> */}
       <Card.Body>
         {/* <Card.Title></Card.Title> */}
         <Card.Text>
