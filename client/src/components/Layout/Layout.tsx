@@ -1,11 +1,10 @@
 import React from 'react';
 import './Layout.css';
 import Footer from '../Footer/Footer';
-import Navbar from '../NavBar/Navbar';
+import Navbar from '../NavBar/NavBar';
 import Contacts from '../Contacts/Contacts';
 
 
-import Navbar from '../Navbar/Navbar';
 
 
 import VideoBlock from '../VideoBlock/VideoBlock';

@@ -1,6 +1,6 @@
 import React, { useState, memo } from 'react';
 import SideMenu from '../SideMenu/SideMenu';
-import './Navbar.css';
+import './NavBar.css';
 import { Item } from './types/Item';
 
 const items: Item[] = [

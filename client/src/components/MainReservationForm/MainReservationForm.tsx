@@ -48,11 +48,11 @@ function MainReservationForm(): JSX.Element {
   };
 
   return (
-    <div className="form_container">
+    <div className="form_container" id="mainReservationForm">
       <div className='reservation-text'>Уважаемые гости нашего ресторана! Просим обратить внимание на то, что посещение ограничено 2 часами!</div>
 
       <button
-        id="mainReservationForm"
+        
         className="button_certificate"
         type="button"
         onClick={registerFormHandle}
