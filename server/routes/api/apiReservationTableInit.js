@@ -93,16 +93,16 @@ mainRouter.post('/:id/sendmail', (req, res) => {
       <p>Здравствуйте, ${req.body.name}.</p>
 
       
-      <p>Ваш зарпрос на бронирование <b>подтвержден</b>. Мы с нетерпение ждем встречи с вами.</p>
+      <p>Ваш запрос на бронирование <b>подтвержден</b>. Мы с нетерпением ждем встречи с вами!</p>
 
 
      <p> <b>Детали бронирования:</b>
      <br/>
-     ${req.body.name}
+     Имя: ${req.body.name}
      <br/>
-     ${req.body.guests}
+     Гостей: ${req.body.guests}
      <br/>
-     ${req.body.date}
+     Дата визита: ${req.body.date}
      </p>
 
       

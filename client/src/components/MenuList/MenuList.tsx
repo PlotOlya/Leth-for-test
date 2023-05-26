@@ -44,14 +44,14 @@ function MenuList(): JSX.Element {
       <button type="button" className="menu-button" onClick={closeMenu}>
         Закрыть меню
       </button>
-      {pageNumber > 1 && (
-        <button type="button" onClick={changePageBack} className="menu-button">
-          Предыдущая страница
-        </button>
-      )}
       {pageNumber < numPages && (
         <button type="button" className="menu-button" onClick={changePageNext}>
           Следующая страница
+        </button>
+      )}
+      {pageNumber > 1 && (
+        <button type="button" onClick={changePageBack} className="menu-button">
+          Предыдущая страница
         </button>
       )}
     </div>

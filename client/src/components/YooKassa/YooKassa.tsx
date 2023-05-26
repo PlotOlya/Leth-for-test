@@ -20,7 +20,7 @@ function YooKassa({
         acceptCharset="utf-8"
       >
         <button type="submit" className="design_button">
-          <span className="ym-text-crop">Подтвердить оплату</span>
+          <span className="ym-text-crop">Оплатить</span>
           <span className="ym-price-output" />
         </button>
         <input

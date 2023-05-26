@@ -3,6 +3,7 @@
   opacity: 65%;
   margin-top: 50px;
   object-fit: cover;
+  height: 1000px;
 }
 
 .videoWrapper {

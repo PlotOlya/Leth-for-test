@@ -42,18 +42,20 @@ function ReservationList({
   }
 
   return (
-    <Card>
+
+    <Card className='m-4'>
       {/* <Card.Header as="h5">Заявка на бронирование</Card.Header> */}
       <Card.Body>
         {/* <Card.Title></Card.Title> */}
         <Card.Text>
-          <div className='reservation-card'>
+          <div className='reservation-card' >
             <p><b>Имя гостя:</b> {oneReserv.name}&nbsp;&nbsp;&nbsp;
             <b>Номер телефона:</b> {oneReserv.phoneNumber}&nbsp;&nbsp;&nbsp;
             <b>Почта гостя: </b> {oneReserv.email}&nbsp;&nbsp;&nbsp;
             <b>Дата брони:</b> {normDate}&nbsp;&nbsp;&nbsp;
             <b>Время брони:</b> {normTime}&nbsp;&nbsp;&nbsp;
-            <b>Номер стола:</b> {oneReserv.table}</p>
+            {/* <b>Номер стола:</b> {oneReserv.table} */}
+            </p>
           </div>
           {/* {`Имя гостя: ${oneReserv.name}
            Номер телефона: ${oneReserv.phoneNumber}
@@ -68,6 +70,7 @@ function ReservationList({
         </Button>
       </Card.Body>
     </Card>
+   
   );
 }
 

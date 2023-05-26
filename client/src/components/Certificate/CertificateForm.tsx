@@ -99,7 +99,7 @@ function CertificateForm(): JSX.Element {
             className="reservationFormButton"
             onClick={handlerClick}
           >
-            Оплатить
+            Подтвердить данные
           </button>
         </div>
       </form>

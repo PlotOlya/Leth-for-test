@@ -41,7 +41,7 @@ p {
 }
 
 .activ-certificate {
-  background: rgb(105, 169, 118);
+  background: rgba(10, 171, 7, 0.246);
 }
 .certificate-container {
   width: 1200px;
