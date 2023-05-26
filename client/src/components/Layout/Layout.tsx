@@ -5,7 +5,7 @@ import Navbar from '../NavBar/Navbar';
 import Contacts from '../Contacts/Contacts';
 
 
-import Navbar from '../Navbar/Navbar';
+// import Navbar from '../Navbar/Navbar';
 
 
 import VideoBlock from '../VideoBlock/VideoBlock';

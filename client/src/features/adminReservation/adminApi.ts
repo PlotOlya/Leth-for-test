@@ -45,11 +45,13 @@ export async function apiUpdateTable(
 }
 
 export async function apiSendMessage(reserv: OneReservation): Promise<string> {
+  
   const res = await fetch(`/api/admin/reservation/${reserv.id}/sendmail`, {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify(reserv),
   });
+  console.log(res);
 
   if (res.status >= 400) {
     const { error } = await res.json();
