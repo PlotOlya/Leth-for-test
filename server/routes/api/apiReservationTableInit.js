@@ -109,6 +109,10 @@ mainRouter.post('/:id/sendmail', (req, res) => {
       <p><i>Просим обратить внимание на то, что посещение ограничено 2 часами!</i></p>
       `,
       };
+      console.log(message);
+
+      console.log(mailer(message));
+      
       mailer(message);
       res.status(200).json({ success: true, message: 'Письмо отправлено' });
     }
@@ -139,44 +143,46 @@ mainRouter.delete('/:id/deletereserv', async (req, res) => {
   }
 });
 
-mainRouter.post('/:id/sendmail', (req, res) => {
-  try {
-    console.log('req.body', req.body);
-    const fromAdmin = req.body;
-    const message = {
-      to: fromAdmin.email,
-      subject: 'Бронирование в ресторане Leth',
+// mainRouter.post('/:id/sendmail', (req, res) => {
+//   try {
+//     console.log('req.body', req.body);
 
-      html: `<h1>Бронирование в ресторане Leth</h1>
-      <p>Здравствуйте, ${req.body.name}.</p>
+//     const fromAdmin = req.body;
+    
+//     const message = {
+//       to: fromAdmin.email,
+//       subject: 'Бронирование в ресторане Leth',
 
-      
-      <p>Ваш зарпрос на бронирование <b>подтвержден</b>. Мы с нетерпение ждем встречи с вами.</p>
-
-
-     <p> <b>Детали бронирования:</b>
-     <br/>
-     ${req.body.name}
-     <br/>
-     ${req.body.guests}
-     <br/>
-     ${req.body.date}
-     </p>
+//       html: `<h1>Бронирование в ресторане Leth</h1>
+//       <p>Здравствуйте, ${req.body.name}.</p>
 
       
-      <p><i>Просим обратить внимание на то, что посещение ограничено 2 часами!</i></p>
-      `,
-    };
+//       <p>Ваш зарпрос на бронирование <b>подтвержден</b>. Мы с нетерпение ждем встречи с вами.</p>
 
-    console.log(message);
 
-    mailer(message);
-    console.log(mailer(message));
-    res.status(200).json({ success: true, message: 'Письмо отправлено' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json(error.message);
-  }
-});
+//      <p> <b>Детали бронирования:</b>
+//      <br/>
+//      ${req.body.name}
+//      <br/>
+//      ${req.body.guests}
+//      <br/>
+//      ${req.body.date}
+//      </p>
+
+      
+//       <p><i>Просим обратить внимание на то, что посещение ограничено 2 часами!</i></p>
+//       `,
+//     };
+
+//     console.log(message);
+
+//     mailer(message);
+//     console.log(mailer(message));
+//     res.status(200).json({ success: true, message: 'Письмо отправлено' });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json(error.message);
+  
+// });
 
 module.exports = mainRouter;

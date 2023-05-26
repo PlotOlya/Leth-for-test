@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
-import React, { memo, useEffect } from 'react';
+// import React, { memo, useEffect } from 'react';
 
 import React, { memo, useCallback, useEffect } from 'react';
 
@@ -20,9 +20,7 @@ import {
 import styles from './styles.module.css';
 import { ReservationData } from './types/ReservationData';
 import {
-
   deleteReserv,
-
   selectReservationById,
   sendMail,
   updateReserv,
@@ -69,6 +67,8 @@ function ReservationModal({
   const handleSendMail = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void => {
+    // console.log('nfhaoifjapdsafjfdufjfiuaidj',watch1);
+    
     dispatch(sendMail(transformFormDataToReservation(watch1)));
   };
 
@@ -193,7 +193,7 @@ function ReservationModal({
             <Button
               className="my-2"
               style={{ backgroundColor: 'black' }}
-              onClick={handleSendMail}
+              onClick={(event)=>handleSendMail(event)}
               variant="primary"
               type="button"
             >
