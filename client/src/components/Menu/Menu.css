@@ -4,7 +4,7 @@
   letter-spacing: 1px;
   padding: 5px 20px 5px;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   margin: 20px auto;
   text-align: center;
   width: 200px;
@@ -51,12 +51,13 @@
     letter-spacing: 1px;
     padding: 5px 20px 5px;
     color: white;
-    font-size: 20px;
+    font-size: 25px;
     margin: 20px auto;
     display: flex;
     justify-content: center;
     width: 360px;
-    margin: 30px 
+    margin: 30px;
+    transition: 0.5s; 
   }
 
   .show-menu-btn:hover {
@@ -64,12 +65,13 @@
     letter-spacing: 1px;
     padding: 5px 20px 5px;
     color: orange;
-    font-size: 20px;
+    font-size: 25px;
     margin: 20px auto;
     display: flex;
     justify-content: center;
     width: 360px;
-    margin: 30px; 
+    margin: 30px;
+    transition: 0.5s; 
   }
 
   .main-menu-container h2 {

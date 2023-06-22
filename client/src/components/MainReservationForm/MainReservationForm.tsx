@@ -136,7 +136,7 @@ function MainReservationForm(): JSX.Element {
             <option value="21:30">21:30</option>
             <option value="22:00">22:00</option>
             <option value="22:30">22:30</option>
-            <option value="23:00">23:00</option>
+            {/* <option value="23:00">23:00</option> */}
           </select>
         </label>
         <label className="reservationFormLabel" htmlFor="select">

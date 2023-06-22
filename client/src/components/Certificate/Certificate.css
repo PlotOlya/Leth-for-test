@@ -67,6 +67,7 @@ width: 200px;
     border: 1px solid grey;
     width: 360px;
     padding: 5px 20px 5px;
+    transition: 0.5s;
   
   }
 
@@ -77,6 +78,7 @@ width: 200px;
     color: orange;
     width: 360px;
     padding: 5px 20px 5px;
+    transition: 0.5s;
   }
 
   .reservationFormLabel {

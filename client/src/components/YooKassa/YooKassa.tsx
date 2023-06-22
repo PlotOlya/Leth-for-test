@@ -29,7 +29,7 @@ function YooKassa({
           className="ym-input ym-sum-input ym-required-input"
           type="number"
           step="any"
-          style={{ color: "black", opacity: 0 }}
+          style={{ color: "black" }}
           defaultValue={certificate}
         />
 

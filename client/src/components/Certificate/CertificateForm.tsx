@@ -85,13 +85,14 @@ function CertificateForm(): JSX.Element {
           </div>
           <div className="modal_name">
             <p className='reservationFormLabel'>Сумма сертификата</p>
-            <input
-              type="text"
+            <select
               className="reservationFormInput"
-             
               {...register('amount', { required: true })}
               name="amount"
-            />
+            >
+              <option value='3000'>3000</option>
+              <option value='5000'>5000</option>
+              </select>
           </div>
 
           <button

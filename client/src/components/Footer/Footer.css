@@ -28,6 +28,7 @@ svg {
   height: 30px;
   background-size: cover;
   margin-right: 10px;
+  
 
 }
 
@@ -40,7 +41,7 @@ svg {
 }
 
 .menu-footer-menu-container:hover .walink {
-  color: #ffa500
+  color: #ffa500;
 }
 
 .menu-footer-menu-container:hover .whatsapp {

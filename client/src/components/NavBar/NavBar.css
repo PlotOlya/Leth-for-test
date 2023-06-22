@@ -16,6 +16,7 @@
   color: #cecece;
   font-size: 12px;
   padding-left: 20px;
+  transition: 0.5s;
 }
 
 .buttonStrings:before {
@@ -29,10 +30,12 @@
   background: #cecece;
   box-shadow: 0 0.25em 0 0 #cecece, 0 0.53em 0 0 #cecece;
   transform: translate(-50%, -50%);
+  transition: 0.5s;
 }
 
 .buttonStrings:hover {
-  color: orange
+  color: orange;
+  transition: 0.5s;
 }
 
 .buttonStrings:hover::before {
@@ -46,6 +49,7 @@
   background: orange;
   box-shadow: 0 0.25em 0 0 orange, 0 0.53em 0 0 orange;
   transform: translate(-50%, -50%);
+  transition: 0.5s;
 }
 
 .sideMenuButton {
@@ -114,11 +118,14 @@
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   color:#cecece;
-  padding: 2px 25px
+  padding: 2px 25px;
+  white-space: nowrap;
+  transition: 0.5s; 
 }
 
 .wideNavbar a:hover {
   color: orange;
+  transition: 0.5s;
 }
 
   
