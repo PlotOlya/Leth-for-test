@@ -21,4 +21,8 @@
     .carousel-title-text {
         font-size: 50px;
     }
+
+    .carousel {
+        height: 45vw;
+    }
 }

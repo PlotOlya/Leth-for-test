@@ -49,7 +49,7 @@
 }
 
 .menu_header {
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: white;
     padding: 10px;
     border-bottom: 1px solid white;
@@ -62,14 +62,16 @@
 ul li a {
     color: white;
     text-decoration: none;
-    font-size: 0.7rem;
+    font-size: 1.1rem;
     padding-right: 15px;
-    margin-top: 5px;
+    margin-top: 15px;
+    transition: 0.5s;
 
 }
 
 ul li a:hover {
-    color:orange
+    color:orange;
+    transition: 0.5s;
 }
 
 ul {

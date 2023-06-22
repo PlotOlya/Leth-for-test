@@ -64,42 +64,43 @@ function CertificateForm(): JSX.Element {
           }
         >
           <label htmlFor="name">
-            <p className="modal_name">Имя</p>
+            <p className='reservationFormLabel'>Имя</p>
             <input
               type="text"
-              className="modal_inp"
-              placeholder="Имя"
+              className="reservationFormInput"
+           
               {...register('name', { required: true })}
               name="name"
             />
-          </label>
+          </label >
           <div className="modal_name">
-            <p className="">Почта</p>
+            <p className='reservationFormLabel'>Почта</p>
             <input
               type="email"
-              className="modal_inp"
-              placeholder="Почта"
+              className="reservationFormInput"
+              
               {...register('email', { required: true })}
               name="email"
             />
           </div>
           <div className="modal_name">
-            <p className="">Сумма сертификата</p>
-            <input
-              type="text"
-              className="modal_inp"
-              placeholder="Сумма"
+            <p className='reservationFormLabel'>Сумма сертификата</p>
+            <select
+              className="reservationFormInput"
               {...register('amount', { required: true })}
               name="amount"
-            />
+            >
+              <option value='3000'>3000</option>
+              <option value='5000'>5000</option>
+              </select>
           </div>
 
           <button
             type="submit"
-            className="design_button"
+            className="reservationFormButton"
             onClick={handlerClick}
           >
-            Оплатить
+            Подтвердить данные
           </button>
         </div>
       </form>

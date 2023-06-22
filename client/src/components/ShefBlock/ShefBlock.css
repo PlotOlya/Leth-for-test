@@ -5,6 +5,12 @@
 
 .ShefBlock-text, .ShefBlock-img {
     padding: 10px 30px;
+    
+}
+
+.ShefBlock-text p {
+  font-size: 1em;
+    text-align: justify;
 }
 
 .ShefBlock-title {
@@ -17,7 +23,6 @@
 
   .ShefBlock-title {
     font-size: 50px;
-    padding-top: 70px;
     margin-bottom: 50px
   }
 
@@ -26,18 +31,28 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 4em
+  }
+
+  .shefBlock-title-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
   }
 
   .ShefBlock-img {
-    flex-shrink: 0;
-    width: 700px;
+    flex-shrink: 1;
+    max-width: 700px;
   }
 
   .ShefBlock-text p {
-    width: 700px;
+    max-width: 40vw;
     font-size: 21px;
     text-align: justify;
-    margin-right: 100px;
+    margin: auto 50px;
   }
 
 }

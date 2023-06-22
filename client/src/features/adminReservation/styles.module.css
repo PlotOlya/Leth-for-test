@@ -82,3 +82,13 @@ td {
 .myItem {
   color: rgb(0, 0, 0) !important;
 }
+
+.reservation-card {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px !important;
+}
+
+.card-body {
+  margin-bottom: 20px !important;
+}

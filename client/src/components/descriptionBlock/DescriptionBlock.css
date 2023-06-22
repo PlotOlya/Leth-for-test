@@ -1,16 +1,27 @@
 .descriptionBlock-container {
   margin: 0 auto;
   padding: 30px;
+  display: flex;
+  justify-content: center;
 }
+
+.descriptionBlock-title-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .descriptionBlock-title {
   margin: 0 auto;
   text-align: center;
 }
 
 .descriptionBlock-text {
-  font-size: 15px;
-  margin: 20px auto;
-  text-align: center;
+  font-size: 1em;
+  margin-bottom: 2rem;
+  text-align: justify;
+  margin-top: 1.5rem;
 }
 
 .descriptionBlock-title h2 {
@@ -25,6 +36,8 @@
 
   .descriptionBlock-container {
     padding-bottom: 0px;
+    display: flex;
+    justify-content: center;
   }
 
   .descriptionBlock-title h2 {
@@ -32,26 +45,35 @@
     margin-top: 40px;
   }
 
+  .descriptionBlock-title-text {
+    margin: auto 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:start;
+  }
+
   .descriptionBlock-flex {
     display: flex;
     flex-direction: row;
-    margin: 60px 0px 0px 200px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .descriptionBlock-text {
-    font-size: 25px;
+    font-size: 1.5em;
     margin-right: unset;
     padding-top: 50px;
     text-align: justify;
-    width: 700px;
+    width: 40vw;
 
   }
 
   .descriptionBlock-image {
     margin: 0 auto;
     text-align: center;
-    flex-shrink: 0;
-    width:900px;
+    flex-shrink: 1;
+    max-width: 700px;
   }
 
 

@@ -26,15 +26,12 @@ function App(): JSX.Element {
   return (
     // здесь нужно сделать редирект на форму авторизации если админ не авторизован
     <Routes>
-      {admin ? (
         <Route path="/admin/" element={<AdminNavBar />}>
           <Route path="adminAuth" element={<AdminAuthorization />} />
           <Route path="reservation" element={<Reservation />} />
           <Route path="certificate" element={<CertificatePage />} />
         </Route>
-      ) : (
         <Route path="/adminAuth" element={<AdminAuthorization />} />
-      )}
 
       <Route path="/" element={<Layout />} />
       <Route path="/menu" element={<MenuList />} />

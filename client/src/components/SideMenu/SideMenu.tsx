@@ -32,7 +32,7 @@ function SideMenu({ items, active, setActive }: SideMenuProps): JSX.Element {
         <ul>
           {items.map((item) => (
             <li key={item.id}>
-              <a onClick={closeMenuHandle} href={item.href}>
+              <a className='sideMenu-links' onClick={closeMenuHandle} href={item.href}>
                 {item.value}
               </a>
             </li>

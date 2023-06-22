@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { formatDate, formatTime } from '../../utils/date';
 import { OneReservation } from './types/OneReservation';
+import './styles.module.css'
 
 type Props = {
   oneReserv: OneReservation;
@@ -30,25 +31,46 @@ function ReservationList({
     setActivModalReserv(id);
   };
 
+  const titles = {
+    name: 'Имя гостя:',
+    number: 'Номер телефона:',
+    email: 'Почта гостя:',
+    date: 'Дата брони:',
+    time: 'Время брони:',
+    table: 'Номер стола:',
+
+  }
+
   return (
-    <Card>
-      <Card.Header as="h5">Featured</Card.Header>
+
+    <Card className='m-4'>
+      {/* <Card.Header as="h5">Заявка на бронирование</Card.Header> */}
       <Card.Body>
-        <Card.Title>Special title treatment</Card.Title>
+        {/* <Card.Title></Card.Title> */}
         <Card.Text>
-          {`Имя гостя: ${oneReserv.name}
+          <div className='reservation-card' >
+            <p><b>Имя гостя:</b> {oneReserv.name}&nbsp;&nbsp;&nbsp;
+            <b>Номер телефона:</b> {oneReserv.phoneNumber}&nbsp;&nbsp;&nbsp;
+            <b>Почта гостя: </b> {oneReserv.email}&nbsp;&nbsp;&nbsp;
+            <b>Дата брони:</b> {normDate}&nbsp;&nbsp;&nbsp;
+            <b>Время брони:</b> {normTime}&nbsp;&nbsp;&nbsp;
+            {/* <b>Номер стола:</b> {oneReserv.table} */}
+            </p>
+          </div>
+          {/* {`Имя гостя: ${oneReserv.name}
            Номер телефона: ${oneReserv.phoneNumber}
            Почта гостя: ${oneReserv.email}
            Дата брони: ${normDate}
            Время брони: ${normTime}
            Номер стола: ${oneReserv.table}
-           `}
+           `} */}
         </Card.Text>
         <Button type="button" onClick={() => handleModal(oneReserv.id)}>
           Открыть резерв
         </Button>
       </Card.Body>
     </Card>
+   
   );
 }
 

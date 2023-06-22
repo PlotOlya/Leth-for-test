@@ -32,8 +32,10 @@ function ReservationForm(): JSX.Element {
       createNewReserv(transformFormDataToReservation(value))
     );
 
+    reset();
+    
     if (addReservation.fulfilled.match(dispatchResult)) {
-      reset();
+      
       setMessage((prev) => !prev);
     }
   };

@@ -20,7 +20,7 @@ function YooKassa({
         acceptCharset="utf-8"
       >
         <button type="submit" className="design_button">
-          <span className="ym-text-crop">Подтвердить оплату</span>
+          <span className="ym-text-crop">Оплатить</span>
           <span className="ym-price-output" />
         </button>
         <input
@@ -29,7 +29,7 @@ function YooKassa({
           className="ym-input ym-sum-input ym-required-input"
           type="number"
           step="any"
-          style={{ color: "black", opacity: 0 }}
+          style={{ color: "black" }}
           defaultValue={certificate}
         />
 

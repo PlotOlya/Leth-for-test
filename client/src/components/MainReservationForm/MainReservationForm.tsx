@@ -48,11 +48,11 @@ function MainReservationForm(): JSX.Element {
   };
 
   return (
-    <div className="form_container">
+    <div className="form_container" id="mainReservationForm">
       <div className='reservation-text'>Уважаемые гости нашего ресторана! Просим обратить внимание на то, что посещение ограничено 2 часами!</div>
 
       <button
-        id="mainReservationForm"
+        
         className="button_certificate"
         type="button"
         onClick={registerFormHandle}
@@ -136,7 +136,7 @@ function MainReservationForm(): JSX.Element {
             <option value="21:30">21:30</option>
             <option value="22:00">22:00</option>
             <option value="22:30">22:30</option>
-            <option value="23:00">23:00</option>
+            {/* <option value="23:00">23:00</option> */}
           </select>
         </label>
         <label className="reservationFormLabel" htmlFor="select">
