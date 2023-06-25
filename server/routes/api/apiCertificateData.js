@@ -14,7 +14,6 @@ certificateRoute.post('/', async (req, res) => {
       name: data.name,
       email: data.email,
       amount: data.amount,
-
       numberCertificates: Math.floor(Math.random() * 10000),
       status: true,
     });
