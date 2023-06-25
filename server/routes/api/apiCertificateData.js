@@ -72,7 +72,7 @@ certificateRoute.put('/:id', async (req, res) => {
       if (!currentCert) {
         res
           .status(404)
-          .json({ success: false, message: 'Нет такого сертификата' });
+          .json({ success: false, message: 'Сертификат с таким номером не существует' });
         return;
       }
       if (currentCert) {

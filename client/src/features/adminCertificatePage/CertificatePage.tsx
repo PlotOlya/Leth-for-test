@@ -70,9 +70,9 @@ function CertificatePage(): JSX.Element {
           <div>Номер сертификата:{oneCertificat?.numberCertificates}</div>
           <div>Сумма: {oneCertificat?.amount}</div>
           <div>Email: {oneCertificat?.email}</div>
-          <div>Status: {oneCertificat?.status ? 'activ' : 'pasiv'}</div>
+          <div>Статус: {oneCertificat?.status ? 'Не использован' : 'Использован'}</div>
 
-          <button type="button" onClick={handlerCklick}>
+          <button className={oneCertificat?.status? 'certificate-active' : 'certificate-nonactive'} type="button" onClick={handlerCklick}>
             Использовать
           </button>
         </div>

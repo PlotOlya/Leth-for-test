@@ -12,7 +12,7 @@ certificateRoute.post('/', async (req, res) => {
       if (!currentcertificate) {
         res
           .status(404)
-          .json({ success: false, message: 'Нет такого сертификата' });
+          .json({ success: false, message: 'Сертификат с таким номером не существует' });
         return;
       }
       res.status(200).json(currentcertificate);

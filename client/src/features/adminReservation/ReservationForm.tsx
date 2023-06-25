@@ -59,7 +59,7 @@ function ReservationForm(): JSX.Element {
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridPassword">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Имя</Form.Label>
             <Form.Control
               {...register('name')}
               type="text"
@@ -69,7 +69,7 @@ function ReservationForm(): JSX.Element {
         </Row>
         <Row className="mb-3">
           <Form.Group className="mb-3" controlId="formGridCity">
-            <Form.Label>Phone</Form.Label>
+            <Form.Label>Телефон</Form.Label>
             <Form.Control
               {...register('phoneNumber')}
               type="phone"
@@ -78,7 +78,7 @@ function ReservationForm(): JSX.Element {
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridZip">
-            <Form.Label>Guests</Form.Label>
+            <Form.Label>Гостей</Form.Label>
             <Form.Control {...register('guests')} type="text" />
           </Form.Group>
         </Row>
@@ -89,12 +89,12 @@ function ReservationForm(): JSX.Element {
             controlId="formGridCity"
             className="form-control-sm"
           >
-            <Form.Label>Date</Form.Label>
+            <Form.Label>Дата</Form.Label>
             <Form.Control {...register('date')} type="date" />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridState">
-            <Form.Label>Time</Form.Label>
+            <Form.Label>Время</Form.Label>
             <Form.Select {...register('time')}>
               <option>12:00</option>
               <option>12:30</option>
@@ -121,13 +121,13 @@ function ReservationForm(): JSX.Element {
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridZip">
-            <Form.Label>Table</Form.Label>
+            <Form.Label>Стол</Form.Label>
             <Form.Control {...register('table')} type="text" />
           </Form.Group>
         </Row>
 
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Example textarea</Form.Label>
+          <Form.Label>Комментарий</Form.Label>
           <Form.Control {...register('comment')} as="textarea" rows={3} />
         </Form.Group>
 

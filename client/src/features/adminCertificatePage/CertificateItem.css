@@ -62,3 +62,11 @@ p {
   text-align: center;
   color: red;
 }
+
+.certificate-active {
+  border-radius: 3px;
+}
+
+.certificate-nonactive {
+  display: none;
+}

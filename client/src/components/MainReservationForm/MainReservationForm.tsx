@@ -7,11 +7,42 @@ import { useAppDispatch } from '../../store';
 import { addReservation } from './mainReservationFormSlice';
 import MainReservationData from './types/MainReservationData';
 
+type Time = {
+  time: string;
+  status: boolean;
+}
+
+const timetable = [
+  {time: "12:00", status: true},
+  {time: "12:30", status: true},
+  {time: "13:00", status: true},
+  {time: "13:30", status: true},
+  {time: "14:00", status: true},
+  {time: "14:30", status: true},
+  {time: "15:00", status: true},
+  {time: "15:30", status: true},
+  {time: "16:00", status: true},
+  {time: "16:30", status: true},
+  {time: "17:00", status: true},
+  {time: "17:30", status: true},
+  {time: "18:00", status: true},
+  {time: "18:30", status: true},
+  {time: "19:00", status: true},
+  {time: "19:30", status: true},
+  {time: "20:00", status: true},
+  {time: "20:30", status: true},
+  {time: "21:00", status: true},
+  {time: "21:30", status: true},
+  {time: "22:00", status: true},
+  {time: "22:30", status: true},
+]
+
 function MainReservationForm(): JSX.Element {
   const dispatch = useAppDispatch();
 
   const [message, setMessage] = useState<boolean>(false);
   const [toggleRegisterForm, setToggleRegisterForm] = useState<boolean>(false);
+  const [timeState, setTimeState] = useState<Time[]>(timetable)
 
   const { register, handleSubmit, reset } = useForm<MainReservationData>();
 
@@ -46,6 +77,8 @@ function MainReservationForm(): JSX.Element {
   const closeButtonHandle = (): void => {
     setMessage(false);
   };
+
+  
 
   return (
     <div className="form_container" id="mainReservationForm">
@@ -114,29 +147,13 @@ function MainReservationForm(): JSX.Element {
             className="reservationFormInput"
             required
           >
-            <option value="12:00">12:00</option>
-            <option value="12:30">12:30</option>
-            <option value="13:00">13:00</option>
-            <option value="13:30">13:30</option>
-            <option value="14:00">14:00</option>
-            <option value="14:30">14:30</option>
-            <option value="15:00">15:00</option>
-            <option value="15:30">15:30</option>
-            <option value="16:00">16:00</option>
-            <option value="16:30">16:30</option>
-            <option value="17:00">17:00</option>
-            <option value="17:30">17:30</option>
-            <option value="18:00">18:00</option>
-            <option value="18:30">18:30</option>
-            <option value="19:00">19:00</option>
-            <option value="19:30">19:30</option>
-            <option value="20:00">20:00</option>
-            <option value="20:30">20:30</option>
-            <option value="21:00">21:00</option>
-            <option value="21:30">21:30</option>
-            <option value="22:00">22:00</option>
-            <option value="22:30">22:30</option>
-            {/* <option value="23:00">23:00</option> */}
+            {timetable.map((time) => (
+                time.status ? ( <option key={time.time} value={time.time}>{time.time}</option> ) 
+                  : 
+                 ( <option disabled value={time.time}>{time.time}</option> )
+            )
+              )
+            }
           </select>
         </label>
         <label className="reservationFormLabel" htmlFor="select">

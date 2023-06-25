@@ -23,6 +23,7 @@ function CertificateForm(): JSX.Element {
 
   const submitFormValues = useCallback(
     async (values: CertificateData): Promise<number> => {
+      console.log(certificate);
       const dispatchResult = await dispatch(addCertificate(values));
       if (addCertificate.fulfilled.match(dispatchResult)) {
         reset();

@@ -36,7 +36,7 @@ function MenuList(): JSX.Element {
   return (
     <div className="menu-container">
       <Document file="/menu.pdf" onLoadSuccess={onDocumentLoadSuccess}>
-        <Page className="menu-list-item" pageNumber={pageNumber} />
+        <Page scale={96/72} className="menu-list-item" pageNumber={pageNumber} />
       </Document>
       <div className="menu-pages">
         Page {pageNumber} of {numPages}

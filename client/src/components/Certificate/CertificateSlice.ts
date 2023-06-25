@@ -22,7 +22,7 @@ export const addCertificate = createAsyncThunk(
   async (certificate: CertificateData) => {
     const newCertificate = await apiCertificate(certificate);
     if (!newCertificate) {
-      throw new Error('Не удалось зоздать записть');
+      throw new Error('Не удалось cоздать запись');
     }
     return newCertificate;
   }
@@ -51,11 +51,11 @@ export const findeCertificate = createAsyncThunk(
 export const updateCertificate = createAsyncThunk(
   'certificate/updateCertificate',
   async (certificate: Certificate) => {
-    const chengeCertificate = await apiUpdateCertificate(certificate);
-    if (!chengeCertificate) {
+    const changeCertificate = await apiUpdateCertificate(certificate);
+    if (!changeCertificate) {
       throw new Error('Не удалось выполнить');
     }
-    return chengeCertificate;
+    return changeCertificate;
   }
 );
 

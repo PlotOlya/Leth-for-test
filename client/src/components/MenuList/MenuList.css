@@ -27,3 +27,7 @@
   padding: 5px;
   width: 150px;
 }
+
+.react-pdf__Page__annotations {
+  display: none;
+}

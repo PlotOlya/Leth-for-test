@@ -52,6 +52,7 @@ function ReservationList({
             <p><b>Имя гостя:</b> {oneReserv.name}&nbsp;&nbsp;&nbsp;
             <b>Номер телефона:</b> {oneReserv.phoneNumber}&nbsp;&nbsp;&nbsp;
             <b>Почта гостя: </b> {oneReserv.email}&nbsp;&nbsp;&nbsp;
+            <b>Гостей: </b> {oneReserv.guests}&nbsp;&nbsp;&nbsp;
             <b>Дата брони:</b> {normDate}&nbsp;&nbsp;&nbsp;
             <b>Время брони:</b> {normTime}&nbsp;&nbsp;&nbsp;
             {/* <b>Номер стола:</b> {oneReserv.table} */}

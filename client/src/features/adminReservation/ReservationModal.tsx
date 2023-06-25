@@ -99,32 +99,41 @@ function ReservationModal({
               <Form.Control
                 {...register('email', { required: true })}
                 type="text"
-                placeholder="Enter email"
+                placeholder="email"
               />
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridPassword">
-              <Form.Label>Name</Form.Label>
+              <Form.Label>Имя</Form.Label>
               <Form.Control
                 {...register('name', { required: true })}
                 type="text"
-                placeholder="Name"
+                placeholder="Имя гостя"
               />
             </Form.Group>
           </Row>
 
           <Form.Group className="mb-3" controlId="formGridAddress1">
-            <Form.Label>Phone</Form.Label>
+            <Form.Label>Номер телефона</Form.Label>
             <Form.Control
               {...register('phoneNumber', { required: true })}
               type="phone"
-              placeholder="Phone"
+              placeholder="Номер телефона"
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formGridAddress1">
+            <Form.Label>Гостей</Form.Label>
+            <Form.Control
+              {...register('guests', { required: true })}
+              type="text"
+              placeholder="Гостей"
             />
           </Form.Group>
 
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridCity">
-              <Form.Label>Date</Form.Label>
+              <Form.Label>Дата</Form.Label>
               <Form.Control
                 {...register('date', { required: true })}
                 type="date"
@@ -132,7 +141,7 @@ function ReservationModal({
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridState">
-              <Form.Label>Time</Form.Label>
+              <Form.Label>Время</Form.Label>
               <Form.Select {...register('time', { required: true })}>
                 <option>12:00</option>
                 <option>12:30</option>
@@ -159,7 +168,7 @@ function ReservationModal({
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridZip">
-              <Form.Label>Table</Form.Label>
+              <Form.Label>Стол</Form.Label>
               <Form.Control
                 {...register('table', {
                   required: true,

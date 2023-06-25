@@ -58,6 +58,13 @@ function ReservationTable({
     start_time: new Date(reserv.date),
     end_time: addHours(new Date(reserv.date)),
     color: 'rgb(0, 0, 0)',
+    itemProps: {
+      style: {
+        background: 'lightblue',
+        color: 'black',
+        
+      }
+    }
   }));
 
   // const itemRenderer = ({ getItemProps }) => {const color = itemContext.selected && itemContext.};
